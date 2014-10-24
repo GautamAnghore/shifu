@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+{% if error %}
+	{{ error }}
+{% endif %}
+{% from "_registerformhelper.html" import render_field %}
+<form method="post" action="{{ url_for('.signup') }}">
+{{ form.hidden_tag() }}
+<dl>
+	{{ render_field(form.username) }}
+	{{ render_field(form.password) }}
+</dl>
+<p>
+<input type="submit" value="Go">
+</form> 
+</body>
+</html>
