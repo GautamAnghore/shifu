@@ -10,10 +10,13 @@
 {{ form.hidden_tag() }}
 <dl>
 	{{ render_field(form.username) }}
+	{{ render_field(form.name) }}
 	{{ render_field(form.password) }}
+	{{ render_field(form.confirm) }}
+	{{ render_field(form.email) }}
 </dl>
 <p>
-<input type="submit" value="Go">
+<input type="submit" name="sign up" />
 </form> 
 </body>
 </html>
