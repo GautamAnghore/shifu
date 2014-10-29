@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="{% if user is defined %} {{ user.tagline }} {% endif %}">
+	    <meta name="author" content="">
+    
+        <title>{% block title %}{{ page_title }}{% endblock %}</title>
+        
+        {% block includes %}
+    	{% endblock %}
+    </head>
+    <body>
+    {% block header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}
+    </body>
+    
+</html>

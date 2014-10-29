@@ -1,22 +1,46 @@
-<html>
-<head>
-</head>
-<body>
-{% if error %}
-	{{ error }}
-{% endif %}
-{% from "_registerformhelper.html" import render_field %}
-<form method="post" action="{{ url_for('.signup') }}">
-{{ form.hidden_tag() }}
-<dl>
-	{{ render_field(form.username) }}
-	{{ render_field(form.name) }}
-	{{ render_field(form.password) }}
-	{{ render_field(form.confirm) }}
-	{{ render_field(form.email) }}
-</dl>
-<p>
-<input type="submit" name="sign up" />
-</form> 
-</body>
-</html>
+{% extends "base-layout.html" %}
+
+{% block title %}
+Shifu Signup
+{% endblock %}
+
+{% block includes %}
+<link rel="stylesheet" href="{{ url_for('master.static',filename='css/index-style.css') }}">
+<link rel="stylesheet" href="{{ url_for('master.static',filename='css/login-page.css') }}">
+
+{% endblock %}
+
+{% block header %}
+	<div class="navbar">
+		<img src="{{ url_for('master.static',filename='media/logo.png') }}" id="logo" />
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div id="error">
+		{% if error %}
+			{{ error }}
+		{% endif %}
+	</div>
+
+
+	<div class="login_window">
+	{% from "_registerformhelper.html" import render_field %}
+		<form method="post" action="{{ url_for('.signup') }}">
+		{{ form.hidden_tag() }}
+			<div id="container">
+				{{ render_field(form.username) }}
+				{{ render_field(form.name) }}
+				{{ render_field(form.password) }}
+				{{ render_field(form.confirm) }}
+				{{ render_field(form.email) }}
+			</div>
+			<p>
+				<input type="submit" class="button" id="login" value="sign up"/>
+		</form>
+		<div class="text" id="or"><h1>Or</h1></div>
+	    <form action="{{ url_for('.admin') }}">
+	    	<input type="submit" class="button" id="new_acc" value="return" />
+	    </form> 
+
+{% endblock %}	    

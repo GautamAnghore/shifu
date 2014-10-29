@@ -1,4 +1,4 @@
-from flask import url_for,render_template,redirect, request
+from flask import url_for,render_template,redirect, request, session
 
 from apps.users import users
 from forms import *
@@ -11,13 +11,22 @@ database = connection.shifu
 
 user = db.User(database)
 
-@users.route('/')
-@users.route('/<username>')
-def index(username=None):
+@users.route('/admin')
+@users.route('/admin/<username>')
+def admin(username=None):
 	if username == None:
-		return redirect( url_for('.signin') )
+		return render_template('admin.html',form=SigninForm())
 	else:
-		return render_template('silent.html',username='hello %s' % username)
+		if 'username' in session:
+			if session['username'] == username:
+				new_user = {}
+				new_user['username']=username
+				return render_template('admin.html',user=new_user)
+			else:
+				return render_template('errors/401.html',message="invalid user,access denied"),401
+		else:
+			return render_template('errors/401.html',message="invalid user,access is denied"),401
+
 		#return url_for('users.index')
 
 @users.route('/signup',methods=['GET','POST'])
@@ -36,9 +45,10 @@ def signup():
 
 			
 			if success is True:
-				return redirect( url_for('.index',username=form.username.data))
+				session['username']=form.username.data
+				return redirect( url_for('.admin',username=form.username.data))
 			else:
-				return redirect( url_for('./signup/error'),error='cannot add user')
+				return render_template('signup.html',form=form,error='cannot add user,internal error')
 		
 
 		else:
@@ -46,24 +56,28 @@ def signup():
 
 	return render_template('signup.html',form=SignupForm(),error='first time')
 
-@users.route('/signup/error',methods=['GET','POST'])
-def signup_error(error):
-	return error
 
 @users.route('/signin',methods=['GET','POST'])
 def signin():
 	if request.method == 'POST':
 		form = SigninForm(request.form)
-
+		
 		if form.validate():
 			loggedin = user.check_user(form.username.data,form.password.data)
 
 			if loggedin is not None:
-				return redirect( url_for('.index',username=form.username.data) )
+				session['username']=form.username.data
+				return redirect( url_for('.admin',username=form.username.data) )
 			else:
-				return render_template('silent.html',form=form,error='wrong credentials' )
+				return render_template('admin.html',form=form,error='wrong credentials' )
 
 		else:
-			return render_template('silent.html',form=form)
+			return render_template('admin.html',form=form)
 
-	return render_template('silent.html',form=SigninForm(),error='first time')
+	#return render_template('silent.html',form=SigninForm(),error='first time')
+	return redirect( url_for('.admin'))
+
+@users.route('/signout',methods=['GET'])
+def signout():
+	session.pop('username',None)
+	return redirect(url_for('.admin'))
