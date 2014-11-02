@@ -6,8 +6,7 @@ from forms import *
 import pymongo
 import db
 
-connection = pymongo.MongoClient('localhost',27017)
-database = connection.shifu
+from apps import database	# for the database connection
 
 user = db.User(database)
 

@@ -46,7 +46,7 @@ Shifu index
         <form action="{{ url_for('.signin') }}" method="post">
 		    {{ form.hidden_tag() }}
 		    <div id="container">
-		    	{{ render_field(form.username) }}
+		    	{{ render_field(form.username,placeholder="username") }}
 		        <!--<input type="text" name="username" placeholder="Email or Username"  />-->
 		        {{ render_field(form.password) }}
 		        <!--<input type="password" name="Password" placeholder="Password" />-->
