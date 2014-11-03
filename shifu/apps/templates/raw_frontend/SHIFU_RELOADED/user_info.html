@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Shifu | User Signup</title>
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/user_info.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
+        <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        
+        <div class="bground">
+        <nav>    
+        <div class="navbar navbar-default navbar-fixed-top">
+            <img class="header-pallete" src="pallet/Color-Palette-Post-03-Fitz.png" />
+                    <!--navigation does here-->  
+            <ul class="nav">  
+                <li class="active">  
+                <a class="brand" href="#">SHIFU</a>  
+                </li>  
+                <!--<li class="navigation_opt"><a href="#">Actions</a></li>  
+                <li  class="navigation_opt"><a href="#">fuck</a></li>
+                <li class="navigation_opt"><a href="#">Back</a></li> --> 
+            </ul>  
+        </div>
+            <div class="logo-div">
+            <img class="logo" src="images/logo_yellowshadow.png" />
+            </div>
+        </nav>
+    <!-- ===============================================================================================================-->    
+            <!--form for sign up-->
+            <div class="entry-form">
+                <form class="form-horizontal">
+        <!--username-->
+                <div class="form-group has-feedback">
+                    <div class="col-xs-12"  >
+                        <input type="text" id="username" class="form-control" placeholder="Username" required>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+        <!-- Full name -->
+                <div class="form-group has-feedback">
+                    <div class="col-xs-12"  >
+                        <input type="text" id="fullname" class="form-control" placeholder="Fullname" required>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+        <!--email address-->
+                <div class="form-group has-feedback">
+                    <div class="col-xs-12">
+                        <input type="email" id="email" class="form-control" placeholder="Email Address" required>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+        <!--password-->
+                    <div class="form-group has-feedback">    
+                        <div class="col-xs-12">
+                            <input type="password" id="password" class="form-control" placeholder="Password" required>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+        <!--confirm password-->
+                    <div class="form-group has-feedback">    
+                        <div class="col-xs-12">
+                            <input type="password" id="confirm_password" data-match="#password" class="form-control" placeholder="Confirm Password" required>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+        <!--submit button-->
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                        <input type="submit" class="btn form-control btn-primary" value="Sign up" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- ===========================================footer(optional)====================================================== -->
+        <footer> <!--<img class="footer-pallete" src="pallet/Color-Palette-Post-03-Fitz.png" />--> </footer>
+    </body>
+</html>
