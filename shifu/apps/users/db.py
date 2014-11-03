@@ -1,4 +1,5 @@
 # for slow password hashing using pbkdf2_sha256
+import pymongo
 from passlib.hash import pbkdf2_sha256
 
 class User():
@@ -21,9 +22,11 @@ class User():
 
 		try:
 			self.users.insert(user, safe=True)
-		except pymongo.errors.OperationFailure:
-			return False
 		except pymongo.errors.DuplicateKeyError as e:
+			print "duplicate user"
+			return False
+		except pymongo.errors.OperationFailure:
+			print "Operation Failure"
 			return False
 
 		return True

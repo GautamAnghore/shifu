@@ -7,6 +7,7 @@ import pymongo
 import db
 
 from apps import database	# for the database connection
+from apps import env
 
 user = db.User(database)
 
@@ -14,7 +15,10 @@ user = db.User(database)
 @users.route('/admin/<username>')
 def admin(username=None):
 	if username == None:
-		return render_template('admin.html',form=SigninForm())
+		if env.check_accountset() is True:
+			return render_template('admin.html',form=SigninForm())
+		else:
+			return redirect( url_for('.signup') )
 	else:
 		if 'username' in session:
 			if session['username'] == username:
@@ -44,6 +48,9 @@ def signup():
 
 			
 			if success is True:
+				if env.check_accountset() is False:
+					env.set_accountset()
+					
 				session['username']=form.username.data
 				return redirect( url_for('.admin',username=form.username.data))
 			else:
