@@ -29,11 +29,11 @@ Shifu Signup
 		<form method="post" action="{{ url_for('.signup') }}">
 		{{ form.hidden_tag() }}
 			<div id="container">
-				{{ render_field(form.username) }}
-				{{ render_field(form.name) }}
-				{{ render_field(form.password) }}
-				{{ render_field(form.confirm) }}
-				{{ render_field(form.email) }}
+				{{ render_field(form.username,placeholder="Username") }}
+				{{ render_field(form.name,placeholder="Full Name") }}
+				{{ render_field(form.password,placeholder="Password") }}
+				{{ render_field(form.confirm,placeholder="Confirm Password") }}
+				{{ render_field(form.email,placeholder="Email") }}
 			</div>
 			<p>
 				<input type="submit" class="button" id="login" value="sign up"/>
