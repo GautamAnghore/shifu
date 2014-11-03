@@ -1,35 +1,25 @@
-{% extends "base-layout.html" %}
+{% extends "layout.html" %}
 
 {% block title %}
 401 Access Denied
 {% endblock %}
 
-{% block includes %}
-<link rel="stylesheet" href="{{ url_for('master.static',filename='css/index-style.css') }}">
-<link rel="stylesheet" href="{{ url_for('master.static',filename='css/login-page.css') }}">
-{% endblock %}
-
-{% block header %}
-	<div class="navbar">
-		<img src="{{ url_for('master.static',filename='media/logo.png') }}" id="logo" />  
-	</div>
-{% endblock %}
-
 {% block content %}
-	<div id="error">
+	<div id="message" style="position:absolute;top:0px;left:0px;bottom:0px;right:0px;margin:auto;width:600px;height:100px;font-weight:900;">
+	<center>
+		<h1>
 		{% if message %}
 			{{ message }}
 		{% else %}
 			access is denied[default]
 		{% endif %}
-	</div>
-	
-    <form action="{{ url_for('.admin') }}">
+		</h1>
+	<form action="{{ url_for('.admin') }}">
     	<input type="submit" class="button" id="new_acc" value="Go Back" />
     </form>
+    </center>
+	</div>
+	
     
-{% endblock %}
-
-{% block footer %}
-
+    
 {% endblock %}

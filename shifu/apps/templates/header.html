@@ -1,0 +1,27 @@
+{% extends "base-layout.html" %}
+
+{% block includes %}
+	{{ super() }}
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/navbar.css') }}" />
+{% endblock %}
+
+{% block header %}
+<nav>    
+	<div class="navbar navbar-default navbar-fixed-top">
+	    <img class="header-pallete" src="{{ url_for('static',filename='media/images/palette.png') }}" />
+	            <!--navigation does here-->  
+	    <ul class="nav">  
+	        <li class="active">  
+	        <a class="brand" href="#">SHIFU</a>  
+	        </li>  
+	        <!--<li class="navigation_opt"><a href="#">Actions</a></li>  
+	        <li  class="navigation_opt"><a href="#">fuck</a></li>
+	        <li class="navigation_opt"><a href="#">Back</a></li> --> 
+	    </ul>  
+	</div>
+	    <div class="logo-div">
+	    <img class="logo" src="{{ url_for('static',filename='media/images/logo.png') }}" />
+    </div>
+</nav>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+
+.navbar{
+    top: .75%;
+    font-family:sans-serif;
+    box-shadow: 0px 0.7px 3px black;
+    height: 9.25%;
+    background-color: white;
+    z-index: 10;
+}
+
+.header-pallete {
+    position:fixed;
+    width: 100%;
+    top: 0px;
+    height: .75%;
+}
+
+/* css for header li's */
+.navbar li{
+    position:relative;
+    display: inline-block;
+    background-color: transparent;
+}
+
+.navigation_opt{
+    position: relative;
+    float: right;
+    right: 5%;
+    font-size: 15px;
+    margin:.5% .5%;
+}
+
+.active{
+    margin:.2% 4%
+}
+
+/* css for header <a> tags */
+.navbar li a {
+    font-weight: 200;
+    
+}
+
+.navbar li a:hover {
+    background-color: transparent;
+}
+
+.brand {
+    position: relative;
+    font-size: 25px;
+    color: #777777;
+}
+
+.brand:hover{
+    color: #39d1b4;
+}
+
+.navigation_opt a {
+    
+    position: relative;
+    color: #777777;
+    border-bottom: 3px solid transparent;    
+    -webkit-transition: 0.5s ease;
+       -moz-transition: 0.5s ease;
+            transition: 0.5s ease;
+    /*border-bottom-width: 0px;
+    -webkit-transition: border-bottom-width 1s ease;
+       -moz-transition: border-bottom-width 1s ease;
+            transition: border-bottom-width 1s ease;*/
+}
+
+.navigation_opt a:hover
+{
+    border-bottom: 3px solid #39d1b4;
+    color: #39d1b4;
+    /*border-bottom-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    border-top:  2px solid #39d1b4;
+    border-bottom: 2px solid #39d1b4;*/
+}
+
+.logo {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 50%;
+}
+
+
+.logo-div {
+    box-shadow:0px 0.7px 3px black inset;
+    position:fixed;
+    border-radius: 50%;
+    z-index: 20;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    top: -15%;
+    background-color:#fff ;
+    height: 200px;
+    width: 200px;
+}
+
+.footer-pallete {
+    position: absolute;
+    width: 100%;
+    height: 3%;
+    top: 98%;
+}

@@ -1,30 +1,18 @@
-{% extends "base-layout.html" %}
+{% extends "layout.html" %}
 
 {% block title %}
-Shifu index
+{{ super() }}-Admin
 {% endblock %}
 
 {% block includes %}
-<link rel="stylesheet" href="{{ url_for('master.static',filename='css/index-style.css') }}">
-<link rel="stylesheet" href="{{ url_for('master.static',filename='css/login-page.css') }}">
+	{{ super() }}
 
-<link rel="stylesheet" href="{{ url_for('master.static',filename='css/manage-sites.css') }}">
+	<link rel="stylesheet" href="{{ url_for('users.static',filename='css/user_form.css') }}">
 {% endblock %}
 
 {% block header %}
-	<div class="navbar">
-		<img src="{{ url_for('master.static',filename='media/logo.png') }}" id="logo" />  
-		{% if user %}
-		
-		<form action="{{ url_for('.signout') }}">
-			<input type="submit" id="logout" name="signout" value="sign out {{ user.username }}" />
-		</form>
-		{% else %}
-		<form>
-			<input type="submit" id="header_about" name="about" value="about" />
-		</form> 
-		{% endif %}
-	</div>
+	<div class="bground" style="background-image:url({{ url_for('static',filename='media/images/background.jpg') }} );">
+	{{ super() }}
 {% endblock %}
 
 {% block content %}
@@ -34,36 +22,43 @@ Shifu index
 		{% endif %}
 	</div>
 	{% if user %}
-	<div class="container">
-            <div class="website"><img class="demo" src="images/website1.png"/> <p>This is a first demo website. Upper image used will be uploaded by the user and it will itself select a circular part from it. Descripton shown here will be added here by the user about this particular website.  </p><a href="#"><button class="edit">Edit</button></a> </div>
-            <div class="website"><img class="demo" src="images/website2.png"/><p>This is a second demo website. Upper image used will be uploaded by the user and it will itself select a circular part from it. Descripton shown here will be added here by the user about this particular website.  </p><a href="#"><button class="edit">Edit</button></a></div>
-            <a href="#"><div class="new_website"><p>+</p> </div></a>
-    </div>
+	
+		logged in
+	</div>
 		
 	{% else %}
-	<div class="login_window">
-		{% from "_registerformhelper.html" import render_field %}
-        <form action="{{ url_for('.signin') }}" method="post">
-		    {{ form.hidden_tag() }}
-		    <div id="container">
-		    	{{ render_field(form.username,placeholder="username") }}
-		        <!--<input type="text" name="username" placeholder="Email or Username"  />-->
-		        {{ render_field(form.password,placeholder="password") }}
-		        <!--<input type="password" name="Password" placeholder="Password" />-->
-		    
-		    </div>
-			
-		    <input type="submit" class="button" id="login" value="sign in"/>
-		</form>  
-    </div>
-    
-    <div class="text" id="or"><h1>Or</h1></div>
-    <form action="{{ url_for('.signup') }}">
-    	<input type="submit" class="button" id="new_acc" value="Create New Account" />
-    </form>
+		<!--form for sign up-->
+            <div class="entry-form">
+            	{% from "_registerformhelper.html" import render_field %}
+                <form class="form-horizontal" action="{{ url_for('.signin') }}" method="post">
+                	{{ form.hidden_tag() }}
+        <!--username -->
+	                <div class="form-group has-feedback {% if form.username.errors %} has-error {% endif %}">
+	                    <div class="col-xs-12"  >
+	                       <!-- <input type="text" id="username" class="form-control" placeholder="Username" required>
+	                        <span class="help-block"></span>
+							-->
+	                        {{ render_field(form.username,placeholder="username",class="form-control",required="required",) }}
+	                    </div>
+	                </div>
+        <!--password-->
+                    <div class="form-group has-feedback{% if form.password.errors %} has-error {% endif %}">    
+                        <div class="col-xs-12">
+                            <!--<input type="password" id="password" class="form-control" placeholder="Password" required>
+                            <span class="help-block"></span>-->
+                            {{ render_field(form.password,placeholder="password",class="form-control",required="required",id="password") }}
+                        </div>
+                    </div>
+        <!--submit button-->
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                        <input type="submit" class="btn form-control btn-primary" value="Login" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        
     {% endif %}
-{% endblock %}
-
-{% block footer %}
-
+    </div>
 {% endblock %}

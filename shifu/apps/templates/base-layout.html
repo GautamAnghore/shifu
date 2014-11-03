@@ -9,17 +9,24 @@
         <title>{% block title %}{{ page_title }}{% endblock %}</title>
         
         {% block includes %}
-    	{% endblock %}
+            <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='lib/bootstrap-3.1.1-dist/css/bootstrap.min.css') }}" />
+            <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='lib/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css') }}" />
+            <script src=" {{ url_for('static',filename='lib/bootstrap-3.1.1-dist/js/bootstrap.min.js') }}"></script>
+        
+            <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/base.css' ) }}" />
+        {% endblock %}
     </head>
     <body>
-    {% block header %}
-    {% endblock %}
+        
+            {% block header %}
+            {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+            {% block content %}
+            {% endblock %}
 
-    {% block footer %}
-    {% endblock %}
+            {% block footer %}
+            {% endblock %}
+        
     </body>
     
 </html>

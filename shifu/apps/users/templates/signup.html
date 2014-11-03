@@ -1,19 +1,18 @@
-{% extends "base-layout.html" %}
+{% extends "layout.html" %}
 
 {% block title %}
-Shifu Signup
+{{ super() }}-Signup
 {% endblock %}
 
 {% block includes %}
-<link rel="stylesheet" href="{{ url_for('master.static',filename='css/index-style.css') }}">
-<link rel="stylesheet" href="{{ url_for('master.static',filename='css/login-page.css') }}">
-
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('.static',filename='css/user_form.css') }}">
 {% endblock %}
 
 {% block header %}
-	<div class="navbar">
-		<img src="{{ url_for('master.static',filename='media/logo.png') }}" id="logo" />
-	</div>
+
+	<div class="bground" style="background-image:url({{ url_for('static',filename='media/images/background.jpg') }} );">
+	{{ super() }}
 {% endblock %}
 
 {% block content %}
@@ -23,24 +22,59 @@ Shifu Signup
 		{% endif %}
 	</div>
 
+            <!--form for sign up-->
+            <div class="entry-form">
+            {% from "_registerformhelper.html" import render_field %}
+                <form class="form-horizontal" method="post" action="{{ url_for('.signup') }}">
+        			{{ form.hidden_tag() }}
+        <!--username-->
+                <div class="form-group has-feedback{% if form.username.errors %} has-error {% endif %}">
+                    <div class="col-xs-12"  >
+                        <!--<input type="text" id="username" class="form-control" placeholder="Username" required>-->
+                        {{ render_field(form.username,placeholder="Username",class="form-control",required="required", id="username") }}
+                        <!--<span class="help-block"></span>-->
+                    </div>
+                </div>
+        <!-- Full name -->
+                <div class="form-group has-feedback{% if form.name.errors %} has-error {% endif %}">
+                    <div class="col-xs-12"  >
+                       {{ render_field(form.name,placeholder="Full Name",class="form-control",required="required",id="fullname") }}
+                    </div>
+                </div>
+        <!--email address-->
+                <div class="form-group has-feedback{% if form.email.errors %} has-error {% endif %}">
+                    <div class="col-xs-12">
+                        
+						{{ render_field(form.email,placeholder="Email Address", class="form-control", required="required", id="email") }}
+                    </div>
+                </div>
+        <!--password-->
+                    <div class="form-group has-feedback{% if form.password.errors %} has-error {% endif %}">    
+                        <div class="col-xs-12">
+                            <!--<input type="password" id="password" class="form-control" placeholder="Password" required>
+                            <span class="help-block"></span>-->
+							{{ render_field(form.password,placeholder="Password",required="required",class="form-control", id="password" ) }}
 
-	<div class="login_window">
-	{% from "_registerformhelper.html" import render_field %}
-		<form method="post" action="{{ url_for('.signup') }}">
-		{{ form.hidden_tag() }}
-			<div id="container">
-				{{ render_field(form.username,placeholder="Username") }}
-				{{ render_field(form.name,placeholder="Full Name") }}
-				{{ render_field(form.password,placeholder="Password") }}
-				{{ render_field(form.confirm,placeholder="Confirm Password") }}
-				{{ render_field(form.email,placeholder="Email") }}
-			</div>
-			<p>
-				<input type="submit" class="button" id="login" value="sign up"/>
-		</form>
-		<div class="text" id="or"><h1>Or</h1></div>
-	    <form action="{{ url_for('.admin') }}">
-	    	<input type="submit" class="button" id="new_acc" value="return" />
-	    </form> 
+                        </div>
+                    </div>
+        <!--confirm password-->
+                    <div class="form-group has-feedback{% if form.confirm.errors %} has-error {% endif %}">    
+                        <div class="col-xs-12">
+                            <!--<input type="password" id="confirm_password" data-match="#password" class="form-control" placeholder="Confirm Password" required>
+                            <span class="help-block"></span>-->
 
-{% endblock %}	    
+							{{ render_field(form.confirm,placeholder="Confirm Password",required="required",class="form-control",id="confirm_password" ) }}
+                        </div>
+                    </div>
+        <!--submit button-->
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                        <input type="submit" class="btn form-control btn-primary" value="Sign up" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}	 
+
