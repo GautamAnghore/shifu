@@ -9,11 +9,23 @@
         <title>{% block title %}{{ page_title }}{% endblock %}</title>
         
         {% block includes %}
+             <!-- sweet alert library -->
+            <script src=" {{ url_for('static',filename='lib/sweetalert-master/lib/sweet-alert.min.js' ) }} "></script> 
+            <link rel="stylesheet" type="text/css" href=" {{ url_for('static',filename='lib/sweetalert-master/lib/sweet-alert.css') }} ">
+
+             <!-- jquery library -->
+            <script src="{{ url_for('static',filename='lib/jQuery/jquery-1.11.1.min.js') }}"></script>
+
+            <!-- BOOTSTRAP -->
             <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='lib/bootstrap-3.1.1-dist/css/bootstrap.min.css') }}" />
             <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='lib/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css') }}" />
             <script src=" {{ url_for('static',filename='lib/bootstrap-3.1.1-dist/js/bootstrap.min.js') }}"></script>
-        
+            
+            <!-- base styling -->
             <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/base.css' ) }}" />
+
+
+            
         {% endblock %}
     </head>
     <body>
