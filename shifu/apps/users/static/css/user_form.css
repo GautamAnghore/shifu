@@ -27,6 +27,7 @@ form {
 }
 
 div.bground {
+    height: 100%;
     background-size: cover;
     background-repeat:no-repeat;
     -webkit-background-size:cover;
