@@ -1,0 +1,12 @@
+{% extends 'base-layout.html' %}
+
+{% block title %}
+{{ super() }}-live
+{% endblock %}
+
+{% block includes %}
+{% endblock %}
+
+{% block content %}
+{{ data|safe }}
+{% endblock %}

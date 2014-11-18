@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ super() }}-editor
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link rel="stylesheet" href=" {{ url_for('editor.static',filename='css/editor_style.css') }}">
+{% endblock %}
+
+{% block content %}
+	<div class="editor_wrapper">
+		<form method="post" action=" {{ url_for('.live') }}">
+			{{ form.hidden_tag() }}
+
+			{{ form.content(rows=10,cols=50) }}
+			{% if form.content.error %}
+				{{ form.content.error }}
+			{% endif %}
+			<br />
+			<input type="submit" value="publish">
+		</form>
+	</div>
+{% endblock %}

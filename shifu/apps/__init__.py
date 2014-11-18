@@ -26,7 +26,9 @@ from views import *
 
 from users import users
 #from users import views
+from editor import editor
 
 #registering all blueprints
 app.register_blueprint(master)
 app.register_blueprint(users)
+app.register_blueprint(editor,url_prefix='/editor')
