@@ -46,39 +46,42 @@ def dashboard(username):
 
 @users.route('/signup',methods=['GET','POST'])
 def signup():
-	if request.method == 'POST':
-		
-		form = SignupForm(request.form)
-		
-		if form.validate():
-			# form validation success
-			# can add to db
-			if form.email.data != "":
-				success = user.add_user(form.username.data,form.password.data,form.name.data,form.email.data)
-			else:
-				success = user.add_user(form.username.data,form.password.data,form.name.data)
-
+	if env.check_accountset() is False:
+		if request.method == 'POST':
 			
-			if success is True:
-				env.set_accountset()
+			form = SignupForm(request.form)
+			
+			if form.validate():
+				# form validation success
+				# can add to db
+				if form.email.data != "":
+					success = user.add_user(form.username.data,form.password.data,form.name.data,form.email.data)
+				else:
+					success = user.add_user(form.username.data,form.password.data,form.name.data)
+
 				
-				session_push_username(form.username.data)
-				return redirect( url_for('.admin'))
+				if success is True:
+					env.set_accountset()
+					
+					session_push_username(form.username.data)
+					return redirect( url_for('.admin'))
+				else:
+					alert.reset()
+					alert.error('cannot add user, internal error')
+					return render_template('signup.html',form=form,alert=alert.get_alert())
+			
+
 			else:
 				alert.reset()
-				alert.error('cannot add user, internal error')
+				alert.error('Please Provide appropriate input')
 				return render_template('signup.html',form=form,alert=alert.get_alert())
-		
 
-		else:
-			alert.reset()
-			alert.error('Please Provide appropriate input')
-			return render_template('signup.html',form=form,alert=alert.get_alert())
-
-	if alert.msg() is None:
-		alert.msg('Admin Account Setup')
-	return render_template('signup.html',form=SignupForm(),alert=alert.get_alert())
-
+		if alert.msg() is None:
+			alert.msg('Admin Account Setup')
+		return render_template('signup.html',form=SignupForm(),alert=alert.get_alert())
+	else:
+		alert.error('Not Authorized')
+		return redirect( url_for('.admin') )
 
 @users.route('/signin',methods=['GET','POST'])
 @nocache
