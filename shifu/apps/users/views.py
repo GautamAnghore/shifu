@@ -1,4 +1,4 @@
-from flask import url_for,render_template,redirect, request, session
+from flask import url_for,render_template,redirect, request, session, make_response
 
 from apps.users import users
 from forms import *
@@ -7,30 +7,42 @@ import pymongo
 import db
 
 from apps import database	# for the database connection
-from apps import env
+from apps import env	# for enviornment variable operations
+from apps import Alert 	# for Alert class 
+from apps import nocache # nocache decorator defination
 
 user = db.User(database)
+alert = Alert()
+
 
 @users.route('/admin')
-@users.route('/admin/<username>')
-def admin(username=None):
-	if username == None:
+@nocache
+def admin():
+	# task of admin function is to redirect to appropriate next stage : dashboard or sign in or sign up
+	username = logged_in()
+	if username is not None:
+		return redirect( url_for('.dashboard',username=username))
+	else:
 		if env.check_accountset() is True:
-			return render_template('admin.html',form=SigninForm())
+			return redirect( url_for('.signin') )
 		else:
 			return redirect( url_for('.signup') )
-	else:
-		if 'username' in session:
-			if session['username'] == username:
-				new_user = {}
-				new_user['username']=username
-				return render_template('admin.html',user=new_user)
-			else:
-				return render_template('errors/401.html',message="invalid user,access denied"),401
-		else:
-			return render_template('errors/401.html',message="invalid user,access is denied"),401
 
-		#return url_for('users.index')
+
+@users.route('/dashboard/<username>')
+@nocache
+def dashboard(username):
+
+	if logged_in(username) is not None:
+		alert.success('Logged In')
+		resp = make_response(render_template('temp_dashboard.html',username=username,alert=alert.get_alert()))
+
+		alert.reset()
+		return resp
+	else: 
+		#return render_template('errors/401.html',message="invalid user,access denied"),401
+		alert.error('Make sure to Log In')
+		return redirect( url_for('.admin') )
 
 @users.route('/signup',methods=['GET','POST'])
 def signup():
@@ -48,23 +60,30 @@ def signup():
 
 			
 			if success is True:
-				if env.check_accountset() is False:
-					env.set_accountset()
-					
-				session['username']=form.username.data
-				return redirect( url_for('.admin',username=form.username.data))
+				env.set_accountset()
+				
+				session_push_username(form.username.data)
+				return redirect( url_for('.admin'))
 			else:
-				return render_template('signup.html',form=form,error='cannot add user,internal error')
+				alert.reset()
+				alert.error('cannot add user, internal error')
+				return render_template('signup.html',form=form,alert=alert.get_alert())
 		
 
 		else:
-			return render_template('signup.html',form=form,error='validation false')
+			alert.reset()
+			alert.error('Please Provide appropriate input')
+			return render_template('signup.html',form=form,alert=alert.get_alert())
 
-	return render_template('signup.html',form=SignupForm(),error='first time')
+	if alert.msg() is None:
+		alert.msg('Admin Account Setup')
+	return render_template('signup.html',form=SignupForm(),alert=alert.get_alert())
 
 
 @users.route('/signin',methods=['GET','POST'])
+@nocache
 def signin():
+	
 	if request.method == 'POST':
 		form = SigninForm(request.form)
 		
@@ -72,18 +91,73 @@ def signin():
 			loggedin = user.check_user(form.username.data,form.password.data)
 
 			if loggedin is not None:
-				session['username']=form.username.data
-				return redirect( url_for('.admin',username=form.username.data) )
+				session_push_username(form.username.data)
+				return redirect( url_for('.admin') )
 			else:
-				return render_template('admin.html',form=form,error='wrong credentials' )
+				alert.reset()
+				alert.error('Wrong Credentials')
+				return render_template('signin.html',form=form,alert=alert.get_alert() )
 
 		else:
-			return render_template('admin.html',form=form)
+			alert.reset()
+			alert.error('Please Provide Appropriate Details')
+			return render_template('signin.html',form=form,alert=alert.get_alert())
+	else:
+		#return render_template('silent.html',form=SigninForm(),error='first time')
+		if logged_in() is not None:
+			alert.reset()
+			alert.msg('Already Logged In')
+			return redirect( url_for('.admin'))
+		else:
+			if env.check_accountset() is True:
 
-	#return render_template('silent.html',form=SigninForm(),error='first time')
-	return redirect( url_for('.admin'))
+				resp = make_response(render_template('signin.html',form=SigninForm(),alert=alert.get_alert()))
+								
+				alert.reset()
+				return resp
+			else:
+				alert.msg('For Logging In, Creating account is Must ')
+				return redirect( url_for('.admin'))
 
-@users.route('/signout',methods=['GET'])
-def signout():
-	session.pop('username',None)
-	return redirect(url_for('.admin'))
+
+@users.route('/signout/<username>',methods=['GET'])
+@nocache
+def signout(username):
+	if session_pop_username(username) is True:
+		alert.reset()
+		alert.success('Logged Out')
+		return redirect(url_for('.admin'))
+	else:
+		alert.reset()
+		alert.error('Cannot Log Out ! internal error')
+		return redirect(url_for('.admin'))
+
+
+# session handling for users
+def session_push_username(username):
+	session['username'] = username
+
+def logged_in(username=None):
+	# checks if username passed logged in and return username if logged in
+	# if None passed, check session and return the logged in username
+	if 'username' in session:
+		if session['username'] != "":
+			if username is None:
+				return session['username']
+			else:
+				if session['username'] == username:
+					return session['username']
+				else:
+					return None
+		else:
+			session.pop('username',None)
+			return None
+	else:
+		return None
+
+def session_pop_username(username):
+	if logged_in(username) is not None:
+		session.pop('username',None)
+		return True
+	else:
+		return False

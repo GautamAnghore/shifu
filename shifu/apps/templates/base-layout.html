@@ -38,6 +38,31 @@
 
             {% block footer %}
             {% endblock %}
+
+
+        {% if alert %}
+            {% if alert['error'] %}
+                <script>
+                    document.querySelector('body').onload = function(){
+                                                        swal("Error", "{{ alert['error'] }}", "error");
+                                                    };
+                </script> 
+            {% endif %}
+            {% if alert['msg'] %}
+                <script>
+                    document.querySelector('body').onload = function(){
+                                                        swal("Message", "{{ alert['msg'] }}");
+                                                    };
+                </script> 
+            {% endif %}
+            {% if alert['success'] %}
+                <script>
+                    document.querySelector('body').onload = function(){
+                                                        swal("Success", "{{ alert['success'] }}", "success");
+                                                    };
+                </script> 
+            {% endif %}
+        {% endif %}
         
     </body>
     

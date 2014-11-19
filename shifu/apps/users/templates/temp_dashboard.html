@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{ super() }}-Admin
+{% endblock %}
+
+{% block includes %}
+	{{ super() }}
+
+	<link rel="stylesheet" href="{{ url_for('users.static',filename='css/user_form.css') }}">
+{% endblock %}
+
+
+{% block content %}
+	
+		
+	<div style="margin-top:10%">
+	<a href="{{ url_for('.signout',username=username) }}"> logout</a>
+	</div>
+   
+
+{% endblock %}
+
