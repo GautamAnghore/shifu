@@ -1,4 +1,6 @@
 {
-	"theme-name":"droplet",
-	"author":"someAuthorName"
+	"theme-name":"drop",
+	"author":"gautam",
+	"structures":["index","somemore"]
+
 }

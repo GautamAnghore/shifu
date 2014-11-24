@@ -1,4 +1,5 @@
 {
 	"theme-name":"grayscale",
-	"author":"me"
+	"author":"me",
+	"structures":["index","somemore","someevenmore"]
 }
