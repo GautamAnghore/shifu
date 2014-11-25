@@ -1,0 +1,12 @@
+{
+	"structure-name":"single_page",
+	"description":"some text description",
+	"content":{
+		"heading":"simple-text",
+		"links":"iterate-text",
+		"picture":"simple-markdown",
+		"main":"iterate-markdown",
+		"footer":"simple-markdown"
+	},
+	"author":"xyz"
+}

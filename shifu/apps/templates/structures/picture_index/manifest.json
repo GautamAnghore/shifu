@@ -1,0 +1,12 @@
+{
+	"structure-name":"picture_index",
+	"description":"some text description",
+	"content":{
+		"heading":"simple-text",
+		"links":"iterate-text",
+		"picture":"simple-markdown",
+		"main":"iterate-markdown",
+		"footer":"simple-markdown"
+	},
+	"author":"some other author"
+}

@@ -34,7 +34,7 @@ def update_enviornment():
 			manifest = open(os.path.join(theme,'manifest.json'))
 
 		except IOError:
-			print "manifest.json missing"
+			print "themes : manifest.json missing"
 			manifest = None
 			pass
 
@@ -49,6 +49,44 @@ def update_enviornment():
 			manifest.close()
 		else:
 			print "manifest is None"
+
+	#update-structures
+	#checks new structures and insert in database
+	#checks for new folders only
+
+	obj_structure = db.StructureDAO(database)
+
+	structure_dir = './apps/templates/structures'
+	structure_subdir_list = []
+
+	for subdir in os.listdir(structure_dir):
+		if os.path.isdir(os.path.join(structure_dir,subdir)) is True:
+			if obj_structure.issaved(subdir) is False: 
+				structure_subdir_list.append(subdir)
+
+	for subdir in structure_subdir_list:
+
+		structure = os.path.join(structure_dir,subdir)
+
+		try:
+			manifest = open(os.path.join(structure,'manifest.json'))
+		except IOError:
+			print "structures : manifest.json missing"
+			manifest = None
+			pass
+
+		if manifest is not None:
+			data = json.load(manifest)
+
+			if all( k in data for k in ('structure-name','author','description','content')):
+				obj_structure.add_structure(data['structure-name'],data['author'],data['description'],data['content'],subdir)
+			else:
+				print "structure - %s : manifest fault" % subdir
+
+			manifest.close()
+		else:
+			print "structures : manifest is None"
+	
 	#return redirect( url_for('dashboard.themes'))
 	return "done"
 
@@ -60,6 +98,9 @@ def refresh_enviornment():
 	#checks all the dirs
 	
 	obj_theme = db.ThemeDAO(database)
+	#dropping previous data
+	#drop collection of theme
+	obj_theme.drop_themes()
 
 	theme_dir = './apps/static/themes'
 	theme_subdir_list = []
@@ -91,6 +132,46 @@ def refresh_enviornment():
 			manifest.close()
 		else:
 			print "manifest is None"
+	
+	#refresh-structures
+	#checks new and old structures and insert and update data in database
+	#checks for new as well as old folders 
+
+	obj_structure = db.StructureDAO(database)
+	#drop structures
+	#drop collection
+	obj_structure.drop_structures()
+	
+	structure_dir = './apps/templates/structures'
+	structure_subdir_list = []
+
+	for subdir in os.listdir(structure_dir):
+		if os.path.isdir(os.path.join(structure_dir,subdir)) is True:
+			structure_subdir_list.append(subdir)
+
+	for subdir in structure_subdir_list:
+
+		structure = os.path.join(structure_dir,subdir)
+
+		try:
+			manifest = open(os.path.join(structure,'manifest.json'))
+		except IOError:
+			print "structures : manifest.json missing"
+			manifest = None
+			pass
+
+		if manifest is not None:
+			data = json.load(manifest)
+
+			if all( k in data for k in ('structure-name','author','description','content')):
+				obj_structure.add_structure(data['structure-name'],data['author'],data['description'],data['content'],subdir)
+			else:
+				print "structure - %s : manifest fault" % subdir
+
+			manifest.close()
+		else:
+			print "structures : manifest is None"
+	
 	#return redirect( url_for('dashboard.themes'))
 	return "done"
 								
