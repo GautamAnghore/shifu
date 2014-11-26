@@ -74,7 +74,7 @@ class ThemeDAO():
 		else:
 			print "pymongo error : theme(all) not found"
 			return None
-
+	
 	def is_saved(self,dirname):
 		#check if theme directory is in db or not
 	
@@ -90,6 +90,39 @@ class ThemeDAO():
 		#call with care
 		#drop the collection
 		self.collection.drop()
+
+	def get_applicable_themes(self):
+		#get all the themes which contains all the structures definition already in use by pages
+		#change the access to pages collection by class object function call rather than directly accessing
+		pages = self.db.pages
+		try:
+			cur = pages.find({},{'structure.name':True,'_id':False})
+		except:
+			print "cannot find pages, mongodb error"
+			return None
+
+		structures = []
+		if cur is not None:
+			for doc in cur:
+				structures.append(doc['structure']['name'])
+
+		#get structures, now search for proper themes
+		cur = None
+		query = {"structures":{"$all":structures}}
+
+		try:
+			cur = self.collection.find(query,{'_id':True})
+		except:
+			print "cannot find applicable themes, mongodb error"
+			return None
+
+		themes = []
+		if cur is not None:
+			for doc in cur:
+				print doc
+				themes.append(doc['_id'])
+		
+		return themes
 
 class StructureDAO():
 	# structure data access object

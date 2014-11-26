@@ -215,7 +215,7 @@ def name():
 
 			if sessions.is_firsttime() is True:
 				sessions.pop_firsttime()
-				
+
 			return redirect( url_for('users.admin') )
 		else:
 			#if error and first time visit
@@ -223,3 +223,17 @@ def name():
 				return render_template('website-name.html',form=nameForm)
 			#if error but visited from dashboard
 			return render_template('website-name.html',form=nameForm,dashboard=True)
+
+@website.route('/theme',methods=['GET','POST'])
+def theme():
+
+	obj_website = db.WebsiteDAO(database)
+
+	obj_theme = db.ThemeDAO(database)
+	# we only wish to show those themes which have all the used structures
+	# get a list of all the structures being used
+	themes = obj_theme.get_applicable_themes()
+
+	return "%s" % themes
+
+
