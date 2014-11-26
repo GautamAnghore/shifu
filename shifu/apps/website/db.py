@@ -92,7 +92,7 @@ class ThemeDAO():
 		self.collection.drop()
 
 class StructureDAO():
-	# theme data access object
+	# structure data access object
 	def __init__(self,database):
 		self.db = database
 		self.collection = database.structures
@@ -182,4 +182,62 @@ class StructureDAO():
 		#call with care
 		#drop the collection
 		self.collection.drop()
+
+class WebsiteDAO():
+	#variables collection data access object
+	#website centered data
+
+	def __init__(self,database):
+		self.db = database
+		self.collection = database.variables
+
+	def save_website_name(self,name):
+
+		try:
+			self.collection.save({'_id':'website-name','value':name})
+		except:
+			print "pymongo error : website name save error : OperationFailure"
+			return False
+		return True
+
+	def save_website_theme(self,name):
+
+		try:
+			self.collection.save({'_id':'website-theme','value':name})
+		except:
+			print "pymongo error : website theme save error : OperationFailure"
+			return False
+		return True
+
+	def get_website_name(self):
+
+		cursor = None
+		
+		try:
+			cursor = self.collection.find_one({'_id':'website-name'})
+		except:
+			print "pymongo error : website name get error : OperationFailure"
+			return None
+
+		if cursor is not None:
+			return cursor['value']
+		else:
+			print "website name not found"
+			return None
+
+	def get_website_theme(self):
+
+		cursor = None
+
+		try:
+			cursor = self.collection.find_one({'_id':'website-theme'})
+		except:
+			print "pymongo error : website theme get error : OperationFailure"
+			return None
+
+		if cursor is not None:
+			return cursor['value']
+		else:
+			print "website theme not found"
+			return None
 

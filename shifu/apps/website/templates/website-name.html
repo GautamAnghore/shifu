@@ -1,0 +1,30 @@
+{% if dashboard %}
+	{% extends "dashboard-layout.html" %}
+{% else %}
+	{% extends "layout.html" %}
+{% endif %}
+
+{% block title %}
+{{ super() }}-Website Name
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('website.static', filename='css/website-name.css' ) }}" />
+{% endblock %}
+
+{% block content %}
+	
+	<div style="width:80%;height:50%;display:inline-block;float:right;background:#ffa;position:absolute;right:0px;bottom:0px;">
+
+	{% from "_registerformhelper.html" import render_field %}
+	<form action=" {{ url_for('.name') }}" method="post" >
+		{{ form.hidden_tag() }}
+
+		{{ render_field(form.websitename,placeholder="give website name") }}
+
+		<input type="submit" value="save"/>
+	</form>
+	</div>
+	
+{% endblock %}

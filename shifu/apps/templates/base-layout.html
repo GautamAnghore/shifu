@@ -29,7 +29,7 @@
         {% endblock %}
     </head>
     <body>
-        
+        {% block body %}
             {% block header %}
             {% endblock %}
 
@@ -38,7 +38,7 @@
 
             {% block footer %}
             {% endblock %}
-
+        {% endblock %}
 
         {% if alert %}
             {% if alert['error'] %}

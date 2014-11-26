@@ -1,8 +1,10 @@
-from flask import url_for,redirect,render_template,request
+from flask import url_for,redirect,render_template,request,session
 
 from apps.website import website
 from apps import database
+from apps import env
 
+from forms import *
 import db
 
 import os
@@ -141,7 +143,7 @@ def refresh_enviornment():
 	#drop structures
 	#drop collection
 	obj_structure.drop_structures()
-	
+
 	structure_dir = './apps/templates/structures'
 	structure_subdir_list = []
 
@@ -174,4 +176,42 @@ def refresh_enviornment():
 	
 	#return redirect( url_for('dashboard.themes'))
 	return "done"
-								
+
+@website.route('/name',methods=['GET','POST'])
+def name():
+
+	obj_website = db.WebsiteDAO(database)
+
+	# for testing session
+	#session['first-time']=True
+
+	if request.method == 'GET':
+		# no form evaluation
+		if 'first-time' in session:
+			if session['first-time']==True:
+				return render_template('website-name.html',form=WebsiteNameForm())
+		
+		nameForm = WebsiteNameForm()
+
+		name = obj_website.get_website_name()
+
+		if name is not None:
+			nameForm.websitename.data = name
+
+		return render_template('website-name.html',form=nameForm,dashboard=True)
+
+	else:
+		# evaluation of form data
+		nameForm = WebsiteNameForm(request.form)
+
+		if nameForm.validate():
+			#save website name
+			obj_website.save_website_name(nameForm.websitename.data)
+			return "return to dashboard"
+		else:
+			#if error and first time visit
+			if 'first-time' in session:
+				if session['first-time']==True:
+					return render_template('website-name.html',form=nameForm)
+			#if error but visited from dashboard
+			return render_template('website-name.html',form=nameForm,dashboard=True)
