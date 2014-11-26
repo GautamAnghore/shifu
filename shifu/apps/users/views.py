@@ -10,16 +10,17 @@ from apps import database	# for the database connection
 from apps import env	# for enviornment variable operations
 from apps import Alert 	# for Alert class 
 from apps import nocache # nocache decorator defination
+from apps import Sessions 	# session access functions 
 
 user = db.User(database)
 alert = Alert()
-
+sessions = Sessions()
 
 @users.route('/admin')
 @nocache
 def admin():
 	# task of admin function is to redirect to appropriate next stage : dashboard or sign in or sign up
-	username = logged_in()
+	username = sessions.logged_in()
 	if username is not None:
 		return redirect( url_for('.dashboard',username=username))
 	else:
@@ -33,7 +34,7 @@ def admin():
 @nocache
 def dashboard(username):
 
-	if logged_in(username) is not None:
+	if sessions.logged_in(username) is not None:
 		alert.success('Logged In')
 		resp = make_response(render_template('temp_dashboard.html',username=username,alert=alert.get_alert()))
 
@@ -63,7 +64,8 @@ def signup():
 				if success is True:
 					env.set_accountset()
 					
-					session_push_username(form.username.data)
+					sessions.push_username(form.username.data)
+
 					return redirect( url_for('.admin'))
 				else:
 					alert.reset()
@@ -94,7 +96,7 @@ def signin():
 			loggedin = user.check_user(form.username.data,form.password.data)
 
 			if loggedin is not None:
-				session_push_username(form.username.data)
+				sessions.push_username(form.username.data)
 				return redirect( url_for('.admin') )
 			else:
 				alert.reset()
@@ -107,7 +109,7 @@ def signin():
 			return render_template('signin.html',form=form,alert=alert.get_alert())
 	else:
 		#return render_template('silent.html',form=SigninForm(),error='first time')
-		if logged_in() is not None:
+		if sessions.logged_in() is not None:
 			alert.reset()
 			alert.msg('Already Logged In')
 			return redirect( url_for('.admin'))
@@ -126,7 +128,7 @@ def signin():
 @users.route('/signout/<username>',methods=['GET'])
 @nocache
 def signout(username):
-	if session_pop_username(username) is True:
+	if sessions.pop_username(username) is True:
 		alert.reset()
 		alert.success('Logged Out')
 		return redirect(url_for('.admin'))
@@ -136,31 +138,4 @@ def signout(username):
 		return redirect(url_for('.admin'))
 
 
-# session handling for users
-def session_push_username(username):
-	session['username'] = username
 
-def logged_in(username=None):
-	# checks if username passed logged in and return username if logged in
-	# if None passed, check session and return the logged in username
-	if 'username' in session:
-		if session['username'] != "":
-			if username is None:
-				return session['username']
-			else:
-				if session['username'] == username:
-					return session['username']
-				else:
-					return None
-		else:
-			session.pop('username',None)
-			return None
-	else:
-		return None
-
-def session_pop_username(username):
-	if logged_in(username) is not None:
-		session.pop('username',None)
-		return True
-	else:
-		return False

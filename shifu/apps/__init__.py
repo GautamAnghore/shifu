@@ -15,7 +15,8 @@ app.config.from_object(Config)
 
 # importing alert module
 from alert import *
-
+# importing session handling module
+from sessions import *
 ###################################################################################################################
 # source : http://arusahni.net/blog/2014/03/flask-nocache.html
 # defination of nocache decorator
