@@ -65,8 +65,11 @@ def signup():
 					env.set_accountset()
 					
 					sessions.push_username(form.username.data)
+					# set its a first time visit
+					sessions.push_firsttime()
 
-					return redirect( url_for('.admin'))
+					return redirect( url_for('website.refresh_enviornment') )
+		
 				else:
 					alert.reset()
 					alert.error('cannot add user, internal error')

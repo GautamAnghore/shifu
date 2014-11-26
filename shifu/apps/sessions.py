@@ -30,3 +30,17 @@ class Sessions():
 			return True
 		else:
 			return False
+
+	def push_firsttime(self):
+		session['first-time'] = True
+
+	def is_firsttime(self):
+		if 'first-time' in session:
+			if session['first-time'] is True:
+				return True
+
+		return False
+
+	def pop_firsttime(self):
+		if 'first-time' in session:
+			session.pop('first-time',None)

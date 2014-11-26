@@ -3,12 +3,15 @@ from flask import url_for,redirect,render_template,request,session
 from apps.website import website
 from apps import database
 from apps import env
+from apps import Sessions
 
 from forms import *
 import db
 
 import os
 import json
+
+sessions = Sessions()
 
 @website.route('/update-enviornment')
 def update_enviornment():
@@ -90,7 +93,7 @@ def update_enviornment():
 			print "structures : manifest is None"
 	
 	#return redirect( url_for('dashboard.themes'))
-	return "done"
+	return redirect( url_for('users.admin') )
 
 @website.route('/refresh-enviornment')
 def refresh_enviornment():
@@ -175,7 +178,10 @@ def refresh_enviornment():
 			print "structures : manifest is None"
 	
 	#return redirect( url_for('dashboard.themes'))
-	return "done"
+	if sessions.is_firsttime() is True:
+		return redirect( url_for('.name') )
+	else:
+		return redirect( url_for('users.admin') )
 
 @website.route('/name',methods=['GET','POST'])
 def name():
@@ -187,10 +193,9 @@ def name():
 
 	if request.method == 'GET':
 		# no form evaluation
-		if 'first-time' in session:
-			if session['first-time']==True:
-				return render_template('website-name.html',form=WebsiteNameForm())
-		
+		if sessions.is_firsttime() is True:
+			return render_template('website-name.html',form=WebsiteNameForm())
+	
 		nameForm = WebsiteNameForm()
 
 		name = obj_website.get_website_name()
@@ -207,11 +212,14 @@ def name():
 		if nameForm.validate():
 			#save website name
 			obj_website.save_website_name(nameForm.websitename.data)
-			return "return to dashboard"
+
+			if sessions.is_firsttime() is True:
+				sessions.pop_firsttime()
+				
+			return redirect( url_for('users.admin') )
 		else:
 			#if error and first time visit
-			if 'first-time' in session:
-				if session['first-time']==True:
-					return render_template('website-name.html',form=nameForm)
+			if sessions.is_firsttime() is True:
+				return render_template('website-name.html',form=nameForm)
 			#if error but visited from dashboard
 			return render_template('website-name.html',form=nameForm,dashboard=True)
