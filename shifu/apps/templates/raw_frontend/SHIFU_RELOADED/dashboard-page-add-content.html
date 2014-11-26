@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Shifu | Dashboard</title>
+        <script src="javascript/jquery-2.1.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="sweetalert-master/lib/sweet-alert.css" />
+        <script src="sweetalert-master/lib/sweet-alert.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard-page-add-content.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
+        <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
+        <script type="text/javascript">
+            function createtextinstance(obj)
+            {
+                var newinstanceHTML = '<div class="instance" id="instance"><textarea class="textbox"></textarea><button class="btn"  onclick="removetextinstance(this)"><a><i class="glyphicon glyphicon-remove-sign"></a></i></button></div>';
+                var instance = document.createElement('div');
+                instance.innerHTML = newinstanceHTML;
+                //var instance = document.createElement(newinstance);
+                var editorDiv = obj.parentNode;
+                editorDiv.insertBefore(instance.firstChild,obj);
+            }
+            
+            function removetextinstance(obj)
+            {
+                var editorDiv = obj.parentNode;
+                editorDiv.remove();
+                
+            }
+            
+            function createinputinstance(obj)
+            {
+                var newinstanceHTML = '<div class="col-sm-12"><div class="input-group col-sm-12"><input type="text" class="form-control container-input" id="inputlink"><span class="input-group-addon glyphicon glyphicon-remove-sign glyphi" onclick="removeinputinstance(this)"><a></a></span></div><span class="help-block"></span></div>';
+                var instance = document.createElement('div');
+                instance.innerHTML = newinstanceHTML;
+                //var instance = document.createElement(newinstance);
+                var editorDiv = obj.parentNode;
+                editorDiv.insertBefore(instance.firstChild,obj);
+            }
+            
+            function removeinputinstance(obj)
+            {
+                var editorDiv = obj.parentNode.parentNode;
+                editorDiv.remove();
+                
+            }
+        </script>
+        
+        
+    </head>
+    <body>
+        
+        <div class="bground">
+        <nav>    
+        <div class="navbar navbar-default navbar-fixed-top">
+            <img class="header-pallete" src="pallet/Color-Palette-Post-03-Fitz.png" />
+                    <!--navigation does here-->  
+            <ul class="nav">  
+                <li class="brand-active">  
+                <a class="brand" href="#">Shifu</a>  
+                </li>  
+                <!--<li class="navigation_opt"><a href="#">Actions</a></li>  
+                <li  class="navigation_opt"><a href="#">flower</a></li>-->
+                <li class="navigation_opt"><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+            </ul>  
+        </div>
+            <div class="logo-div">
+            <img class="logo" src="images/logo_yellowshadow.png" />
+            </div>
+        </nav>
+        </div>
+        
+    <!-- ==================================================navbar ends here=============================================================--> 
+        
+        <!-- =============================================== dashboard options =========================================== -->
+        
+            <!-- =========== website =======-->
+    <div class="dashboard">
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front blue">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-globe dashboard-glyphicon"></span></a>
+                    <p>Website</p>
+                </div>
+		      </div>
+		      <div class="back dark-blue">
+                <div class="back-option-website" >
+                    <span class="glyphicon glyphicon-bookmark back-glyphi website">  <a href="#" class="option">Website Name</a></span><br />
+                    <span class="glyphicon glyphicon-picture back-glyphi website">  <a href="#" class="option">Change Theme</a></span>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== page =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front green">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-list-alt dashboard-glyphicon"></span></a>
+                    <p>Pages</p>
+                </div>
+		      </div>
+		      <div class="back dark-green">
+                <div class="back-option-page" >
+                    <span class="glyphicon glyphicon-plus back-glyphi page">  <a href="#" class="option">Add page</a></span><br />
+                    <span class="glyphicon glyphicon-remove back-glyphi page">  <a href="#" class="option">Delete Page</a></span><br />
+                    <span class="glyphicon glyphicon-pencil back-glyphi page">  <a href="#" class="option">Edit Page</a></span><br />
+                    <span class="glyphicon glyphicon-globe back-glyphi page">  <a href="#" class="option">Edit Url</a></span>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== settings =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front code-red">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-cog dashboard-glyphicon"></span></a>
+                    <p>Settings</p>
+                </div>
+		      </div>
+		      <div class="back dark-code-red">
+                <div class="back-option-setting" >
+                    <span class="glyphicon glyphicon-info-sign back-glyphi setting">  <a href="#" class="option">Profile</a></span><br />
+                    <span class="glyphicon glyphicon-barcode back-glyphi setting">  <a href="#" class="option">Change Password</a></span><br />
+                    <span class="glyphicon glyphicon-user back-glyphi setting">  <a href="#" class="option">Users</a></span>
+                </div>
+		      </div>
+	       </div>
+        </div>
+    </div>
+        <!-- =============================================== dashboard options end=========================================== -->
+        
+        
+       <!--===================================================== tab area =================================-->
+        
+        <div class="editor-area">
+            <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">Page Name</h3>
+                <button class="btn green top-button"><i class="glyphicon glyphicon-print"></i> Publish</button>
+                <button class="btn green top-button"><i class="glyphicon glyphicon-eye-open"></i> Live Preview</button>
+            </div>
+            <hr class="header-line" />
+        <!-- ========options required for floating========= -->
+        <div class="edit-option-bar" id="edit-option-bar" >
+        <!-- Nav tabs -->
+            <ul class="nav nav-pills nav-justified" id="myTab">
+                <li class="active"><a class="opt" href="#heading" data-toggle="pill" >Heading</a></li>
+                <li class=""><a class="opt" href="#links" data-toggle="pill" >Links</a></li>
+                <!--<li class=""><a class="opt" href="#footer" data-toggle="pill" >footer</a></li>
+                <li class=""><a class="opt" href="#footer" data-toggle="pill" >footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>-->
+            </ul>
+        </div>
+        
+        <div class="related-divs">
+            <!-- Tab panes -->
+            <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade in active" id="heading">
+                
+                    <div class="instance" id="instance">
+                        <textarea class="textbox"></textarea>
+                        <button class="btn" onclick="removetextinstance(this)" ><a><i class="glyphicon glyphicon-remove-sign"></i></a></button>
+                    </div>
+                
+                <button class="btn button green" onclick="createtextinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</button>
+            </div>
+                
+            <div class="tab-pane fade" id="links">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group col-sm-12">
+                                    <input type="text" class="form-control container-input" id="inputlink">
+                                    <span class="input-group-addon glyphicon glyphicon-remove-sign glyphi" onclick="removeinputinstance(this)" ></span>
+                                </div>
+                                <span class="help-block"></span>
+                           </div>
+                            <span class="btn button input-instance-button green" onclick="createinputinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
+                        </div>
+                    </form>
+                                        
+            </div>
+            <!--<div class="tab-pane fade" id="footer">
+                
+            </div>-->
+            </div>
+        </div>
+              
+        </div>
+        
+    </body>
+</html>

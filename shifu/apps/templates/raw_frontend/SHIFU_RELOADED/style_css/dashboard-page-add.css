@@ -1,0 +1,47 @@
+.page-info-area {
+    position: absolute;
+    height:90%;
+    width: 86%;
+    top: 10%;
+    left: 14%;
+}
+
+.form-div {
+    position: absolute;
+    height:auto;
+    width:500px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+}
+
+.form-horizontal {
+    position: relative;
+    margin-top: 30%;
+}
+
+
+.heading {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    top: 6%;
+}
+
+.heading-text
+{
+    display: inline-block;
+    font-family: 'roboto';
+    font-weight: 200;
+    color: #666;
+    font-size: 40px;
+}
+
+.header-line
+{
+    border: none;
+    height: 3px;
+    background-color:#ddd;
+}

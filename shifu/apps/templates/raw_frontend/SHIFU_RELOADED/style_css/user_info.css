@@ -4,7 +4,6 @@
     top: 0px; left:10%; bottom: 0px;
     margin:auto;
     display: inline-block;
-    background-color: transparent;
     background-color: rgba(247,234,200,0.8);
     box-shadow:-3px 0px 20px 0px #222;
 }
@@ -36,4 +35,10 @@ div.bground {
     background-size: cover;
     background-repeat:no-repeat;
     -webkit-background-size:cover;
+}
+
+.entry-form-name {
+    /*color:#28abe3*/
+    color: #db3340;
+    text-align: center;
 }

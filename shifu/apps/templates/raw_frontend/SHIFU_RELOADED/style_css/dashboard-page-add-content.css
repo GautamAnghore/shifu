@@ -1,0 +1,135 @@
+.editor-area {
+    position: absolute;
+    height: 90%;
+    width: 86%;
+    top: 10%;
+    left: 14%;
+}
+
+.heading {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    top: 6%;
+}
+
+.heading-text
+{
+    display: inline-block;
+    font-family: 'roboto';
+    font-weight: 200;
+    color: #666;
+    font-size: 40px;
+}
+
+.header-line
+{
+    border: none;
+    height: 3px;
+    background-color:#ddd;
+}
+
+.top-button {
+    top:20px;
+    position: relative;
+    margin: auto 2px;
+    height: 35px;
+    color: white;
+    font-family: 'roboto';
+    font-weight: 300;
+    float: right;
+}
+
+.top-button:hover {
+    background-color: white;
+    border: 2px solid #f65a5b;
+    color: #f65a5b;
+}
+
+.edit-option-bar {
+    position: relative;
+    margin-top: 3%;
+    width: 90%;
+    left: 5%;
+}
+
+li.active {
+}
+
+li:hover
+{
+    background-color: #f7eac8;
+}
+
+.opt {
+    border: 1px solid white;
+    color: #666;
+    background-color:#eee
+}
+
+.opt:hover {
+    border:1px solid #28abe3;
+    color: #28abe3;
+    background-color:#eee
+}
+
+.related-divs{
+    position: relative;
+    width: 90%;
+    left: 5%;
+}
+
+.tab-pane{
+    position: relative;
+    width: 100%;
+    height: 360px;
+}
+
+.instance {
+ position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.textbox{
+    display: block;
+    border: 10px solid #eee;
+    position: relative;
+    top: 10%;
+    height: 90%;
+    width: 100%;
+    resize: none;
+}
+
+.button {
+    height: 40px;
+    border: none;
+    color: white;
+    font-family: 'roboto';
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.button:hover {
+    height: 40px;
+    background-color: white;
+    border: 2px solid #f65a5b;
+    color: #f65a5b;
+}
+
+.form-horizontal {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 10%;
+}
+
+.help-block {
+    color: red;
+}
+
+.input-instance-button{
+    position: relative;
+    left: 1.5%;
+    padding-top: 9px;
+}
