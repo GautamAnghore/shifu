@@ -1,0 +1,67 @@
+.change-name-board {
+    position: absolute;
+    width: 86%;
+    height:90%;
+    top: 10%;
+    left: 14%;
+}
+
+.name-board {
+    position: absolute;
+    top: 0px; right: 0px; bottom: 0px; left: 0px;
+    margin: auto;
+    height: 50%;
+    width: 70%;
+    background-color: #39d1b4;
+    box-shadow: 2px 2px 15px 3px #eaeaea ;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.pencil{
+    position: relative;
+    display: block;
+    height:80px;
+    width: 80px;
+    top: 10%;
+    left: 0px; right: 0px; margin: auto;
+    box-shadow: 0px 0px 5px .5px;
+    border-radius: 4px
+}
+
+.glyphi-pencil {
+    position: relative;
+    top: 20%;
+    font-size: 50px;
+    color: white;
+}
+
+h3.heading {
+    position: relative;
+    color:white ;
+    top: 10%;
+    font-size: 35px;
+    font-weight: 200;
+    
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    margin-top: 7%;
+}
+
+.container-input {
+    position: relative;
+    display: inline-block;
+    font-size: 30px;
+    height:80px;
+    border: 2px solid #dadada;
+    border-radius: 4px;
+}
+
+.glyphi{
+    position: relative;
+    width: 15%;
+    font-size: 50px;
+}

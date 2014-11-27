@@ -36,7 +36,7 @@ def dashboard(username):
 
 	if sessions.logged_in(username) is not None:
 		alert.success('Logged In')
-		resp = make_response(render_template('temp_dashboard.html',username=username,alert=alert.get_alert()))
+		resp = make_response(render_template('dashboard-layout.html',username=username,alert=alert.get_alert()))
 
 		alert.reset()
 		return resp
@@ -100,7 +100,7 @@ def signin():
 
 			if loggedin is not None:
 				sessions.push_username(form.username.data)
-				return redirect( url_for('.admin') )
+				return redirect( url_for('website.update_enviornment') )
 			else:
 				alert.reset()
 				alert.error('Wrong Credentials')

@@ -66,7 +66,7 @@ def update_enviornment():
 
 	for subdir in os.listdir(structure_dir):
 		if os.path.isdir(os.path.join(structure_dir,subdir)) is True:
-			if obj_structure.issaved(subdir) is False: 
+			if obj_structure.is_saved(subdir) is False: 
 				structure_subdir_list.append(subdir)
 
 	for subdir in structure_subdir_list:
@@ -194,7 +194,7 @@ def name():
 	if request.method == 'GET':
 		# no form evaluation
 		if sessions.is_firsttime() is True:
-			return render_template('website-name.html',form=WebsiteNameForm())
+			return render_template('new-website-name.html',form=WebsiteNameForm(),username=sessions.logged_in())
 	
 		nameForm = WebsiteNameForm()
 
@@ -203,7 +203,7 @@ def name():
 		if name is not None:
 			nameForm.websitename.data = name
 
-		return render_template('website-name.html',form=nameForm,dashboard=True)
+		return render_template('change-website-name.html',form=nameForm,username=sessions.logged_in())
 
 	else:
 		# evaluation of form data
@@ -220,9 +220,9 @@ def name():
 		else:
 			#if error and first time visit
 			if sessions.is_firsttime() is True:
-				return render_template('website-name.html',form=nameForm)
+				return render_template('new-website-name.html',form=nameForm,username=sessions.logged_in())
 			#if error but visited from dashboard
-			return render_template('website-name.html',form=nameForm,dashboard=True)
+			return render_template('change-website-name.html',form=nameForm,username=sessions.logged_in())
 
 @website.route('/theme',methods=['GET','POST'])
 def theme():

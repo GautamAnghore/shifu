@@ -2,6 +2,11 @@ html {
     height: 100%;
 }
 
+* {
+    font-family: 'roboto';
+    font-weight: 200;
+}
+
 body {
     height: 100%;
     padding: 0px;
@@ -9,4 +14,43 @@ body {
     font-family:sans-serif;
 }
 
+/* =========================035c55 pallete colors defination=====grey #faf6c6====#e2e8a8========*/
+
+.red {
+    background-color: #db3340;
+}
+
+.brown {
+    background-color: #e8b71a;
+}
+
+.cream {
+    background-color: #f7eac8;
+}
+
+.green {
+    background-color: #1fda9a;
+}
+
+.dark-green {
+    background-color: #12ca8b;
+}
+
+.blue{
+    background-color: #28abe3;
+}
+
+.dark-blue{
+    background-color: #1891c3;
+}
+
+.code-red {
+    background-color: #f65a5b;
+}
+
+.dark-code-red {
+    background-color: #e65151;
+}
+
+/* ========================= pallete colors defination ends here=================*/
 

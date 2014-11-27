@@ -28,12 +28,12 @@
     color: white;
 }
 
-h2 {
+h3.heading {
     position: relative;
-    font-family: sans-serif;
     color:white ;
     top: 10%;
-    font-size: 45px;
+    font-size: 35px;
+    font-weight: 200;
     
 }
 

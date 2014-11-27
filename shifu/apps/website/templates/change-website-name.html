@@ -1,0 +1,39 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }}-Website Name
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('website.static', filename='css/dashboard-website-changename.css' ) }}" />
+{% endblock %}
+
+{% block content %}
+	
+	<div class="change-name-board">
+        <div class="name-board" >
+            <div class="pencil">
+                <span class="glyphicon glyphicon-pencil glyphi-pencil "></span>
+            </div>
+            
+            <h3 class="heading">Change Website Name</h3>
+           
+            {% from "_registerformhelper.html" import render_field %}
+            <form action=" {{ url_for('.name') }}" method="post" >
+                {{ form.hidden_tag() }}
+                <div class="container">
+                    <div class="col-md-12 input-group">
+                        <!--<input type="text" id="wbsite-name" class="form-control container-input" placeholder="New website name" />-->
+                        <!--<input type="submit" class="btn" value="Submit" />-->
+                        {{ render_field(form.websitename,placeholder="New website name",id="wbsite-name",class="form-control container-input") }}
+                        <span class="input-group-addon glyphicon glyphicon-ok-sign glyphi"><input type="submit" style="visibility:hidden;" value=""/></span>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div> 
+   	
+{% endblock %}
