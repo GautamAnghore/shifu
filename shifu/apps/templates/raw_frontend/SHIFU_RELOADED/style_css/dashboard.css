@@ -1,0 +1,136 @@
+.dashboard {
+    top: 10%;
+    position:fixed;
+    height: 90%;
+    width: 14%;
+    background-color:white;
+    z-index: 5;
+}
+
+.flip-container {
+    width: 100%;
+	height: 34%;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    border: none;
+    margin: 0px;
+
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.front, .back {
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+    height:100%;
+}
+
+/* front pane, placed above back */
+.front {
+    padding-top: 37%;
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+.front-icon {
+    position: relative;
+    height: 55%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white
+}
+
+.dashboard-glyphicon {
+    font-size: 40px;
+    position: relative;
+    color:white;
+}
+
+.back-option-website
+{
+    margin-top: 21%;
+    width: 100%;
+    height: 65%;
+    padding-top: 17%;
+}
+
+.back-option-page
+{
+    margin-top: 21%;
+    width: 100%;
+    height: 65%;
+    padding-top: 1%;
+}
+
+.back-option-setting
+{
+    margin-top: 21%;
+    width: 100%;
+    height: 65%;
+    padding-top: 9%;
+}
+
+.website {
+    margin: 5%;
+    margin-left: 21%;
+}
+
+.page {
+    margin: 5%;
+    margin-left: 25%;
+}
+
+.setting {
+    margin: 5%;
+    margin-left: 16%;
+}
+
+
+.back-glyphi
+{   
+    position: relative;
+    font-size: 12px;
+    color: white;
+}
+
+.option {
+    font-family: 'roboto';
+    font-weight: 400;
+    color: white;
+}
+
+.option:hover {
+    border-bottom: 1px solid white;
+    text-decoration: none;
+    color: white;
+}
+
+.page-area {
+    top: 10%;
+    left: 14%;
+    position: absolute;
+    height: 90%;
+    width: 86%;
+}

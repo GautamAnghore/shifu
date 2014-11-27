@@ -212,11 +212,10 @@ def name():
 		if nameForm.validate():
 			#save website name
 			obj_website.save_website_name(nameForm.websitename.data)
-
 			if sessions.is_firsttime() is True:
-				sessions.pop_firsttime()
-
-			return redirect( url_for('users.admin') )
+				return redirect( url_for('.theme') )
+			else:
+				return redirect( url_for('users.admin') )
 		else:
 			#if error and first time visit
 			if sessions.is_firsttime() is True:
@@ -228,12 +227,46 @@ def name():
 def theme():
 
 	obj_website = db.WebsiteDAO(database)
-
 	obj_theme = db.ThemeDAO(database)
-	# we only wish to show those themes which have all the used structures
-	# get a list of all the structures being used
-	themes = obj_theme.get_applicable_themes()
+	themes = []
+	#for development testing
+	#sessions.push_firsttime()
+	if sessions.is_firsttime() is True:
+		# will show all the themes
+		themes = obj_theme.get_all_themes()
+	else:
+		# we only wish to show those themes which have all the used structures
+		# get a list of all the structures being used
+		themes = obj_theme.get_applicable_themes()
+	
+	if request.method == 'GET':
+		form = WebsiteThemeForm()
+		form.websitetheme.choices = [(name,name) for name in themes]
 
-	return "%s" % themes
+		if sessions.is_firsttime() is True:
+			return render_template('new-website-theme.html',themes=themes,form=form)
+		else:
+			chosen_data = obj_website.get_website_theme()
+			form.websitetheme.data = chosen_data
+			return render_template('change-website-theme.html',themes=themes,form=form,username=sessions.logged_in())
+	else:
+		#process data
+		themeForm = WebsiteThemeForm(request.form)
+		themeForm.websitetheme.choices = [(name,name) for name in themes]
+
+		if themeForm.validate():
+
+			obj_website.save_website_theme(themeForm.websitetheme.data)
+
+			if sessions.is_firsttime() is True:
+				sessions.pop_firsttime()
+
+			return redirect( url_for('users.admin') )
+		
+		else:
+			if sessions.is_firsttime() is True:
+				return render_template('new-website-theme.html',themes=themes,form=themeForm)
+			else:
+				return render_template('change-website-theme.html',themes=themes,form=themeForm,username=sessions.logged_in())
 
 

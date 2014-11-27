@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+{{ super() }}-Theme
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('website.static', filename='css/new-website-theme.css' ) }}" />
+<script type="text/javascript">
+function changeThemeSelected(index)
+{
+    var selectTag = document.getElementsByTagName('select')[0];
+    selectTag.selectedIndex = index;
+}
+function showLiveButton(obj)
+{
+    obj = obj.children[0];
+    obj.style.opacity=1;
+}
+function hideLiveButton(obj)
+{
+    obj = obj.children[0];
+    obj.style.opacity=0;
+}
+</script>
+{% endblock %}
+
+{% block content %}
+	
+	<div class="choice-board" >
+        {% from "_registerformhelper.html" import render_field %}
+        <form action=" {{ url_for('.theme') }}" method="post" >
+            {{ form.hidden_tag() }}
+
+            {{ render_field(form.websitetheme) }}
+            
+            <input type="submit" value="save" />
+        </form>
+        
+        {% for name in themes %}
+            <div class="theme-board">
+                
+                <div class="theme-board-color-top" style="background:#ffed75;">
+                </div>
+                <div class="theme-board-color-bottom" style="background:#ff7575;">
+                </div>
+                <div class="theme-board-name">
+                    {{ name }}
+                </div>
+                <div class="theme-board-clickable" onclick="changeThemeSelected({{ loop.index0 }})" onmouseover="showLiveButton(this)" onmouseout="hideLiveButton(this)">
+                    <div class="theme-board-live">
+                        <span class="btn button input-instance-button preview"><span class="glyphicon glyphicon-eye-open"></span>Preview</span>
+                    </div>
+                    <span class="btn button input-instance-button select"><span class="glyphicon glyphicon-hand-up"></span> Select</span>
+                </div>
+                
+            </div>
+        {% endfor %}
+    </div> 
+    
+        
+{% endblock %}

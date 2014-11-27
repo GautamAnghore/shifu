@@ -1,0 +1,89 @@
+.change-theme-board {
+    position: absolute;
+    width: 86%;
+    height:90%;
+    top: 10%;
+    left: 14%;
+}
+
+.theme-base-board {
+    position: absolute;
+    top: 0px; right: 0px; bottom: 0px; left: 0px;
+    margin: auto;
+    height: 50%;
+    width: 70%;
+    background-color: #39d1b4;
+    box-shadow: 2px 2px 15px 3px #eaeaea ;
+    text-align: center;
+    border-radius: 10px;
+}
+.theme-board {
+    width:100px;
+    height:150px;
+    margin:50px;
+    background-color: #fffff3;
+    color:#345634;
+    display:inline-block;
+    float:left;
+    overflow:hidden;
+}
+.theme-board-color-top {
+    width:100%;
+    height:30%;
+    position:relative;
+    top:0px;
+    left:0px;
+}
+.theme-board-color-bottom {
+    width:100%;
+    height:70%;
+    position:relative;
+    top:0px;
+    left:0px;
+}
+
+.theme-board-name {
+    position:relative;
+    top:-20%;
+}
+.theme-board-clickable {
+    width:100%;
+    height:100%;
+    position:relative;
+    top:-113%;
+    left:0px;
+    opacity:0;
+    background-color: rgba(0,0,0,0);
+    transition:opacity 0.5s,background-color 0.5s;
+}
+.theme-board-clickable:hover {
+    opacity:1;
+    background-color:  rgba(250,246,198,0.5);
+}
+.theme-board-live {
+    width:100%;
+    height:20%;
+    color:#fff;
+    background-color: rgba(0,0,0,0.7);
+    opacity:0;
+    position:relative;
+    top:0px;
+    left:0px;
+    box-shadow: 0px 0px 10px 0px #000;
+    -webkit-box-shadow: 0px 0px 10px 0px #000;
+}
+span.preview {
+
+}
+span.preview:hover {
+    color:#f65a5b;
+}
+span.select {
+    color:#343444;
+    margin-top: 40%;
+    font-weight: 500;
+}
+span.select:hover {
+    color:#343444;
+}
+

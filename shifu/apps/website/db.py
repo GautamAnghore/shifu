@@ -59,17 +59,20 @@ class ThemeDAO():
 			print "pymongo error : theme not found"
 			return None
 
-	def get_all_theme(self):
+	def get_all_themes(self):
 
-		themes = None
+		cur = None
 
 		try:
-			themes = self.collection.find()
+			cur = self.collection.find()
 		except:
 			print "pymongo error : theme(all) search failed : OperationFailure"
 			return None
 
-		if themes is not None:
+		themes = []
+		if cur is not None:
+			for doc in cur:
+				themes.append(doc['_id'])
 			return themes
 		else:
 			print "pymongo error : theme(all) not found"
