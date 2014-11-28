@@ -35,9 +35,7 @@ def admin():
 def dashboard(username):
 
 	if sessions.logged_in(username) is not None:
-		alert.success('Logged In')
 		resp = make_response(render_template('dashboard-layout.html',username=username,alert=alert.get_alert()))
-
 		alert.reset()
 		return resp
 	else: 
@@ -118,7 +116,11 @@ def signin():
 			return redirect( url_for('.admin'))
 		else:
 			if env.check_accountset() is True:
-
+						#testing
+						#alert.reset()
+						#alert.error('test error')
+						#alert.success('some success')
+						#alert.msg('some msg')
 				resp = make_response(render_template('signin.html',form=SigninForm(),alert=alert.get_alert()))
 								
 				alert.reset()

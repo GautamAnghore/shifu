@@ -1,9 +1,11 @@
-from flask import url_for,redirect,render_template,request,session
+from flask import url_for,redirect,render_template,request,session,make_response
 
 from apps.website import website
 from apps import database
 from apps import env
 from apps import Sessions
+
+from apps.users import alert 
 
 from forms import *
 import db
@@ -181,6 +183,8 @@ def refresh_enviornment():
 	if sessions.is_firsttime() is True:
 		return redirect( url_for('.name') )
 	else:
+		alert.reset()
+		alert.success('Enviornmet Updated Successfully')
 		return redirect( url_for('users.admin') )
 
 @website.route('/name',methods=['GET','POST'])
@@ -194,7 +198,11 @@ def name():
 	if request.method == 'GET':
 		# no form evaluation
 		if sessions.is_firsttime() is True:
-			return render_template('new-website-name.html',form=WebsiteNameForm(),username=sessions.logged_in())
+			alert.reset()
+			alert.msg('Set a name for your website')
+			resp = make_response(render_template('new-website-name.html',form=WebsiteNameForm(),username=sessions.logged_in(),alert=alert.get_alert()))
+			alert.reset()
+			return resp
 	
 		nameForm = WebsiteNameForm()
 
@@ -213,15 +221,25 @@ def name():
 			#save website name
 			obj_website.save_website_name(nameForm.websitename.data)
 			if sessions.is_firsttime() is True:
+				alert.success('Website Name Saved')
 				return redirect( url_for('.theme') )
 			else:
+				alert.success('Successfully changed website name')
 				return redirect( url_for('users.admin') )
 		else:
 			#if error and first time visit
 			if sessions.is_firsttime() is True:
-				return render_template('new-website-name.html',form=nameForm,username=sessions.logged_in())
+				alert.reset()
+				alert.error('Please Provide Appropriate Name')
+				resp = make_response(render_template('new-website-name.html',form=nameForm,username=sessions.logged_in(),alert=alert.get_alert()))
+				alert.reset()
+				return resp
 			#if error but visited from dashboard
-			return render_template('change-website-name.html',form=nameForm,username=sessions.logged_in())
+			alert.reset()
+			alert.error('Not a valid name to change')
+			resp = make_response(render_template('change-website-name.html',form=nameForm,username=sessions.logged_in(),alert=alert.get_alert()))
+			alert.reset()
+			return resp
 
 @website.route('/theme',methods=['GET','POST'])
 def theme():
@@ -244,7 +262,11 @@ def theme():
 		form.websitetheme.choices = [(name,name) for name in themes]
 
 		if sessions.is_firsttime() is True:
-			return render_template('new-website-theme.html',themes=themes,form=form)
+			alert.msg('Choose a theme for your website')
+			resp = make_response(render_template('new-website-theme.html',themes=themes,form=form,alert=alert.get_alert()))
+			alert.reset()
+			return resp
+		
 		else:
 			chosen_data = obj_website.get_website_theme()
 			form.websitetheme.data = chosen_data
@@ -260,13 +282,24 @@ def theme():
 
 			if sessions.is_firsttime() is True:
 				sessions.pop_firsttime()
-
+				alert.success('Website Theme Saved')
+				return redirect( url_for('users.admin') )
+			
+			alert.success('Theme Changed')			
 			return redirect( url_for('users.admin') )
 		
 		else:
 			if sessions.is_firsttime() is True:
-				return render_template('new-website-theme.html',themes=themes,form=themeForm)
+				alert.reset()
+				alert.error('Not appropriate Theme')
+				resp = make_response(render_template('new-website-theme.html',themes=themes,form=themeForm,alert=alert.get_alert()))
+				alert.reset()
+				return resp
 			else:
-				return render_template('change-website-theme.html',themes=themes,form=themeForm,username=sessions.logged_in())
+				alert.reset()
+				alert.error('Cannot Change Theme, Input is not valid')
+				resp = make_response(render_template('change-website-theme.html',themes=themes,form=themeForm,username=sessions.logged_in(),alert=alert.get_alert()))
+				alert.reset()
+				return resp
 
 

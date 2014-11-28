@@ -74,28 +74,63 @@
             {% endblock %}
         {% endblock %}
 
+        
         {% if alert %}
-            {% if alert['error'] %}
-                <script>
-                    document.querySelector('body').onload = function(){
-                                                        swal("Error", "{{ alert['error'] }}", "error");
-                                                    };
-                </script> 
-            {% endif %}
-            {% if alert['msg'] %}
-                <script>
-                    document.querySelector('body').onload = function(){
-                                                        swal("Message", "{{ alert['msg'] }}");
-                                                    };
-                </script> 
-            {% endif %}
-            {% if alert['success'] %}
-                <script>
-                    document.querySelector('body').onload = function(){
-                                                        swal("Success", "{{ alert['success'] }}", "success");
-                                                    };
-                </script> 
-            {% endif %}
+            <script>
+            function functioncall(firstfunc,callback)
+            {
+                firstfunc();
+                setTimeout(callback,1200);
+            }
+
+            $(document).ready(function(){
+                
+                        {%- if alert['error'] -%} 
+                        functioncall(
+                            function() {
+                                swal({
+                                        title: "Error",
+                                        text: "{{ alert['error'] }}",
+                                        type: "error",
+                                        confirmButtonText: "ok"
+                                    }); 
+                                },
+                            function() {
+                        {%- endif -%}
+                        {%- if alert['success'] -%}
+                            functioncall(
+                                function() {
+                                    swal({
+                                        title: "Success",
+                                        text: "{{ alert['success'] }}",
+                                        type: "success",
+                                        confirmButtonText: "Wow!"
+                                    });
+                                },
+                                function() {
+                        {%- endif -%}
+                        {%- if alert['msg'] -%}
+                                    swal({
+                                            title: "Message",
+                                            text: "{{ alert['msg'] }}",
+                                            confirmButtonText: "Got It!"
+                                            })           
+                        {%- endif -%}
+                        {%- if alert['success'] -%}
+                            {%- if alert['msg'] -%}
+                                           ;
+                            {%- endif -%}
+                                        }
+                                )               
+                        {%- endif -%} 
+                        {%- if alert['error'] -%}
+                            });
+                        {%- else -%}
+                            ;    
+                        {%- endif -%}     
+
+                })  
+            </script>
         {% endif %}
         
     </body>
