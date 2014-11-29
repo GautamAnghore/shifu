@@ -1,0 +1,97 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }}-New Page
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('pages.static', filename='css/page-add-edit.css' ) }}" />
+{% endblock %}
+
+{% block content %}
+
+    <div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">New Page</h3>
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= page information form ==================== -->
+        <div class="form-div">
+            <div class="form-wrapper">
+            {% from "_pageformhelper.html" import render_field %}
+            <form method="post" action="{{ url_for('.add') }}" class="form-horizontal">
+                {{ form.hidden_tag() }}
+                <div class="form-group form-group-aligner {% if form.pagename.errors %}has-error{% endif %}">
+                    <label for="pageName" class="personal-label" >Page name</label>
+                    <div class="input-group col-xs-10">
+                        <!--<input type="text" class="form-control" id="inputEmail" placeholder="Enter Page name">
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                        -->
+                        {{ render_field(form.pagename,class="form-control",id="pageName",placeholder="Enter page Name" ) }}
+
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner {% if form.pageurl.errors %}has-error{% endif %}" >
+                    <label for="pageUrl" class="personal-label">Url</label>
+                    <div class="input-group col-xs-10">
+                        <!--<input type="text" class="form-control" id="inputPassword" placeholder="Enter Url">
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>-->
+                        {{ render_field(form.pageurl,class="form-control",id="pageUrl",placeholder="Enter url for page" ) }}
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner {% if form.structurename.errors %}has-error{% endif %}">
+                    <label for="structure-dropdown" class="personal-label">Choose Structure</label>
+                    <div class="input-group col-xs-10">
+                        <!--<select id="structure-dropdown" class="btn btn-default col-xs-10" name="structure">
+                            <option>Structure 1</option>
+                            <option>Structure 2</option>
+                            <option>Structure 3</option>
+                            <option>Structure 4</option>
+                        </select>-->
+                        <!--
+                        !!!! important !!!!!
+                        not using _pageformhelper here because of eye-button span
+                        -->
+                        {{ form.structurename(class="btn btn-default col-xs-10") }}
+                        <span class="btn eye-button"><i class="glyphicon glyphicon-eye-open preview-eye"></i></span>
+                        {% if form.structurename.errors %}
+                            <span class="help-block error-block">
+                                {% for error in form.structurename.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </span>
+                        {% endif %}
+                        {% if form.structurename.description %}
+                            <span class="help-block">
+                                {{ form.structurename.description }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner {% if form.pagedesc.errors %}has-error{% endif %}">
+                    <label for="decription-textarea" class="personal-label">Page Description</label>
+                    <div class="input-group col-xs-10">
+                        <!--<textarea id="decription-textarea" class="form-control" placeholder="Enter Page description"></textarea>
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>-->
+                        {{ render_field(form.pagedesc,class="form-control",id="description-textarea",placeholder="Page Description goes here") }}
+
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner">
+                    <div class="input-group col-xs-10">
+                        <input type="submit" class="btn button form-control green save" id="save-and-continue-button" value="Save & Continue" />
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+   	
+{% endblock %}

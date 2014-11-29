@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Shifu | Dashboard</title>
+        <script src="javascript/jquery-2.1.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/new_website_name.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard-page-remove.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
+        <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            function showdescription(obj)
+            {
+                var text = obj.parentElement.parentNode.lastElementChild.innerHTML;
+                var textbox = document.getElementById("jumbotron");
+                textbox.innerHTML = text;
+            }
+            
+            function uncheckothers(obj)
+            {
+                var allcheckbox = document.getElementsByName("radio-button");
+                var checkbox_except_this = allcheckbox.remove(obj);
+                checkbox_except_this.checked = false;
+            }
+        </script>
+    </head>
+    <body>
+        
+    <!--      ==============================NAVBAR STARTS =================================    -->
+    <div class="bground">
+        <nav>    
+        <div class="navbar navbar-default navbar-fixed-top">
+            <img class="header-pallete" src="pallet/Color-Palette-Post-03-Fitz.png" />
+                    <!--navigation does here-->  
+            <ul class="nav">  
+                <li class="brand-active">  
+                <a class="brand" href="#">Shifu</a>  
+                </li>  
+                <!--<li class="navigation_opt"><a href="#">Actions</a></li>  
+                <li  class="navigation_opt"><a href="#"></a></li>-->
+                <li class="navigation_opt"><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>  
+            </ul>  
+        </div>
+            <div class="logo-div">
+            <img class="logo" src="images/logo_yellowshadow.png" />
+            </div>
+        </nav>
+    </div>
+        <!--                          e======= navbar ends ===========                               -->
+        
+        <!-- ================================== Dashboard options start ================================ -->
+        <!-- =========== website =======-->
+    <div class="dashboard">
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front blue">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-globe dashboard-glyphicon"></span></a>
+                    <p>Website</p>
+                </div>
+		      </div>
+		      <div class="back dark-blue">
+                <div class="back-option-website" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-bookmark back-glyphi website"></span>  Website Name</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-picture back-glyphi website"></span>  Change Theme</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== page =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front green">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-list-alt dashboard-glyphicon"></span></a>
+                    <p>Pages</p>
+                </div>
+		      </div>
+		      <div class="back dark-green">
+                <div class="back-option-page" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-plus back-glyphi page"></span>  Add page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-remove back-glyphi page"></span>  Delete Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-pencil back-glyphi page"></span>  Edit Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-globe back-glyphi page"></span>  Edit Url</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== settings =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front code-red">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-cog dashboard-glyphicon"></span></a>
+                    <p>Settings</p>
+                </div>
+		      </div>
+		      <div class="back dark-code-red">
+                <div class="back-option-setting" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-info-sign back-glyphi setting"></span>  Profile</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-barcode back-glyphi setting"></span>  Change Password</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-user back-glyphi setting"></span>  Users</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+    </div>
+        <!-- ==================================== dashboard ends ========================== -->
+        
+        <!---- =====================  rest of page part========================================= -->
+    <div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">Remove page</h3>
+            </div>
+            <hr class="header-line" />
+        <!-- ========================================= delete page part ========================= ----------------->
+        <div class="page-wrapper">
+            <div class="single-page-div code-red ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);" />
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                    <div class="description-page-name">Page Name</div>
+                    <div class="page-create-time">C reated this time</div>
+                    <input type="submit" class="btn button delete-page" value="Delete Page" />
+                    <div class="description-text">Description : this is fucking awesome</div>
+                </div>
+            </div>
+            <div class="single-page-div green ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                    page2
+                </div>
+            </div>
+            <div class="single-page-div blue ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                    page3
+                </div>
+            </div>
+            <div class="single-page-div brown ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                    page4
+                </div>
+            </div>
+            <div class="single-page-div brown ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                    page5
+                </div>
+            </div>
+            <div class="single-page-div brown ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                    page6
+                </div>
+            </div>
+            <div class="single-page-div code-red ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div blue ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div blue ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div blue ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div blue ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div blue ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div code-red ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div green ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div green ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="single-page-div green ">
+                <div class="page-checkbox">
+                    <input type="radio" class="checkbox" name="radio-button" onclick="showdescription(this); uncheckothers(this);"/>
+                </div>
+                <div class="page-name">Page Name</div>
+                <div class="page-description">
+                </div>
+            </div>
+            <div class="extra-content">
+            </div>
+            
+        </div>
+        <div class="jumbotron" id="jumbotron">
+            <!--<a href="#"><i class="glyphicon glyphicon-remove-sign close-description-button"></i></a>
+            <input type="submit" class="btn button" value="Edit">
+            <input type="submit" class="btn button" value="Edit Content">
+            <input type="submit" class="btn button" value="Change URL"><br />-->
+        </div>
+    </div>
+    </body>
+</html>

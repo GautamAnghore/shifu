@@ -54,29 +54,3 @@ body {
 
 /* ========================= pallete colors defination ends here=================*/
 
-/*============heaing and header line css============= */
-.heading {
-    position: relative;
-    width: 90%;
-    left: 5%;
-    top: 4%;
-}
-
-.heading-text
-{
-    display: inline-block;
-    font-family: 'roboto';
-    font-weight: 200;
-    color: #666;
-    font-weight: 500;
-    font-size: 30px;
-}
-
-.header-line
-{
-    border: none;
-    height: 3px;
-    background-color:#ddd;
-    width: 90%;
-}
-

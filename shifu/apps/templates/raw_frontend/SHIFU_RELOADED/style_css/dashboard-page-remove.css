@@ -1,0 +1,131 @@
+.page-info-area {
+    position: absolute;
+    height:90%;
+    width: 86%;
+    top: 10%;
+    left: 14%;
+}
+
+.page-holder{
+    position: absolute;
+    height:auto;
+    width:500px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+}
+
+.page-wrapper {
+    position: absolute;
+    width: 96%;
+    left: 2%;
+    padding: 10px;
+}
+.single-page-div {
+    display: inline-block;
+    position: relative;
+    height: 150px;
+    width: 120px;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+.page-checkbox{
+    position: relative;
+    display: inline-block;
+    left: 5px;
+}
+
+.checkbox {
+    
+}
+
+.page-name {
+    position: relative;
+    margin-top: 30%;
+    text-align: center;
+    height: auto;
+    bottom: 0px;
+    color: white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    font-family: 'roboto';
+    font-weight: 400;
+}
+
+.extra-content {
+    position: relative;
+    margin-top: 10.1%;
+}
+
+.page-description {
+    position: fixed;
+    display: inline-block;
+    z-index: 20;
+    opacity: 0;
+    left: 14%; right: 0px;
+    width: 200px; 
+}
+
+.button {
+    float: right;
+    position: relative;
+    background-color: #f65a5b;
+    height: 40px;
+    border: 2px solid #f65a5b;
+    color: white;
+    font-family: 'roboto';
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.button:hover {
+    height: 40px;
+    background-color: white;
+    border: 2px solid #1fda9a;
+    color: #1fda9a;
+}
+
+.jumbotron {
+    position: fixed;
+    z-index: 1;
+    height: 29%;
+    top: 71%;
+    width: inherit;
+    box-shadow: 1px 1px 3px 1px #555;
+    padding: 10px;
+}
+
+.description-page-name {
+    position: relative;
+    display: inline-block;
+    float: left;
+    font-size: 20px;
+    font-weight: 500;
+    top: -10%;
+}
+
+/*
+.close-description-button {
+    float: right;
+    font-size: 20px;
+    right: 10px;
+    top: 10px;
+    color: #39d1b4;
+}
+
+.close-description-button:hover {
+    color: white;
+    background-color: #1fda9a
+}
+*/
+
+.description-text {
+    position: relative;
+    font-weight: 300;
+    width:94%;
+    left: 3%;
+    margin-top: 10px;
+}

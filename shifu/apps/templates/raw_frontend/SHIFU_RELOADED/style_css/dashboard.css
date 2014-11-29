@@ -94,17 +94,17 @@
 
 .website {
     margin: 5%;
-    margin-left: 21%;
+    margin-left: 18%;
 }
 
 .page {
     margin: 5%;
-    margin-left: 25%;
+    margin-left: 21%;
 }
 
 .setting {
     margin: 5%;
-    margin-left: 16%;
+    margin-left: 14%;
 }
 
 
@@ -116,13 +116,12 @@
 }
 
 .option {
-    font-family: 'roboto';
-    font-weight: 400;
+    
+    font-weight: 300;
     color: white;
 }
 
 .option:hover {
-    border-bottom: 1px solid white;
     text-decoration: none;
     color: white;
 }

@@ -2,9 +2,12 @@
 <html>
     <head>
         <title>Shifu | Dashboard</title>
+        <script src="javascript/jquery-2.1.1.js"></script>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
         <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/new_website_name.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard-page-add.css" />
         <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
         <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
     </head>
@@ -30,7 +33,7 @@
             </div>
         </nav>
     </div>
-        <!-- ======= navbar ends =========== -->
+        <!--                          e======= navbar ends ===========                               -->
         
         <!-- ================================== Dashboard options start ================================ -->
         <!-- =========== website =======-->
@@ -89,12 +92,67 @@
 	       </div>
         </div>
     </div>
-        <!-- ==================================Dashboard options end =================================== -->
-
-        <div class="page-area">
-            <div class="page">
-                
+        <!-- ==================================== dashboard ends ========================== -->
+        
+        <!-- =================================== page info form starts =================== -->
+    <div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">New Page Info</h3>
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= page information form ==================== -->
+        <div class="form-div">
+            <div class="form-wrapper">
+            <form class="form-horizontal">
+                <div class="form-group form-group-aligner">
+                    <label for="inputEmail" class="personal-label" >Page name</label>
+                    <div class="input-group col-xs-10">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Enter Page name">
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner">
+                    <label for="inputPassword" class="personal-label">Url</label>
+                    <div class="input-group col-xs-10">
+                        <input type="text" class="form-control" id="inputPassword" placeholder="Enter Url">
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner">
+                    <label for="structure-dropdown" class="personal-label">Choose Structure</label>
+                    <div class="input-group col-xs-10">
+                        <select id="structure-dropdown" class="btn btn-default col-xs-10" name="structure">
+                            <option>Structure 1</option>
+                            <option>Structure 2</option>
+                            <option>Structure 3</option>
+                            <option>Structure 4</option>
+                        </select>
+                        <span class="btn eye-button"><i class="glyphicon glyphicon-eye-open preview-eye"></i></span>
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner">
+                    <label for="decription-textarea" class="personal-label">Page Description</label>
+                    <div class="input-group col-xs-10">
+                        <textarea id="decription-textarea" class="form-control" placeholder="Enter Page description"></textarea>
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner">
+                    <div class="input-group col-xs-10">
+                        <input type="submit" class="btn button form-control green" id="save-and-continue-button" value="Save & Continue" />
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+            </form>
             </div>
         </div>
     </body>
-    </html>
+</html>

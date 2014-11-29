@@ -187,7 +187,7 @@ class StructureDAO():
 			print "pymongo error : structure not found"
 			return None
 
-	def get_all_structure(self):
+	def get_all_structures(self):
 
 		structures = None
 

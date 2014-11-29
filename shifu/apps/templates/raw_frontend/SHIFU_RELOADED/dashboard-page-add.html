@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Shifu | Dashboard</title>
+        <script src="javascript/jquery-2.1.1.js"></script>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
         <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
@@ -47,8 +48,8 @@
 		      </div>
 		      <div class="back dark-blue">
                 <div class="back-option-website" >
-                    <span class="glyphicon glyphicon-bookmark back-glyphi website">  <a href="#" class="option">Website Name</a></span><br />
-                    <span class="glyphicon glyphicon-picture back-glyphi website">  <a href="#" class="option">Change Theme</a></span>
+                    <a href="#" class="option"><span class="glyphicon glyphicon-bookmark back-glyphi website"></span>  Website Name</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-picture back-glyphi website"></span>  Change Theme</a>
                 </div>
 		      </div>
 	       </div>
@@ -64,10 +65,10 @@
 		      </div>
 		      <div class="back dark-green">
                 <div class="back-option-page" >
-                    <span class="glyphicon glyphicon-plus back-glyphi page">  <a href="#" class="option">Add page</a></span><br />
-                    <span class="glyphicon glyphicon-remove back-glyphi page">  <a href="#" class="option">Delete Page</a></span><br />
-                    <span class="glyphicon glyphicon-pencil back-glyphi page">  <a href="#" class="option">Edit Page</a></span><br />
-                    <span class="glyphicon glyphicon-globe back-glyphi page">  <a href="#" class="option">Edit Url</a></span>
+                    <a href="#" class="option"><span class="glyphicon glyphicon-plus back-glyphi page"></span>  Add page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-remove back-glyphi page"></span>  Delete Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-pencil back-glyphi page"></span>  Edit Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-globe back-glyphi page"></span>  Edit Url</a>
                 </div>
 		      </div>
 	       </div>
@@ -83,9 +84,9 @@
 		      </div>
 		      <div class="back dark-code-red">
                 <div class="back-option-setting" >
-                    <span class="glyphicon glyphicon-info-sign back-glyphi setting">  <a href="#" class="option">Profile</a></span><br />
-                    <span class="glyphicon glyphicon-barcode back-glyphi setting">  <a href="#" class="option">Change Password</a></span><br />
-                    <span class="glyphicon glyphicon-user back-glyphi setting">  <a href="#" class="option">Users</a></span>
+                    <a href="#" class="option"><span class="glyphicon glyphicon-info-sign back-glyphi setting"></span>  Profile</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-barcode back-glyphi setting"></span>  Change Password</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-user back-glyphi setting"></span>  Users</a>
                 </div>
 		      </div>
 	       </div>
@@ -97,44 +98,62 @@
     <div class="page-info-area">
         <!-- ====== heading ======-->
             <div class="heading">
-                <h3 class="heading-text">Page Info</h3>
+                <h3 class="heading-text">New Page Info</h3>
             </div>
             <hr class="header-line" />
         
         <!-- ========================= page information form ==================== -->
         <div class="form-div">
+            <div class="form-wrapper">
             <form class="form-horizontal">
-        <!--id-->
-                <div class="form-group has-feedback">
-                    <div class="col-xs-12"  >
-                        <input type="text" id="id" class="form-control" placeholder="ID" required>
+                <div class="form-group form-group-aligner">
+                    <label for="inputEmail" class="personal-label" >Page name</label>
+                    <div class="input-group col-xs-10">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Enter Page name">
+                        <span class="help-block"></span>
                         <span class="help-block"></span>
                     </div>
                 </div>
-        <!-- url -->
-                <div class="form-group has-feedback">
-                    <div class="col-xs-12"  >
-                        <input type="text" id="url" class="form-control" placeholder="Url" required>
+                <div class="form-group form-group-aligner">
+                    <label for="inputPassword" class="personal-label">Url</label>
+                    <div class="input-group col-xs-10">
+                        <input type="text" class="form-control" id="inputPassword" placeholder="Enter Url">
+                        <span class="help-block"></span>
                         <span class="help-block"></span>
                     </div>
                 </div>
-                
-                <!-- Single button -->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Structure <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+                <div class="form-group form-group-aligner">
+                    <label for="structure-dropdown" class="personal-label">Choose Structure</label>
+                    <div class="input-group col-xs-10">
+                        <select id="structure-dropdown" class="btn btn-default col-xs-10" name="structure">
+                            <option>Structure 1</option>
+                            <option>Structure 2</option>
+                            <option>Structure 3</option>
+                            <option>Structure 4</option>
+                        </select>
+                        <span class="btn eye-button"><i class="glyphicon glyphicon-eye-open preview-eye"></i></span>
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                    </div>
                 </div>
-        <!-- structure -->
-                
+                <div class="form-group form-group-aligner">
+                    <label for="decription-textarea" class="personal-label">Page Description</label>
+                    <div class="input-group col-xs-10">
+                        <textarea id="decription-textarea" class="form-control" placeholder="Enter Page description"></textarea>
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-group-aligner">
+                    <div class="input-group col-xs-10">
+                        <input type="submit" class="btn button form-control green" id="save-and-continue-button" value="Save & Continue" />
+                        <span class="help-block"></span>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
             </form>
             </div>
         </div>
+    </div>
     </body>
 </html>

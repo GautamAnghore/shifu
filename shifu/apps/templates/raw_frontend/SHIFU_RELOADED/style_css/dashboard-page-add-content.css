@@ -10,7 +10,7 @@
     position: relative;
     width: 90%;
     left: 5%;
-    top: 6%;
+    top: 4%;
 }
 
 .heading-text
@@ -19,7 +19,8 @@
     font-family: 'roboto';
     font-weight: 200;
     color: #666;
-    font-size: 40px;
+    font-weight: 500;
+    font-size: 30px;
 }
 
 .header-line
@@ -27,17 +28,26 @@
     border: none;
     height: 3px;
     background-color:#ddd;
+    width: 90%;
 }
 
 .top-button {
-    top:20px;
+    border:2px solid #f65a5b;
+    top: 5px;
     position: relative;
-    margin: auto 2px;
+    margin: auto 5px;
     height: 35px;
     color: white;
     font-family: 'roboto';
+    font-size: 17px;
     font-weight: 300;
     float: right;
+    height: 45px;
+}
+
+.top-button:select {
+    border: 2px solid #1fda9a;
+    color: #1fda9a;
 }
 
 .top-button:hover {
@@ -113,8 +123,8 @@ li:hover
 .button:hover {
     height: 40px;
     background-color: white;
-    border: 2px solid #f65a5b;
-    color: #f65a5b;
+    border: 2px solid #1fda9a;
+    color: #1fda9a;
 }
 
 .form-horizontal {
@@ -129,7 +139,25 @@ li:hover
 }
 
 .input-instance-button{
+    border: 2px solid #1fda9a;
     position: relative;
     left: 1.5%;
-    padding-top: 9px;
+    padding-top:7px;
+}
+
+.input-instance-button:hover{
+    position: relative;
+    left: 1.5%;
+    padding-top: 7px;
+}
+
+.text-instance-button{
+    position: relative;
+    border: 2px solid #1fda9a;
+    padding-top: 7px;
+}
+
+.text-instance-button:hover{
+    position: relative;
+    padding-top: 7px;
 }

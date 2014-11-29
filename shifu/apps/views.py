@@ -14,3 +14,8 @@ def index():
 		return redirect( url_for('users.admin') )
 	else:
 		return render_template('index.html')
+
+@master.route('/',defaults={'path': ''})
+@master.route('/<path:path>')
+def master_catch(path):
+	return "path %s" % path

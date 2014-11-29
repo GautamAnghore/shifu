@@ -20,6 +20,7 @@
 .form-horizontal {
     position: relative;
     margin-top: 20%;
+    margin-bottom: 5%;
 }
 
 
@@ -54,7 +55,7 @@
 }
 
 
-#decription-textarea {
+#description-textarea {
     resize: none;
     height: 120px;
 }
@@ -86,4 +87,11 @@
 .url-label {
     font-size: 30px;
     font-weight: 400;
+}
+
+.help-block {
+    margin-bottom: 2px;
+}
+.help-description-block {
+    color:#737373 !important;
 }

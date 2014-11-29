@@ -75,8 +75,6 @@
     <!-- ==================================================navbar ends here=============================================================--> 
         
         <!-- =============================================== dashboard options =========================================== -->
-        
-            <!-- =========== website =======-->
     <div class="dashboard">
         <div class="flip-container">
 	       <div class="flipper">
@@ -88,8 +86,8 @@
 		      </div>
 		      <div class="back dark-blue">
                 <div class="back-option-website" >
-                    <span class="glyphicon glyphicon-bookmark back-glyphi website">  <a href="#" class="option">Website Name</a></span><br />
-                    <span class="glyphicon glyphicon-picture back-glyphi website">  <a href="#" class="option">Change Theme</a></span>
+                    <a href="#" class="option"><span class="glyphicon glyphicon-bookmark back-glyphi website"></span>  Website Name</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-picture back-glyphi website"></span>  Change Theme</a>
                 </div>
 		      </div>
 	       </div>
@@ -105,10 +103,10 @@
 		      </div>
 		      <div class="back dark-green">
                 <div class="back-option-page" >
-                    <span class="glyphicon glyphicon-plus back-glyphi page">  <a href="#" class="option">Add page</a></span><br />
-                    <span class="glyphicon glyphicon-remove back-glyphi page">  <a href="#" class="option">Delete Page</a></span><br />
-                    <span class="glyphicon glyphicon-pencil back-glyphi page">  <a href="#" class="option">Edit Page</a></span><br />
-                    <span class="glyphicon glyphicon-globe back-glyphi page">  <a href="#" class="option">Edit Url</a></span>
+                    <a href="#" class="option"><span class="glyphicon glyphicon-plus back-glyphi page"></span>  Add page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-remove back-glyphi page"></span>  Delete Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-pencil back-glyphi page"></span>  Edit Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-globe back-glyphi page"></span>  Edit Url</a>
                 </div>
 		      </div>
 	       </div>
@@ -124,14 +122,16 @@
 		      </div>
 		      <div class="back dark-code-red">
                 <div class="back-option-setting" >
-                    <span class="glyphicon glyphicon-info-sign back-glyphi setting">  <a href="#" class="option">Profile</a></span><br />
-                    <span class="glyphicon glyphicon-barcode back-glyphi setting">  <a href="#" class="option">Change Password</a></span><br />
-                    <span class="glyphicon glyphicon-user back-glyphi setting">  <a href="#" class="option">Users</a></span>
+                    <a href="#" class="option"><span class="glyphicon glyphicon-info-sign back-glyphi setting"></span>  Profile</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-barcode back-glyphi setting"></span>  Change Password</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-user back-glyphi setting"></span>  Users</a>
                 </div>
 		      </div>
 	       </div>
         </div>
     </div>
+    
+            <!-- =========== website =======-->
         <!-- =============================================== dashboard options end=========================================== -->
         
         
@@ -141,10 +141,11 @@
             <!-- ====== heading ======-->
             <div class="heading">
                 <h3 class="heading-text">Page Name</h3>
-                <button class="btn green top-button"><i class="glyphicon glyphicon-print"></i> Publish</button>
-                <button class="btn green top-button"><i class="glyphicon glyphicon-eye-open"></i> Live Preview</button>
+                <button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Publish</button>
+                <button class="btn code-red top-button"><i class="glyphicon glyphicon-eye-open"></i> Live Preview</button>
             </div>
             <hr class="header-line" />
+            
         <!-- ========options required for floating========= -->
         <div class="edit-option-bar" id="edit-option-bar" >
         <!-- Nav tabs -->
@@ -174,10 +175,10 @@
                 
                     <div class="instance" id="instance">
                         <textarea class="textbox"></textarea>
-                        <button class="btn" onclick="removetextinstance(this)" ><a><i class="glyphicon glyphicon-remove-sign"></i></a></button>
+                        <button class="btn" onclick="removetextinstance(this)" ><a><i class="glyphicon glyphicon-remove-sign black"></i></a></button>
                     </div>
                 
-                <button class="btn button green" onclick="createtextinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</button>
+                <span class="btn button text-instance-button green" onclick="createtextinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
             </div>
                 
             <div class="tab-pane fade" id="links">

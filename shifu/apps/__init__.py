@@ -48,10 +48,10 @@ master = Blueprint('master',__name__,template_folder='templates',static_folder='
 from views import *
 
 from users import users
-#from users import views
 from editor import editor
 from dashboard import dashboard
 from website import website
+from pages import pages
 
 #registering all blueprints
 app.register_blueprint(master)
@@ -59,3 +59,4 @@ app.register_blueprint(users)
 app.register_blueprint(editor,url_prefix='/editor')
 app.register_blueprint(dashboard,url_prefix='/dashboard')
 app.register_blueprint(website,url_prefix='/dashboard/website')
+app.register_blueprint(pages,url_prefix='/dashboard/page')
