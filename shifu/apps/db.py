@@ -1,6 +1,7 @@
 # step : 1 => account_set
 # step : 2 => index_page_set
 import pymongo
+import re
 
 class Environment():
 
@@ -86,3 +87,15 @@ class Environment():
 		 else:
 		 	return False
 
+	def check_url_restricted(self,url):
+		#check if url is in restricted catagory
+		#returns true if url is restricted
+		#function is kept in this class for future scope of moving restricted list to variables table
+		restricted = ['^dashboard','^signin$','^signup$','^signout','^admin','^refresh-enviornment$','^update-enviornment$']
+
+		for pattern in restricted:
+			if re.match(pattern,url) is not None:
+				return True
+
+		return False
+		

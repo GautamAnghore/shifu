@@ -6,13 +6,15 @@ class Addpageform(Form):
 
 	pagename = TextField('Page Name',
 				validators=[Required('Please give your page a name'),
+							Regexp('^[\w \d \s]+$',
+							message=('Use of Invalid Characters')),
 							Length(max=30,message=('Please Provide shorter name'))
 							],
 				description='Unique name for page e.g. Home, Index...'
 						)
 
 	pageurl = TextField('Page Url',
-				validators=[Regexp('[^/]+[/ \w](.*)',
+				validators=[Regexp('^[^/]\S+[/\S]+$',
 							message=('Format of url do not qualify the criteria')),
 							Required('Please provide a url'),
 							Length(max=100,message=('Please Provide a shorter path'))],
@@ -25,7 +27,25 @@ class Addpageform(Form):
 
 	pagedesc = TextAreaField('Page Description',
 				validators=[Required('Please provide a short description for your page'),
-							Regexp('[\w \s \d @ # $ % . , / ?]+',
+							Regexp('^[\w \s \d @ # $ % . , / ? *]+$',
+							message=('Use of Invalid Characters')),
+							Length(max=200,message=('Please Provide a shorter page Description'))],
+				description='A short description for the page'
+						)
+
+class Editpageform(Form):
+
+	pagename = TextField('Page Name',
+				validators=[Required('Please give your page a name'),
+							Length(max=30,message=('Please Provide shorter name')),
+							Regexp('^[\w \d \s]+$',
+							message=('Use of Invalid Characters'))
+							],
+				description='Unique name for page e.g. Home, Index...'
+						)
+	pagedesc = TextAreaField('Page Description',
+				validators=[Required('Please provide a short description for your page'),
+							Regexp('^[\w \s \d @ # $ % . , / ? *]+$',
 							message=('Use of Invalid Characters')),
 							Length(max=200,message=('Please Provide a shorter page Description'))],
 				description='A short description for the page'

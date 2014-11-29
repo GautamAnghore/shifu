@@ -88,7 +88,7 @@ class PagesDAO():
 			return None
 
 		if doc is not None:
-			return doc['id']
+			return doc['_id']
 		else:
 			return None
 
