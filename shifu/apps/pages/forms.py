@@ -50,3 +50,13 @@ class Editpageform(Form):
 							Length(max=200,message=('Please Provide a shorter page Description'))],
 				description='A short description for the page'
 						)
+
+class Editpageurl(Form):
+
+	pageurl = TextField('Page Url',
+				validators=[Regexp('^[^/]\S+[/\S]+$',
+							message=('Format of url do not qualify the criteria')),
+							Required('Please provide a url'),
+							Length(max=100,message=('Please Provide a shorter path'))],
+				description='Subpath for page e.g. home, example/example, xyz/xyz/xyz'
+					)

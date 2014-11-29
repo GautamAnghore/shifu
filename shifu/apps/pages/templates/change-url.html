@@ -1,0 +1,54 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }}-New Page
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('pages.static', filename='css/page-add-edit.css' ) }}" />
+{% endblock %}
+
+{% block content %}
+
+    <div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">Change Page URL</h3>
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= page information form ==================== -->
+        <div class="form-div">
+            <div class="form-wrapper">
+
+            {% from "_pageformhelper.html" import render_field %}
+            <form method="post" action="{{ url_for('.edit_url',path=path) }}" class="form-horizontal">
+                {{ form.hidden_tag() }}
+
+                <div class="form-group form-group-aligner {% if form.pageurl.errors %}has-error{% endif %}">
+                    <label for="inputUrl" class="personal-label url-label ">URL</label>
+                    <div class="input-group col-xs-12">
+                        <!--<input type="text" class="form-control input-url" id="inputPassword" placeholder="Enter New Url">
+                        <span class="help-block">Example: newpage,newpage/mypage</span>
+                        <span class="help-block"></span>-->
+
+                        {{ render_field(form.pageurl,class="form-control input-url",id="inputUrl",placeholder="Enter New Url") }}
+                    </div>
+                </div>
+                
+                <div class="form-group form-group-aligner">
+                    <div class="input-group col-xs-12">
+                        <input type="submit" class="btn button form-control green" id="save-and-continue-button" value="Save" />
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+
+    </div>
+
+    
+   	
+{% endblock %}

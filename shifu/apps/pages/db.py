@@ -92,13 +92,13 @@ class PagesDAO():
 		else:
 			return None
 
-	def edit_page_url(self,old_url,new_url):
+	def edit_page_url(self,old_url,new_url,modifiedby):
 		#edit the url of page
 		page_id = self.get_id_from_url(old_url)
 
 		if page_id is not None:
 			try:
-				self.collection.update({'_id':page_id},{'$set':{'url':new_url}})
+				self.collection.update({'_id':page_id},{'$set':{'url':new_url,'modifiedby':modifiedby}})
 			except:
 				print "pymongo error : cannot update the url"
 				return False
@@ -121,14 +121,14 @@ class PagesDAO():
 		else:
 			return None
 
-	def edit_page_meta(self,url,pagename,pagedesc):
+	def edit_page_meta(self,url,pagename,pagedesc,modifiedby):
 		#edit the pagename and pagedescription
 
 		page_id = self.get_id_from_url(url)
 
 		if page_id is not None:
 			try:
-				self.collection.update({'_id':page_id},{'$set':{'page-name':pagename,'page-description':pagedesc}})
+				self.collection.update({'_id':page_id},{'$set':{'page-name':pagename,'page-description':pagedesc,'modifiedby':modifiedby}})
 			except:
 				print "pymongo error : cannot update page meta"
 				return False
