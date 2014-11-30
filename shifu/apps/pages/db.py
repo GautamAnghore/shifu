@@ -137,6 +137,21 @@ class PagesDAO():
 		else:
 			return False
 
+	def add_page_content(self,url,content,modifiedby):
+
+		page_id = self.get_id_from_url(url)
+		
+		if page_id is not None:
+			try:
+				self.collection.update({'_id':page_id},{'$set':{'structure.content':content}})
+			except:
+				print "pymongo error: cannot update with content"
+				return False
+
+			return True
+		else:
+			return False
+
 
 
 

@@ -1,10 +1,19 @@
-from flask import session,url_for,render_template,redirect,request
+from flask import session,url_for,render_template,redirect,request,make_response
 
 from apps.editor import editor
+from apps import database
+from apps import Sessions
+from apps import env
+
 from forms import *
+
+from apps.pages.db import PagesDAO
+from apps.website.db import StructureDAO,ThemeDAO
 
 import bleach
 import markdown
+
+sessions = Sessions()
 
 '''
 @editor.route('/')
@@ -33,7 +42,78 @@ def live():
 			return render_template('editor.html',form=form,error='invalid validation')
 
 '''
-@editor.route('/',methods=['GET','POST'])
+@editor.route('/add/<path:path>',methods=['GET','POST'])
+def add_content(path):
+
+	obj_pages = PagesDAO(database)
+	obj_structure = StructureDAO(database)
+
+	page = obj_pages.get_page_from_url(path)
+
+	if page is not None:
+		
+		structure = obj_structure.get_structure(page['structure']['name'])
+
+		#structure for passing in templates
+		structure_inputs = structure['content']
+		inputs = {}
+		for fieldname in structure_inputs:
+			inputs[fieldname] = {}
+			inputs[fieldname]['type']=structure_inputs[fieldname]
+			if structure_inputs[fieldname] == "iterator-markdown" or structure_inputs[fieldname] == "iterator-text":
+				inputs[fieldname]['data'] = [""]
+				inputs[fieldname]['error'] = []
+			else:
+				inputs[fieldname]['data'] = ""
+				inputs[fieldname]['error'] = ""
+
+		if structure is not None:
+			
+			if request.method == 'GET':
+				return render_template('add-content.html',inputs=inputs,page=page,path=path)
+
+			else:
+				content = {}
+				#process data
+				for fieldname in structure_inputs:
+										
+					if structure_inputs[fieldname] == "iterator-markdown" or structure_inputs[fieldname] == "iterator-text":
+						inputs[fieldname]['data'] = request.form.getlist(fieldname)
+						
+						content[fieldname] = []
+
+						for md in inputs[fieldname]['data']:
+							#bleaching the data
+							md = bleach.clean(md,strip=True)
+							html = markdown.markdown(md)
+
+							data = {'html':html,'markdown':md}
+							content[fieldname].append(data)
+
+					else:
+						inputs[fieldname]['data'] = request.form[fieldname]
+						
+						md = bleach.clean(inputs[fieldname]['data'],strip=True)
+						html = markdown.markdown(md)
+
+						content[fieldname] = {'html':html,'markdown':md}
+
+				if obj_pages.add_page_content(path,content,sessions.logged_in()) is True:
+					return redirect( url_for('users.admin') )
+				else:
+					return render_template('add-content.html',inputs=inputs,page=page,path=path)
+
+		else:
+			print "structure not found"
+			return redirect( url_for('users.admin') )
+
+	else:
+		print "page not found"
+		return redirect( url_for('users.admin') )
+
+
+
+@editor.route('/edit',methods=['GET','POST'])
 def edit_content():
 	
 	if request.method == 'GET':

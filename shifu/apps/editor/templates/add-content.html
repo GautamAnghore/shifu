@@ -1,0 +1,147 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }}-New Page
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('editor.static', filename='css/edit-content.css' ) }}" />
+    
+    <script type="text/javascript">
+        function createtextinstance(obj)
+        {
+            var newinstanceHTML = '<div class="instance"><textarea class="textbox" name="';
+            newinstanceHTML +=obj.parentNode.children[0].children[0].name;
+            newinstanceHTML +='"></textarea><button class="btn"  onclick="removetextinstance(this)"><a><i class="glyphicon glyphicon-remove-sign"></a></i></button></div>';
+            
+            var instance = document.createElement('div');
+            instance.innerHTML = newinstanceHTML;
+            //var instance = document.createElement(newinstance);
+            var editorDiv = obj.parentNode;
+            editorDiv.insertBefore(instance.firstChild,obj);
+        }
+        
+        function removetextinstance(obj)
+        {
+            var editorDiv = obj.parentNode;
+            editorDiv.remove();
+            
+        }
+        
+        function createinputinstance(obj)
+        {
+            var newinstanceHTML = '<div class="col-sm-12"><div class="input-group col-sm-12"><input type="text" class="form-control container-input" id="inputlink" name="';
+
+            newinstanceHTML += obj.parentNode.children[0].children[0].children[0].name;
+            newinstanceHTML += '"><span class="input-group-addon glyphicon glyphicon-remove-sign glyphi" onclick="removeinputinstance(this)"><a></a></span></div><span class="help-block"></span></div>';
+
+            var instance = document.createElement('div');
+            instance.innerHTML = newinstanceHTML;
+            //var instance = document.createElement(newinstance);
+            var editorDiv = obj.parentNode;
+            editorDiv.insertBefore(instance.firstChild,obj);
+        }
+        
+        function removeinputinstance(obj)
+        {
+            var editorDiv = obj.parentNode.parentNode;
+            editorDiv.remove();
+            
+        }
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+ <div class="editor-area">
+    <form method="post" action="{{ url_for('editor.add_content',path=path) }}">
+            <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">{{ page['page-name'] }} : Add Content</h3>
+                <input type="submit" class="btn code-red top-button" value="Publish">
+                <button class="btn code-red top-button"><i class="glyphicon glyphicon-eye-open"></i> Live Preview</button>
+            </div>
+            <hr class="header-line" />
+            
+        <!-- ========options required for floating========= -->
+        <div class="edit-option-bar" id="edit-option-bar" >
+        <!-- Nav tabs -->
+            <ul class="nav nav-pills nav-justified" id="myTab">
+
+                {% for field_name in inputs %}
+                    {% if loop.index0 == 0 %}
+                        <li class="active"><a class="opt" href="#{{ field_name }}" data-toggle="pill" >{{ field_name }}</a></li>
+                    {% else %}
+                        <li><a class="opt" href="#{{ field_name }}" data-toggle="pill" >{{ field_name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="related-divs">
+            <!-- Tab panes -->
+            <div class="tab-content" id="myTabContent">
+            
+            {% for field_name in inputs %}
+
+                {% if loop.index0 == 0 %}
+                <div class="tab-pane fade in active" id="{{ field_name }}">
+                {% else %}
+                <div class="tab-pane fade" id="{{ field_name }}">
+                {% endif %}
+
+                    {% if inputs[field_name]['type'] == "iterator-markdown" %}
+                        {% for instance in inputs[field_name]['data'] %}
+                        <div class="instance">
+                            <textarea class="textbox" name="{{ field_name }}" >{{ instance }}</textarea>
+                            <button class="btn" onclick="removetextinstance(this)" ><a><i class="glyphicon glyphicon-remove-sign black"></i></a></button>
+                        </div>
+                        {% endfor %}
+
+                        <span class="btn button text-instance-button green" onclick="createtextinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
+                    {% elif inputs[field_name] == "simple-markdown" %}
+                        <div class="instance">
+                            <textarea class="textbox" name="{{ field_name }}">{{ inputs[field_name]['data'] }}</textarea>
+                            <button class="btn" onclick="removetextinstance(this)" ><a><i class="glyphicon glyphicon-remove-sign black"></i></a></button>
+                        </div>
+                    {% elif inputs[field_name] == "markdown-text" %}
+                        {% for instance in inputs[field_name]['data'] %}
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="input-group col-sm-12">
+                                        <input type="text" class="form-control container-input" name="{{ field_name }}" value = "{{ instance }}">
+                                        <span class="input-group-addon glyphicon glyphicon-remove-sign glyphi" onclick="removeinputinstance(this)" ></span>
+                                    </div>
+                                    <span class="help-block"></span>
+
+                                <span class="btn button input-instance-button green" onclick="createinputinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
+                               </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="input-group col-sm-12">
+                                        <input type="text" class="form-control container-input" name="{{ field_name }}" value="{{ inputs[field_name]['data'] }}">
+                                    </div>
+                                    <span class="help-block"></span>
+                               </div>
+                            </div>
+                        
+
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            </div>
+        </div>
+    </form>         
+</div>
+
+
+   
+   	
+{% endblock %}
