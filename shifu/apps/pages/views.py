@@ -8,18 +8,17 @@ from apps import Sessions
 from forms import *
 import db
 #for structures importing db.py of website blueprint
-from apps.website.db import StructureDAO
+from apps.website.db import ThemeDAO
 
 sessions = Sessions()
 
 @pages.route('/add',methods=['GET','POST'])
 def add():
-	obj_structure = StructureDAO(database)
-	structure_cursor = obj_structure.get_all_structures() 
-	structure_list = []
-
-	for doc in structure_cursor:
-		structure_list.append(doc['_id'])
+	obj_theme = ThemeDAO(database)
+	structure_list = obj_theme.get_applicable_structures() 
+	
+	if structure_list is None:
+		return redirect( url_for('website.theme'))
 
 	if request.method == 'GET':
 		

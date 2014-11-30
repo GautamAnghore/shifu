@@ -49,7 +49,12 @@ def update_enviornment():
 			data = json.load(manifest)
 
 			if all( k in data for k in ('theme-name','author','structures')):
-				obj_theme.add_theme(data['theme-name'],data['author'],data['structures'],subdir)
+				if 'include-files-css' not in data:
+					data['include-files-css'] = 'style.css'
+				if 'include-files-js' not in data:
+					data['include-files-js'] = None
+
+				obj_theme.add_theme(data['theme-name'],data['author'],data['structures'],subdir,data['include-files-css'],data['include-files-js'])
 			else:
 				print "theme - %s : manifest fault" % subdir
 
@@ -132,7 +137,12 @@ def refresh_enviornment():
 			data = json.load(manifest)
 
 			if all( k in data for k in ('theme-name','author','structures')):
-				obj_theme.add_theme(data['theme-name'],data['author'],data['structures'],subdir)
+				if 'include-files-css' not in data:
+					data['include-files-css'] = 'style.css'
+				if 'include-files-js' not in data:
+					data['include-files-js'] = None
+
+				obj_theme.add_theme(data['theme-name'],data['author'],data['structures'],subdir,data['include-files-css'],data['include-files-js'])
 			else:
 				print "theme - %s : manifest fault" % subdir
 				

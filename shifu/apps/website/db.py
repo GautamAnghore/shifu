@@ -6,14 +6,14 @@ class ThemeDAO():
 		self.db = database
 		self.collection = database.themes
 
-	def add_theme(self,name,author,structures,dirname):
+	def add_theme(self,name,author,structures,dirname,includescss='style.css',includesjs=None):
 
 		#theme : name of theme
 		#author : name of author of theme
 		#structures : list of structures supported by theme
 		#dirname : directory name in static/themes/ directory of theme static files
 
-		theme = { '_id':name, 'author':author, 'structures':structures, 'dirname':dirname }
+		theme = { '_id':name, 'author':author, 'structures':structures, 'dirname':dirname, 'include-files-css':includescss,'include-files-js':includesjs }
 
 		try:
 			self.collection.save(theme, safe=True)
@@ -126,6 +126,35 @@ class ThemeDAO():
 				themes.append(doc['_id'])
 		
 		return themes
+
+	def get_applicable_structures(self):
+		#while creating new pages, only the structures which are defined in current selected theme are applicable
+		#to be called while adding new page
+		obj_website = WebsiteDAO(self.db)
+		themeName = obj_website.get_website_theme()
+
+		obj_structure = StructureDAO(self.db)
+
+		cur = None
+		structure_list = []
+
+		try:
+			cur = self.collection.find_one({'_id':themeName},{'_id':False,'structures':True})
+		except:
+			print "cannnot find structures, mongodb error"
+			return None
+		
+		if cur is not None:
+			#check if the structure really exists
+			for structure in cur['structures']:
+				if obj_structure.get_structure(structure) is not None:
+					structure_list.append(structure)
+
+			return structure_list
+
+		else:
+			return None
+
 
 class StructureDAO():
 	# structure data access object
