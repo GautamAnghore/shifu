@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>
+	{% block title %}
+		{{ data['title'] }}
+	{% endblock %}
+</title>
+
+{% block includes %}
+<!--<link rel="stylesheet" href="style.css">-->
+<!--<link rel="stylesheet" href="style2.css">
+<script src="javasc.js">
+</script>-->
+<!--
+<script src="javasc2.js">
+</script>
+-->
+	{% for file in data['includes']['css'] %}
+		<link rel="stylesheet" href="{{ file }}"/>
+	{% endfor %}
+	{% for file in data['includes']['js'] %}
+		<link rel="stylesheet" href="{{ file }}"/>
+	{% endfor %}	
+{% endblock %}
+</head>
+
+<body>
+<div class="body-wrapper">
+
+	<nav class="navigation-main">
+		<div class="heading">
+			<span>
+			{{ data['heading'] }}
+                </span>
+		</div>
+
+		<div class="links">
+			<ul>
+			{% for link in data['links'] %}
+			<li>{{ link }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</nav>
+    
+    {% for content in data['meta'] %}
+    <div class="meta-content">
+            {{ content }}
+    </div>
+	<div class="content">
+			{{ data['post-content'][loop.index0] }}
+	</div>
+
+	<div class="footer">
+		{{ data['footer'] }}
+	</div>
+
+</div>
+
+</body>
+</html>

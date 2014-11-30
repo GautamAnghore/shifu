@@ -1,0 +1,7 @@
+{
+	"theme-name":"retric",
+	"author":"gautam",
+	"structures":["index-multi-post"],
+	"include-files":["style.css"]
+
+}

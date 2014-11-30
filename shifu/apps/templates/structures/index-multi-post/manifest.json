@@ -1,0 +1,11 @@
+{
+	"structure-name":"index-multi-post",
+	"description":"Index page with a meta-content block and a content block to show posts with hyperlinks",
+	"content":{
+		"title":"simple-text",
+		"links":"iterator-markdown",
+		"meta":"iterator-markdown",
+		"post-content":"iterator-markdown"
+	},
+	"author":"gautam"
+}

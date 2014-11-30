@@ -1,0 +1,7 @@
+{
+	"theme-name":"city-walk",
+	"author":"gautam",
+	"structures":["index-multi-post"],
+	"include-files":["style.css"]
+
+}
