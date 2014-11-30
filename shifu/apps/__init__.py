@@ -56,7 +56,7 @@ from pages import pages
 #registering all blueprints
 app.register_blueprint(master)
 app.register_blueprint(users)
-app.register_blueprint(editor,url_prefix='/editor')
+app.register_blueprint(editor,url_prefix='/dashboard/page/edit-content')
 app.register_blueprint(dashboard,url_prefix='/dashboard')
 app.register_blueprint(website,url_prefix='/dashboard/website')
 app.register_blueprint(pages,url_prefix='/dashboard/page')

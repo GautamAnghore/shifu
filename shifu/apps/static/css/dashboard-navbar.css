@@ -1,6 +1,6 @@
+
 .navbar{
     top: .75%;
-    font-family:sans-serif;
     box-shadow: 0px 0.7px 3px black;
     height: 9.25%;
     background-color: white;
@@ -26,11 +26,11 @@
     float: right;
     right: 5%;
     font-size: 15px;
-    margin:.5% .5%;
+    margin: 0.5% 0.5%;
 }
 
 .brand-active{
-    margin:.2% 4%
+    margin: 0.2% 4%
 }
 
 /* css for header <a> tags */

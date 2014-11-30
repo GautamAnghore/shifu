@@ -9,7 +9,7 @@
 
 .flip-container {
     width: 100%;
-	height: 34%;
+    height: 34%;
     display: inline-block;
     vertical-align: top;
     position: relative;
@@ -17,40 +17,40 @@
     margin: 0px;
 
 }
-	/* flip the pane when hovered */
-	.flip-container:hover .flipper {
-		transform: rotateY(180deg);
-	}
+    /* flip the pane when hovered */
+    .flip-container:hover .flipper {
+        transform: rotateY(180deg);
+    }
 
 .front, .back {
     height: 100%;
     width: 100%;
     backface-visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* flip speed goes here */
 .flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
+    transition: 0.6s;
+    transform-style: preserve-3d;
 
-	position: relative;
+    position: relative;
     height:100%;
 }
 
 /* front pane, placed above back */
 .front {
     padding-top: 37%;
-	z-index: 2;
-	/* for firefox 31 */
-	transform: rotateY(0deg);
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
 .back {
-	transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .front-icon {
@@ -94,17 +94,17 @@
 
 .website {
     margin: 5%;
-    margin-left: 21%;
+    margin-left: 18%;
 }
 
 .page {
     margin: 5%;
-    margin-left: 25%;
+    margin-left: 21%;
 }
 
 .setting {
     margin: 5%;
-    margin-left: 16%;
+    margin-left: 14%;
 }
 
 
@@ -116,13 +116,12 @@
 }
 
 .option {
-    font-family: 'roboto';
-    font-weight: 400;
+    
+    font-weight: 300;
     color: white;
 }
 
 .option:hover {
-    border-bottom: 1px solid white;
     text-decoration: none;
     color: white;
 }

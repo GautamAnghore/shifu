@@ -6,6 +6,7 @@ from forms import *
 import bleach
 import markdown
 
+'''
 @editor.route('/')
 def edit():
 	if 'username' in session:
@@ -30,3 +31,25 @@ def live():
 				return render_template('live.html',data="lorem ipsum")
 		else:
 			return render_template('editor.html',form=form,error='invalid validation')
+
+'''
+@editor.route('/',methods=['GET','POST'])
+def edit_content():
+	
+	if request.method == 'GET':
+		
+		return render_template('edit-content.html')
+
+	else:
+		header_list = request.form.getlist('header')
+		header = []
+		for data in header_list:
+			header.append(data)
+		links_list = request.form.getlist('links')
+		links = []
+		for data in links_list:
+			links.append(data)
+
+		print header
+		print links
+		return "done"

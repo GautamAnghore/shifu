@@ -1,0 +1,129 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }}-New Page
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('editor.static', filename='css/edit-content.css' ) }}" />
+    
+    <script type="text/javascript">
+        function createtextinstance(obj)
+        {
+            var newinstanceHTML = '<div class="instance" id="instance"><textarea class="textbox" name="';
+            newinstanceHTML +=obj.parentNode.children[0].children[0].name;
+            newinstanceHTML +='"></textarea><button class="btn"  onclick="removetextinstance(this)"><a><i class="glyphicon glyphicon-remove-sign"></a></i></button></div>';
+            
+            var instance = document.createElement('div');
+            instance.innerHTML = newinstanceHTML;
+            //var instance = document.createElement(newinstance);
+            var editorDiv = obj.parentNode;
+            editorDiv.insertBefore(instance.firstChild,obj);
+        }
+        
+        function removetextinstance(obj)
+        {
+            var editorDiv = obj.parentNode;
+            editorDiv.remove();
+            
+        }
+        
+        function createinputinstance(obj)
+        {
+            var newinstanceHTML = '<div class="col-sm-12"><div class="input-group col-sm-12"><input type="text" class="form-control container-input" id="inputlink" name="';
+
+            newinstanceHTML += obj.parentNode.children[0].children[0].children[0].name;
+            newinstanceHTML += '"><span class="input-group-addon glyphicon glyphicon-remove-sign glyphi" onclick="removeinputinstance(this)"><a></a></span></div><span class="help-block"></span></div>';
+
+            var instance = document.createElement('div');
+            instance.innerHTML = newinstanceHTML;
+            //var instance = document.createElement(newinstance);
+            var editorDiv = obj.parentNode;
+            editorDiv.insertBefore(instance.firstChild,obj);
+        }
+        
+        function removeinputinstance(obj)
+        {
+            var editorDiv = obj.parentNode.parentNode;
+            editorDiv.remove();
+            
+        }
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+ <div class="editor-area">
+    <form method="post" action="{{ url_for('editor.edit_content') }}">
+            <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">Page Name</h3>
+                <input type="submit" class="btn code-red top-button" value="publish"><i class="glyphicon glyphicon-print"></i> Publish
+                <button class="btn code-red top-button"><i class="glyphicon glyphicon-eye-open"></i> Live Preview</button>
+            </div>
+            <hr class="header-line" />
+            
+        <!-- ========options required for floating========= -->
+        <div class="edit-option-bar" id="edit-option-bar" >
+        <!-- Nav tabs -->
+            <ul class="nav nav-pills nav-justified" id="myTab">
+                <li class="active"><a class="opt" href="#heading" data-toggle="pill" >Heading</a></li>
+                <li class=""><a class="opt" href="#links" data-toggle="pill" >Links</a></li>
+                <!--<li class=""><a class="opt" href="#footer" data-toggle="pill" >footer</a></li>
+                <li class=""><a class="opt" href="#footer" data-toggle="pill" >footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>
+                <li class=""><a class="opt" href="#">footer</a></li>-->
+            </ul>
+        </div>
+        
+        <div class="related-divs">
+            <!-- Tab panes -->
+            <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade in active" id="heading">
+                
+                    <div class="instance" id="instance">
+                        <textarea class="textbox" name="header"></textarea>
+                        <button class="btn" onclick="removetextinstance(this)" ><a><i class="glyphicon glyphicon-remove-sign black"></i></a></button>
+                    </div>
+                
+                <span class="btn button text-instance-button green" onclick="createtextinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
+            </div>
+                
+            <div class="tab-pane fade" id="links">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group col-sm-12">
+                                    <input type="text" class="form-control container-input" id="inputlink" name="links">
+                                    <span class="input-group-addon glyphicon glyphicon-remove-sign glyphi" onclick="removeinputinstance(this)" ></span>
+                                </div>
+                                <span class="help-block"></span>
+                           </div>
+                            <span class="btn button input-instance-button green" onclick="createinputinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
+                        </div>
+                    
+                                        
+            </div>
+            <!--<div class="tab-pane fade" id="footer">
+                
+            </div>-->
+            </div>
+        </div>
+    </form>         
+</div>
+
+
+   
+   	
+{% endblock %}
