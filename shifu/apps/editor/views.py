@@ -85,7 +85,12 @@ def add_content(path):
 						for md in inputs[fieldname]['data']:
 							#bleaching the data
 							md = bleach.clean(md,strip=True)
-							html = markdown.markdown(md)
+
+							if structure_inputs[fieldname] == "iterator-markdown":
+								html = markdown.markdown(md)
+							else:
+								#for simple text we do not want to convert it to html
+								html = md
 
 							data = {'html':html,'markdown':md}
 							content[fieldname].append(data)
@@ -94,7 +99,12 @@ def add_content(path):
 						inputs[fieldname]['data'] = request.form[fieldname]
 						
 						md = bleach.clean(inputs[fieldname]['data'],strip=True)
-						html = markdown.markdown(md)
+
+						if structure_inputs[fieldname] == "iterator-markdown":
+							html = markdown.markdown(md)
+						else:
+							#for simple text we do not want to convert it to html
+							html = md
 
 						content[fieldname] = {'html':html,'markdown':md}
 
@@ -113,23 +123,83 @@ def add_content(path):
 
 
 
-@editor.route('/edit',methods=['GET','POST'])
-def edit_content():
+@editor.route('/edit/<path:path>',methods=['GET','POST'])
+def edit_content(path):
 	
-	if request.method == 'GET':
+	obj_pages = PagesDAO(database)
+	obj_structure = StructureDAO(database)
+
+	page = obj_pages.get_page_from_url(path)
+
+	if page is not None:
 		
-		return render_template('edit-content.html')
+		structure = obj_structure.get_structure(page['structure']['name'])
+
+		#structure for passing in templates
+		structure_inputs = structure['content']
+		inputs = {}
+		for fieldname in page['structure']['content']:
+			inputs[fieldname] = {}
+			inputs[fieldname]['type']=structure_inputs[fieldname]
+			if structure_inputs[fieldname] == "iterator-markdown" or structure_inputs[fieldname] == "iterator-text":
+				inputs[fieldname]['data'] = []
+				for item in page['structure']['content'][fieldname]:
+					inputs[fieldname]['data'].append(item['markdown'])
+			else:
+				inputs[fieldname]['data'] = page['structure']['content'][fieldname]['markdown']
+				
+			
+
+		if structure is not None:
+			
+			if request.method == 'GET':
+				return render_template('edit-content.html',inputs=inputs,page=page,path=path)
+
+			else:
+				content = {}
+				#process data
+				for fieldname in structure_inputs:
+										
+					if structure_inputs[fieldname] == "iterator-markdown" or structure_inputs[fieldname] == "iterator-text":
+						inputs[fieldname]['data'] = request.form.getlist(fieldname)
+						
+						content[fieldname] = []
+
+						for md in inputs[fieldname]['data']:
+							#bleaching the data
+							md = bleach.clean(md,strip=True)
+
+							if structure_inputs[fieldname] == "iterator-markdown":
+								html = markdown.markdown(md)
+							else:
+								#for simple text we do not want to convert it to html
+								html = md
+
+							data = {'html':html,'markdown':md}
+							content[fieldname].append(data)
+
+					else:
+						inputs[fieldname]['data'] = request.form[fieldname]
+						
+						md = bleach.clean(inputs[fieldname]['data'],strip=True)
+
+						if structure_inputs[fieldname] == "iterator-markdown":
+							html = markdown.markdown(md)
+						else:
+							#for simple text we do not want to convert it to html
+							html = md
+
+						content[fieldname] = {'html':html,'markdown':md}
+
+				if obj_pages.edit_page_content(path,content,sessions.logged_in()) is True:
+					return redirect( url_for('users.admin') )
+				else:
+					return render_template('edit-content.html',inputs=inputs,page=page,path=path)
+
+		else:
+			print "structure not found"
+			return redirect( url_for('users.admin') )
 
 	else:
-		header_list = request.form.getlist('header')
-		header = []
-		for data in header_list:
-			header.append(data)
-		links_list = request.form.getlist('links')
-		links = []
-		for data in links_list:
-			links.append(data)
-
-		print header
-		print links
-		return "done"
+		print "page not found"
+		return redirect( url_for('users.admin') )
