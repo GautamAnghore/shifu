@@ -109,6 +109,8 @@ def add_content(path):
 						content[fieldname] = {'html':html,'markdown':md}
 
 				if obj_pages.add_page_content(path,content,sessions.logged_in()) is True:
+					if env.check_indexset() is False:
+						env.set_indexpage(path)
 					return redirect( url_for('users.admin') )
 				else:
 					return render_template('add-content.html',inputs=inputs,page=page,path=path)

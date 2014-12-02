@@ -78,14 +78,17 @@ class Environment():
 		else:
 			return False
 
-	def set_indexset(self):
+	def set_indexpage(self,index):
 		 if self.check_indexset() is False:
-		 	if self.set_variable('step', 2) is True:
+		 	if self.set_variable('step', 2) and self.set_variable('index-page',index) is True:
 		 		return True
 		 	else:
 		 		return False
 		 else:
 		 	return False
+
+	def get_indexpage(self):
+		return self.get_variable('index-page')
 
 	def check_url_restricted(self,url):
 		#check if url is in restricted catagory
