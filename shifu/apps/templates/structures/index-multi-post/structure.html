@@ -16,10 +16,10 @@
 </script>
 -->
 	{% for file in data['includes']['css'] %}
-		<link rel="stylesheet" href="{{ file }}"/>
+		<link rel="stylesheet" href="{{ file|safe }}"/>
 	{% endfor %}
 	{% for file in data['includes']['js'] %}
-		<link rel="stylesheet" href="{{ file }}"/>
+		<link rel="stylesheet" href="{{ file|safe }}"/>
 	{% endfor %}	
 {% endblock %}
 </head>
@@ -30,14 +30,14 @@
 	<nav class="navigation-main">
 		<div class="heading">
 			<span>
-			{{ data['heading'] }}
+			{{ data['heading']|safe }}
                 </span>
 		</div>
 
 		<div class="links">
 			<ul>
 			{% for link in data['links'] %}
-			<li>{{ link }}</li>
+			<li>{{ link|safe }}</li>
 			{% endfor %}
 			</ul>
 		</div>
@@ -45,14 +45,19 @@
     
     {% for content in data['meta'] %}
     <div class="meta-content">
-            {{ content }}
+            {{ content|safe }}
     </div>
 	<div class="content">
-			{{ data['post-content'][loop.index0] }}
+			{{ data['post-content'][loop.index0]|safe }}
 	</div>
+	{% endfor %}
+
 
 	<div class="footer">
-		{{ data['footer'] }}
+		{% if data['footer'] %}
+			{{ data['footer']|safe }}
+		{% endif %}
+		made with shifu
 	</div>
 
 </div>

@@ -2,6 +2,7 @@
 	"theme-name":"city-walk",
 	"author":"gautam",
 	"structures":["index-multi-post"],
-	"include-files":["style.css"]
+	"include-files-css":["style.css"],
+	"include-files-js":[]
 
 }

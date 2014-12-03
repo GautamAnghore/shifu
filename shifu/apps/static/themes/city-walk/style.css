@@ -42,6 +42,12 @@ body {
     font-weight: 200;
 }
 
+p {
+    display:inline-block;
+    margin:0px;
+    padding:0px;
+}
+
 .body-wrapper{
     width:100%;
     height:100%;

@@ -1,7 +1,7 @@
 from apps import master
 from flask import render_template,url_for,redirect
 
-from apps import database 
+from apps import database
 
 import db
 
@@ -23,4 +23,67 @@ def index():
 def page_generator(path):
 
 	from apps.pages.db import PagesDAO
-	return "path %s" % path
+	from apps.website.db import StructureDAO
+	from apps.website.db import ThemeDAO
+	from apps.website.db import WebsiteDAO
+
+	#importing required db class
+	#importing locally as globally is causing an error in importing env in pages
+	
+	obj_pages = PagesDAO(database)
+	obj_structure = StructureDAO(database)
+	obj_theme = ThemeDAO(database)
+	obj_website = WebsiteDAO(database)
+
+	if obj_pages.check_url_exists(path):
+
+		#get page's all the information
+		page = obj_pages.get_page_from_url(path)
+
+		#the structure page is using
+		structure_name = page['structure']['name']
+		
+		#getting structure dict
+		structure = obj_structure.get_structure(structure_name)
+
+		#formatting data variable for the output
+		data = {}
+		for fieldname in page['structure']['content']:
+
+			if structure['content'][fieldname] == "iterator-markdown" or structure['content'][fieldname] == "iterator-text":
+				data[fieldname] = []
+				for list_item in page['structure']['content'][fieldname]:
+					data[fieldname].append(list_item['html'])
+			else:
+				data[fieldname] = page['structure']['content'][fieldname]['html']
+
+		#getting structure path
+		structure_path = "structures/" + structure['dirname'] +"/structure.html"
+
+		#getting theme name
+		theme_name = obj_website.get_website_theme()
+
+		#getting theme
+		theme = obj_theme.get_theme(theme_name)
+
+		#theme directory
+		theme_path = "themes/" + theme['dirname'] +"/"
+
+		data['includes'] = {}
+		data['includes']['css'] = []
+		data['includes']['js'] = []
+
+		for item in theme['include-files-css']:
+			data['includes']['css'].append(url_for('static',filename=theme_path+item))
+
+		for item in theme['include-files-js']:
+			data['includes']['js'].append(url_for('static',filename=theme_path+item))
+		
+		data['title'] = obj_website.get_website_name() + page['page-name']
+
+		return render_template(structure_path,data=data)
+
+
+	else:
+
+		return "error 404 page not found %s" % path
