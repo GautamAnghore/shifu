@@ -114,6 +114,10 @@ p {
     margin:40px;
     color:#FBF6CE;
 }
+.links ul li a {
+    text-decoration: none;
+    color:#FBF6CE;
+}
 
 .content {
     position:relative;
@@ -125,13 +129,33 @@ p {
     padding:20px;
     box-shadow: -0.7px 0px 6px 0px #000; 
 }
+
 .content h1 {
-    font-weight: 400;
+    font-weight: 300;
+    color:#DE564B;
 }
 
 .content h2 {
     font-weight: 300;
+    color:#DE564B;
 }
+
+.content p {
+    display:block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.content code {
+    background:#999;
+    color:#fff;
+    font-family: monospace;
+}
+.content strong {
+    font-weight: 300;
+}
+
 .meta-content {
     position:relative;
     left:10%;

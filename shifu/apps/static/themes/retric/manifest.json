@@ -2,7 +2,7 @@
 	"theme-name":"retric",
 	"author":"gautam",
 	"structures":["index-multi-post","some-random-structure"],
-	"include-files-css":["style.css"],
+	"include-files-css":[],
 	"include-files-js":[]
 
 }

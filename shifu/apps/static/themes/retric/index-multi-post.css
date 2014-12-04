@@ -1,12 +1,12 @@
 @font-face {
     font-family : 'Laila';
-    src: url('./font/Laila/Laila-Light.ttf');
+    src: url('./font/Laila/Laila-Regular.ttf');
     font-weight: 100;
 }
 @font-face {
     font-family : 'Laila';
     src: url('./fonts/Laila/Laila-Regular.ttf');
-    font-weight: 300;
+    font-weight: 200;
 }
 @font-face {
     font-family: 'Laila';
@@ -145,6 +145,23 @@ p {
 .content h2 {
     font-weight: 600;
     color:#DE564B;
+}
+
+.content p {
+    display:block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.content code {
+    background:#999;
+    color:#fff;
+    border: dashed 1px #ffffff;
+    font-family: monospace;
+}
+.content strong {
+    font-weight: 900;
 }
 .meta-content {
     position:relative;
