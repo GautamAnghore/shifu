@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Shifu | Dashboard</title>
+        <script src="javascript/jquery-2.1.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard-setting-users.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
+        <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        <script>
+            function showdescription(obj)
+            {
+                var text = obj.lastElementChild.innerHTML;
+                var textbox = document.getElementById("jumbotron");
+                textbox.style.display = "block";
+                textbox.innerHTML = text;
+            }
+            
+            function usercolor()
+            {
+                var colors = ['#f65a5b', '#1fda9a','#28abe3'];
+                var user_icon = document.getElementsByClassName('user-icon')
+                var x;
+                for (x=0 ; x<user_icon.length ; x++)
+                {
+                    var random_color = colors[Math.floor(Math.random() * colors.length)];
+                    user_icon[x].style.color = random_color;
+                }
+            }
+        </script>
+    </head>
+    <body onload="">
+        
+    <!--      ==============================NAVBAR STARTS =================================    -->
+    <div class="bground">
+        <nav>    
+        <div class="navbar navbar-default navbar-fixed-top">
+            <img class="header-pallete" src="pallet/Color-Palette-Post-03-Fitz.png" />
+                    <!--navigation does here-->  
+            <ul class="nav">  
+                <li class="brand-active">  
+                <a class="brand" href="#">Shifu</a>  
+                </li>  
+                <!--<li class="navigation_opt"><a href="#">Actions</a></li>-->  
+                <li  class="navigation_opt">
+                    
+                </li>
+                <li class="navigation_opt btn-group">
+                    <a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a>
+                    <span type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </span>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">About</a></li>
+                        <!--<li><a href="#"></a></li>
+                        <li><a href="#"></a></li>-->
+                    </ul>
+                </li>  
+            </ul>  
+        </div>
+            <div class="logo-div">
+            <img class="logo" src="images/logo_yellowshadow.png" />
+            </div>
+        </nav>
+    </div>
+        <!--                          e======= navbar ends ===========                               -->
+        
+        <!-- ================================== Dashboard options start ================================ -->
+        <!-- =========== website =======-->
+    <div class="dashboard">
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front blue">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-globe dashboard-glyphicon"></span></a>
+                    <p>Website</p>
+                </div>
+		      </div>
+		      <div class="back dark-blue">
+                <div class="back-option-website" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-bookmark back-glyphi website"></span>  Website Name</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-picture back-glyphi website"></span>  Change Theme</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-tree-conifer back-glyphi website"></span>  Refresh Environment</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== page =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front green">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-list-alt dashboard-glyphicon"></span></a>
+                    <p>Pages</p>
+                </div>
+		      </div>
+		      <div class="back dark-green">
+                <div class="back-option-page" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-plus back-glyphi page"></span>  Add page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-trash back-glyphi page"></span>  Delete Page</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== settings =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front code-red">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-cog dashboard-glyphicon"></span></a>
+                    <p>Settings</p>
+                </div>
+		      </div>
+		      <div class="back dark-code-red">
+                <div class="back-option-setting" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-info-sign back-glyphi setting"></span>  Profile</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-barcode back-glyphi setting"></span>  Change Password</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-user back-glyphi setting"></span>  Users</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+    </div>
+        <!-- ==================================== dashboard ends ========================== -->
+        
+        <!-- =================================== page info form starts =================== -->
+    <div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">User Information</h3>
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= users information form ==================== -->
+        
+        <div class="user-info-area">
+            
+            <!-- =============for a single user ============== -->
+            <div class="user-icon-wrapper" onclick="showdescription(this)">
+                <i class="glyphicon glyphicon-user user-icon"></i>
+                <p>User Name1</p>
+                <div class="user-description">
+                    <div class="description-user-name">User Name1</div>
+                    <div class="user-create-time">Created: Nov 17,2014</div>
+                    <span class="btn button delete-user"><i class="glyphicon glyphicon-trash delete-user-glyphicon"></i> Delete User</span>
+                    <span class="btn button save-priveleges"><i class="glyphicon glyphicon-floppy-saved save-priveleges-glyphicon"></i> Save Priveleges</span>
+                    <div class="available-pages">
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            
+            <div class="user-icon-wrapper" onclick="showdescription(this)">
+                <i class="glyphicon glyphicon-user user-icon"></i>
+                <p>User Name2</p>
+                <div class="user-description">
+                    <div class="description-user-name">User Name2</div>
+                    <div class="user-create-time">Created: Nov 17,2014</div>
+                    <span class="btn button delete-user"><i class="glyphicon glyphicon-trash delete-user-glyphicon"></i> Delete User</span>
+                    <span class="btn button save-priveleges"><i class="glyphicon glyphicon-floppy-saved save-priveleges-glyphicon"></i> Save Priveleges</span>
+                    <div class="available-pages">
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-icon-wrapper" onclick="showdescription(this)">
+                <i class="glyphicon glyphicon-user user-icon"></i>
+                <p>User Name3</p>
+                <div class="user-description">
+                    <div class="description-user-name">User Name3</div>
+                    <div class="user-create-time">Created: Nov 17,2014</div>
+                    <span class="btn button delete-user"><i class="glyphicon glyphicon-trash delete-user-glyphicon"></i> Delete User</span>
+                    <span class="btn button save-priveleges"><i class="glyphicon glyphicon-floppy-saved save-priveleges-glyphicon"></i> Save Priveleges</span>
+                    <div class="available-pages">
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        
+            
+        </div>
+        <div class="extra-content"></div>
+        
+        <div class="navbar-default jumbotron" id="jumbotron" >
+            
+        </div>
+        
+        
+        
+    </div>
+    </body>
+</html>

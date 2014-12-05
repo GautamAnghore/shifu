@@ -78,14 +78,12 @@ def page_generator(path):
 		structure_specific_theme = url_for('static',filename=theme_path + structure['_id'] +".css")
 
 		if os.path.isfile("./apps" + structure_specific_theme):
-			print "yes css"
 			data['includes']['css'].append(structure_specific_theme)
 
 		#structure specific js
 		structure_specific_js = url_for('static',filename=theme_path + structure['_id'] +".js")
 
 		if os.path.isfile("./apps" + structure_specific_js):
-			print "yes js"
 			data['includes']['js'].append(structure_specific_js)
 
 		for item in theme['include-files-css']:
@@ -94,7 +92,7 @@ def page_generator(path):
 		for item in theme['include-files-js']:
 			data['includes']['js'].append(url_for('static',filename=theme_path+item))
 		
-		data['title'] = obj_website.get_website_name() + page['page-name']
+		data['title'] = obj_website.get_website_name() + " : " + page['page-name']
 
 		return render_template(structure_path,data=data)
 

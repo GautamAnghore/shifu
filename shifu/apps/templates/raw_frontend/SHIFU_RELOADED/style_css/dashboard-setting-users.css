@@ -6,88 +6,34 @@
     left: 14%;
 }
 
-.page-holder{
-    position: absolute;
-    height:auto;
-    width:500px;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-}
-
-.page-wrapper {
+.user-info-area {
     position: absolute;
     width: 90%;
     left: 5%;
     padding: 10px;
-}
-
-.single-page-div {
-    display: inline-block;
-    position: relative;
-    height: 150px;
-    width: 120px;
-    border-radius: 4px;
-    margin: 20px;
-}
-
-.page-checkbox{
-    position: relative;
-    display: inline-block;
-    left: 5px;
-}
-
-.checkbox {
-    
-}
-
-.page-name {
-    position: relative;
-    margin-top: 30%;
     text-align: center;
+    border-radius: 10px;
+    background-color:transparent;
+    border: 0px #aaa;
+    border-style: dashed;
+}
+
+.user-icon-wrapper {
+    position: relative;
+    display: inline-block;
     height: auto;
-    bottom: 0px;
-    color: white;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
+    width: auto;
+    margin: 40px;
+}
+
+.user-icon-wrapper p {
     font-family: 'roboto';
     font-weight: 400;
 }
 
-.extra-content {
-    position: relative;
-    margin-top: 10.1%;
-}
-
-.page-description {
-    position: fixed;
-    display:none;
-    z-index: 20;
-    opacity: 0;
-    left: 14%; right: 0px;
-    width: 200px; 
-}
-
-.delete-page {
-    float: right;
-    position: relative;
-    background-color: #f65a5b;
-    height: 30px;
-    width: 20%;
-    border: 2px solid #f65a5b;
-    color: white;
-    font-family: 'roboto';
-    font-weight: 300;
-    font-size: 16px;
-    padding: 2px;
-}
-
-.delete-page:hover {
-    background-color: white;
-    border: 2px solid #f65a5b;
-    color: #f65a5b;
+.user-icon {
+    font-size: 100px;
+    color: #aaa;
 }
 
 .jumbotron {
@@ -102,7 +48,71 @@
     border-radius: 0px;
 }
 
-.description-page-name {
+.user-name {
+    position: relative;
+    margin-top: 30%;
+    text-align: center;
+    height: auto;
+    bottom: 0px;
+    color: white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    font-family: 'roboto';
+    font-weight: 400;
+}
+
+.user-description {
+    position: fixed;
+    display:none;
+    z-index: 20;
+    opacity: 0;
+    left: 14%; right: 0px;
+    width: 200px; 
+}
+
+.delete-user {
+    float: right;
+    position: relative;
+    background-color: #f65a5b;
+    height: 30px;
+    width: 20%;
+    border: 2px solid #f65a5b;
+    color: white;
+    font-family: 'roboto';
+    font-weight: 300;
+    font-size: 16px;
+    padding: 2px;
+    margin: auto 5px;
+}
+
+.save-priveleges{
+    float: right;
+    position: relative;
+    background-color: #1fda9a;
+    height: 30px;
+    width: 20%;
+    border: 2px solid #1fda9a;
+    color: white;
+    font-family: 'roboto';
+    font-weight: 300;
+    font-size: 16px;
+    padding: 2px;
+    margin: auto 5px;
+}
+
+.delete-user:hover {
+    background-color: white;
+    border: 2px solid #f65a5b;
+    color: #f65a5b;
+}
+
+.save-priveleges:hover {
+    background-color: white;
+    border: 2px solid #1fda9a;
+    color: #1fda9a;
+}
+
+.description-user-name {
     position: relative;
     display: inline-block;
     float: left;
@@ -112,11 +122,11 @@
     font-family: 'roboto';
 }
 
-.delete-page-glyphicon {
+.delete-user-glyphicon, .save-priveleges-glyphicon {
     margin-right:10px;
 }
 
-.page-create-time {
+.user-create-time {
     position: relative;
     float: left;
     display: inline-block;
@@ -128,27 +138,24 @@
     font-family: 'roboto';
 }
 
-.description-text {
+.available-pages {
     position: relative;
+    width: 100%;
     clear: both;
     font-weight: 100;
-    margin-top: 50px;
     font-size: 18px;
     font-family: 'roboto';
 }
 
-/*
-.close-description-button {
-    float: right;
-    font-size: 20px;
-    right: 10px;
-    top: 10px;
-    color: #39d1b4;
+.checkbox {
+    display: inline-block;
+    position: relative;
+    float: inherit;
+    color: #1fda9a;
+    margin: 10px;
 }
 
-.close-description-button:hover {
-    color: white;
-    background-color: #1fda9a
+.extra-content {
+    position: relative;
+    margin-top: 46%;
 }
-*/
-

@@ -2,45 +2,24 @@
 <html>
     <head>
         <title>Shifu | Dashboard</title>
-        <script src="javascript/jquery-2.1.1.js"></script>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
         <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
-        <link type="text/css" rel="stylesheet" href="style_css/dashboard-page-remove.css" />
         <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard-main.css" />
         <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-        <script type"text/javascript">
+        <script>
             function showdescription(obj)
             {
                 var text = obj.lastElementChild.innerHTML;
                 var textbox = document.getElementById("jumbotron");
-                var radio = obj.firstElementChild.firstElementChild;
-                radio.checked = true;
                 textbox.style.display = "block";
                 textbox.innerHTML = text;
             }
             
-            function uncheckothers(obj)
-            {
-                var allcheckbox = document.getElementsByName("radio-button");
-                var checkbox_except_this = allcheckbox.remove(obj);
-                checkbox_except_this.checked = false;
-            }
-            
-            function usercolor()
-            {
-                var colors = ['#f65a5b', '#1fda9a','#28abe3'];
-                var page_icon = document.getElementsByClassName('single-page-div');
-                var x;
-                for (x=0 ; x<page_icon.length ; x++)
-                {
-                    var random_color = colors[Math.floor(Math.random() * colors.length)];
-                    page_icon[x].style.backgroundColor = random_color;
-                }
-            }
         </script>
     </head>
-    <body onload="usercolor()">
+    <body>
         
     <!--      ==============================NAVBAR STARTS =================================    -->
     <div class="bground">
@@ -62,7 +41,7 @@
             </div>
         </nav>
     </div>
-        <!--                          e======= navbar ends ===========                               -->
+        <!-- ======= navbar ends =========== -->
         
         <!-- ================================== Dashboard options start ================================ -->
         <!-- =========== website =======-->
@@ -120,162 +99,154 @@
 	       </div>
         </div>
     </div>
-        <!-- ==================================== dashboard ends ========================== -->
-        
-        <!---- =====================  rest of page part========================================= -->
+        <!-- ==================================Dashboard options end =================================== -->
+
+        <!-- =================================== dashboard main matter starts here ======================= -->
     <div class="page-info-area">
         <!-- ====== heading ======-->
             <div class="heading">
-                <h3 class="heading-text">Remove page</h3>
+                <h3 class="heading-text">Website Name</h3>
             </div>
             <hr class="header-line" />
-        <!-- ========================================= delete page part ========================= ----------------->
+        <!-- ========================================= delete page part =========================-->
         <div class="page-wrapper">
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div code-red" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name1</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div red" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name2</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div blue" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name3</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div green" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name4</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div brown" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name5</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div cream" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name6</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div green" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name7</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div code-red" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name8</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div red" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name9</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div blue" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name10</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
+            <div class="single-page-div green" onclick="showdescription(this)">
                 <div class="page-name">Page Name</div>
                 <div class="page-description">
                     <div class="description-page-name">Page Name11</div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
-            <div class="single-page-div" onclick="showdescription(this)">
-                <div class="page-checkbox">
-                    <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
-                </div>
-                <div class="page-name">Page Name</div>
+                        
+            
+            <!-- ================================= div to add extra page =======================-->
+            <div class="add-page-div">
+                <div class="add-page-symbol-wrapper">+</div>
                 <div class="page-description">
-                    <div class="description-page-name">Page Name12</div>
+                    <div class="description-page-name"></div>
                     <div class="page-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-page" value="Delete Page" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Delete page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit page</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-pencil description-button-glyphicon"></i> Edit content</span>
+                    <span class="btn button description-button" value="Delete Page" ><i class="glyphicon glyphicon-globe description-button-glyphicon"></i> Change URL</span>
                     <div class="description-text">Description : Includes 200 glyphs in font format from the Glyphicon Halflings set.</div>
                 </div>
             </div>
             
+            <!-- ================================= extra content block for proper scrolling ========== -->
             <div class="extra-content">
             </div>
             
@@ -286,6 +257,6 @@
             <input type="submit" class="btn button" value="Edit Content">
             <input type="submit" class="btn button" value="Change URL"><br />-->
         </div>
-    </div>
+    </div>    
     </body>
-</html>
+    </html>

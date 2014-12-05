@@ -22,26 +22,12 @@ def admin():
 	# task of admin function is to redirect to appropriate next stage : dashboard or sign in or sign up
 	username = sessions.logged_in()
 	if username is not None:
-		return redirect( url_for('.dashboard',username=username))
+		return redirect( url_for('dashboard.dashboard_home',username=username))
 	else:
 		if env.check_accountset() is True:
 			return redirect( url_for('.signin') )
 		else:
 			return redirect( url_for('.signup') )
-
-
-@users.route('/dashboard/<username>')
-@nocache
-def dashboard(username):
-
-	if sessions.logged_in(username) is not None:
-		resp = make_response(render_template('dashboard-layout.html',username=username,alert=alert.get_alert()))
-		alert.reset()
-		return resp
-	else: 
-		#return render_template('errors/401.html',message="invalid user,access denied"),401
-		alert.error('Make sure to Log In')
-		return redirect( url_for('.admin') )
 
 @users.route('/signup',methods=['GET','POST'])
 def signup():

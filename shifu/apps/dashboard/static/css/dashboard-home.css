@@ -6,17 +6,6 @@
     left: 14%;
 }
 
-.page-holder{
-    position: absolute;
-    height:auto;
-    width:500px;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-}
-
 .page-wrapper {
     position: absolute;
     width: 90%;
@@ -33,6 +22,21 @@
     margin: 20px;
 }
 
+.add-page-div {
+    display: inline-block;
+    position: relative;
+    border: 2px solid #aaa;
+    opacity: 0.4;
+    height: 150px;
+    width: 120px;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+.add-page-div:hover {
+    opacity: 1;
+}
+
 .page-checkbox{
     position: relative;
     display: inline-block;
@@ -45,7 +49,7 @@
 
 .page-name {
     position: relative;
-    margin-top: 30%;
+    margin-top: 50%;
     text-align: center;
     height: auto;
     bottom: 0px;
@@ -56,6 +60,21 @@
     font-weight: 400;
 }
 
+.add-page-symbol-wrapper {
+    position: relative;
+    text-align: center;
+    bottom: 0px;
+    color: #aaa;
+    font-family: 'roboto';
+    font-weight: 500;
+    font-size: 69px;
+    top: 20px;
+}
+
+.add-page-symbol {
+    
+}
+
 .extra-content {
     position: relative;
     margin-top: 10.1%;
@@ -63,31 +82,33 @@
 
 .page-description {
     position: fixed;
-    display:none;
+    display: none;
     z-index: 20;
     opacity: 0;
     left: 14%; right: 0px;
     width: 200px; 
 }
 
-.delete-page {
+.description-button {
     float: right;
     position: relative;
-    background-color: #f65a5b;
+    background-color: #1fda9a;
     height: 30px;
-    width: 20%;
-    border: 2px solid #f65a5b;
+    width: 15%;
+    border: 2px solid #1fda9a;
     color: white;
     font-family: 'roboto';
     font-weight: 300;
     font-size: 16px;
     padding: 2px;
+    margin: auto 5px;
+    text-overflow: clip;
 }
 
-.delete-page:hover {
+.description-button:hover {
     background-color: white;
-    border: 2px solid #f65a5b;
-    color: #f65a5b;
+    border: 2px solid #1fda9a;
+    color: #1fda9a;
 }
 
 .jumbotron {
@@ -112,8 +133,8 @@
     font-family: 'roboto';
 }
 
-.delete-page-glyphicon {
-    margin-right:10px;
+.description-button-glyphicon {
+    margin: auto 10px;
 }
 
 .page-create-time {
@@ -135,6 +156,35 @@
     margin-top: 50px;
     font-size: 18px;
     font-family: 'roboto';
+}
+
+.add-page {
+    display: inline-block;
+    position: relative;
+    height: 150px;
+    width: 120px;
+    opacity: 0.5;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.add-page:hover {
+    opacity: 1;
+}
+
+.add-page-glyphicon-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-size: 50px;
+    color: #aaa;
+}
+
+.add-page-glyphicon {
+    top: 40px;
 }
 
 /*

@@ -44,7 +44,7 @@ def add():
 					#check if url already exists
 					#url not exists already, can add url 
 					if obj_page.add_page_meta(form.pagename.data,form.pageurl.data,form.structurename.data,form.pagedesc.data,sessions.logged_in()) is True:
-						return redirect( url_for('users.admin') )
+						return redirect( url_for('editor.add_content',path=form.pageurl.data) )
 					else:
 						resp = make_response(render_template('add-page.html',form=form,username=sessions.logged_in()))
 						return resp

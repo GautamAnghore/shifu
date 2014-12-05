@@ -23,7 +23,7 @@ class PagesDAO():
 		modifiedby = createdby
 
 		structure = { 'name':structurename }
-		new_page = { 'url':url, 'page-name':pagename, 'page-description':pagedesc, 'structure':structure, 'createdby':createdby, 'modifiedby':modifiedby, 'datamodified':datemodified}
+		new_page = { 'url':url, 'page-name':pagename, 'page-description':pagedesc, 'structure':structure, 'createdby':createdby, 'modifiedby':modifiedby, 'datemodified':datemodified}
 
 		try:
 			self.collection.insert(new_page, safe=True)
@@ -95,10 +95,11 @@ class PagesDAO():
 	def edit_page_url(self,old_url,new_url,modifiedby):
 		#edit the url of page
 		page_id = self.get_id_from_url(old_url)
+		datemodified = datetime.now()
 
 		if page_id is not None:
 			try:
-				self.collection.update({'_id':page_id},{'$set':{'url':new_url,'modifiedby':modifiedby}})
+				self.collection.update({'_id':page_id},{'$set':{'url':new_url,'modifiedby':modifiedby,'datemodified':datemodified}})
 			except:
 				print "pymongo error : cannot update the url"
 				return False
@@ -125,10 +126,10 @@ class PagesDAO():
 		#edit the pagename and pagedescription
 
 		page_id = self.get_id_from_url(url)
-
+		datemodified = datetime.now()
 		if page_id is not None:
 			try:
-				self.collection.update({'_id':page_id},{'$set':{'page-name':pagename,'page-description':pagedesc,'modifiedby':modifiedby}})
+				self.collection.update({'_id':page_id},{'$set':{'page-name':pagename,'page-description':pagedesc,'modifiedby':modifiedby,'datemodified':datemodified}})
 			except:
 				print "pymongo error : cannot update page meta"
 				return False
@@ -140,7 +141,6 @@ class PagesDAO():
 	def add_page_content(self,url,content,modifiedby):
 
 		page_id = self.get_id_from_url(url)
-		
 		if page_id is not None:
 			try:
 				self.collection.update({'_id':page_id},{'$set':{'structure.content':content}})
@@ -155,10 +155,10 @@ class PagesDAO():
 	def edit_page_content(self,url,content,modifiedby):
 
 		page_id = self.get_id_from_url(url)
-		
+		datemodified = datetime.now()
 		if page_id is not None:
 			try:
-				self.collection.update({'_id':page_id},{'$set':{'structure.content':content}})
+				self.collection.update({'_id':page_id},{'$set':{'structure.content':content,'modifiedby':modifiedby,'datemodified':datemodified}})
 			except:
 				print "pymongo error: cannot update with content"
 				return False
@@ -166,6 +166,16 @@ class PagesDAO():
 			return True
 		else:
 			return False
+
+	def get_all_pages(self):
+
+		try:
+			pages_cur = self.collection.find()
+		except:
+			print "pymongo error : cannot find all pages"
+			return None
+
+		return pages_cur
 
 
 
