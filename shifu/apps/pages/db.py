@@ -177,6 +177,15 @@ class PagesDAO():
 
 		return pages_cur
 
+	def delete_page(self,page_id):
+
+		try:
+			self.collection.remove({'_id':page_id})
+		except:
+			print "pymongo error : delete_page error"
+			return False
+
+		return True
 
 
 

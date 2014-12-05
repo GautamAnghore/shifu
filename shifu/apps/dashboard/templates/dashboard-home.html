@@ -16,6 +16,19 @@
         textbox.style.display = "block";
         textbox.innerHTML = text;
     }
+    function usercolor()
+    {
+        //'#f65a5b', '#1fda9a','#28abe3',
+        //'#397367','#9E1946'
+        var colors = ['#5FAD41','#2D936C','#D36060'];
+        var page_icon = document.getElementsByClassName('single-page-div');
+        var x;
+        for (x=0 ; x<page_icon.length ; x++)
+        {
+            var random_color = colors[Math.floor(Math.random() * colors.length)];
+            page_icon[x].style.backgroundColor = random_color;
+        }
+    }
     
 </script>
 {% endblock %}
@@ -31,7 +44,7 @@
 
             <div class="page-wrapper">
             {% for page in pages %}
-                <div class="single-page-div code-red" onclick="showdescription(this)">
+                <div class="single-page-div" onclick="showdescription(this)">
                     <div class="page-name">{{ page['page-name'] }}</div>
                     
                     <div class="page-description">
@@ -54,20 +67,23 @@
                     </div>
                 </div>
             {% endfor %}
-            <!-- =========================== div to add extra page =======================-->
-            <div class="add-page-div">
-                <a href="{{ url_for('pages.add') }}">
-                <div class="add-page-symbol-wrapper">+</div>
-                </a>
+                <script>
+                    usercolor();
+                </script>
+                <!-- =========================== div to add extra page =======================-->
+                <div class="add-page-div">
+                    <a href="{{ url_for('pages.add') }}">
+                    <div class="add-page-symbol-wrapper">+</div>
+                    </a>
+                </div>
             </div>
-
             <!-- ================== extra content block for proper scrolling ========== -->
             <div class="extra-content">
             </div>
             
-        </div>
+    
         <div class="jumbotron navbar-default" id="jumbotron">
         </div>
-
+    </div>
 
 {% endblock %}
