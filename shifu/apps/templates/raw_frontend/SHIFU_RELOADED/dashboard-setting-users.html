@@ -31,7 +31,7 @@
             }
         </script>
     </head>
-    <body onload="">
+    <body>
         
     <!--      ==============================NAVBAR STARTS =================================    -->
     <div class="bground">
@@ -43,24 +43,29 @@
                 <li class="brand-active">  
                 <a class="brand" href="#">Shifu</a>  
                 </li>  
-                <!--<li class="navigation_opt"><a href="#">Actions</a></li>-->  
-                <li  class="navigation_opt">
-                    
-                </li>
-                <li class="navigation_opt btn-group">
+                <!--<li class="navigation_opt"><a href="#">Actions</a></li>-->
+                <li class="navigation_opt btn-group pull-right">
                     <a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a>
-                    <span type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                </li>
+                <li  class="navigation_opt">
+                    <a href="#"><span class="glyphicon glyphicon-globe"></span> Website</a>
+                </li>
+                <li  class="navigation_opt">
+                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Dashboard</a>
+                </li>
+            </ul>
+            <div class="down-arrow pull-right">
+                <span type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </span>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">About</a></li>
-                        <!--<li><a href="#"></a></li>
-                        <li><a href="#"></a></li>-->
-                    </ul>
-                </li>  
-            </ul>  
+                </span>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#"><i class="glyphicon glyphicon-send"></i> Help</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-info-sign"></i> About</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-edit"></i> Markdown Basics</a></li>
+                    <!--<li><a href="#"></a></li>
+                    <li><a href="#"></a></li>-->
+                </ul>
+            </div>
         </div>
             <div class="logo-div">
             <img class="logo" src="images/logo_yellowshadow.png" />
@@ -101,7 +106,8 @@
 		      <div class="back dark-green">
                 <div class="back-option-page" >
                     <a href="#" class="option"><span class="glyphicon glyphicon-plus back-glyphi page"></span>  Add page</a><br />
-                    <a href="#" class="option"><span class="glyphicon glyphicon-trash back-glyphi page"></span>  Delete Page</a>
+                    <a href="#" class="option"><span class="glyphicon glyphicon-trash back-glyphi page"></span>  Delete Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-home back-glyphi page"></span>  Change Index Page</a>
                 </div>
 		      </div>
 	       </div>
@@ -132,6 +138,7 @@
         <!-- ====== heading ======-->
             <div class="heading">
                 <h3 class="heading-text">User Information</h3>
+                <button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>
             </div>
             <hr class="header-line" />
         
@@ -214,7 +221,9 @@
                     </div>
                 </div>
             </div>
-                        
+            <!-- ================================ add user icon ========================== -->
+            
+            <!-- ========================================================================= -->
             
         </div>
         <div class="extra-content"></div>

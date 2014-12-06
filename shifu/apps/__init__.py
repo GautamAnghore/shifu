@@ -60,3 +60,8 @@ app.register_blueprint(dashboard,url_prefix='/dashboard')
 app.register_blueprint(website,url_prefix='/dashboard/website')
 app.register_blueprint(pages,url_prefix='/dashboard/page')
 app.register_blueprint(editor,url_prefix='/dashboard/page/content')
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+	return render_template('404.html'),404

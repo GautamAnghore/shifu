@@ -1,4 +1,5 @@
 
+
 .navbar{
     top: .75%;
     box-shadow: 0px 0.7px 3px black;
@@ -24,13 +25,13 @@
 .navigation_opt{
     position: relative;
     float: right;
-    right: 5%;
+    right: 4%;
     font-size: 15px;
-    margin: 0.5% 0.5%;
+    margin:.5% .5%;
 }
 
 .brand-active{
-    margin: 0.2% 4%
+    margin:.2% 4%
 }
 
 /* css for header <a> tags */
@@ -51,6 +52,25 @@
 
 .brand:hover{
     color: #39d1b4;
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.down-arrow {
+    position: relative;
+    display: inline-block;
+    float: right;
+    right:1%;
+    padding: 0px;
+    top:-80%;
+    border: 1px solid #777;
+    border-radius: 50%;
+}
+
+.down-arrow:hover {
+    border: 1px solid #39d1b4;
 }
 
 .navigation_opt a {

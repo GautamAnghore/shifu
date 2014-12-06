@@ -70,17 +70,17 @@
 
 .back-option-website
 {
-    margin-top: 21%;
+    margin-top: 25%;
     width: 100%;
-    height: 65%;
-    padding-top: 17%;
+    height: 55%;
+    padding-top: 6%;
 }
 
 .back-option-page
 {
-    margin-top: 21%;
+    margin-top: 30%;
     width: 100%;
-    height: 65%;
+    height: 45%;
     padding-top: 1%;
 }
 
@@ -94,12 +94,12 @@
 
 .website {
     margin: 5%;
-    margin-left: 18%;
+    margin-left: 8%;
 }
 
 .page {
     margin: 5%;
-    margin-left: 21%;
+    margin-left: 10%;
 }
 
 .setting {

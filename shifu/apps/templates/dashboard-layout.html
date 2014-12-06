@@ -24,8 +24,26 @@ Shifu-Dashboard
 		                </li>  
 		                <!--<li class="navigation_opt"><a href="#">Actions</a></li>  
 		                <li  class="navigation_opt"><a href="#">flower</a></li>-->
-		                <li class="navigation_opt"><a href=" {{ url_for('users.signout',username=username) }}"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
-		            </ul>  
+		                <li class="navigation_opt"><a href=" {{ url_for('users.signout',username=username) }}"><span class="glyphicon glyphicon-user"></span> Logout</a>                
+		                <li  class="navigation_opt">
+		                    <a href="{{ url_for('master.index') }}" target="_blank" ><span class="glyphicon glyphicon-globe"></span> Website</a>
+		                </li>
+		                <li  class="navigation_opt">
+		                    <a href="{{ url_for('users.admin') }}"><span class="glyphicon glyphicon-tasks"></span> Dashboard</a>
+		                </li>
+		            </ul>
+		            <div class="down-arrow pull-right">
+		                <span type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+		                        <span class="caret"></span>
+		                </span>
+		                <ul class="dropdown-menu" role="menu">
+		                    <li><a href="#"><i class="glyphicon glyphicon-send"></i> Help</a></li>
+		                    <li><a href="#"><i class="glyphicon glyphicon-info-sign"></i> About</a></li>
+		                    <li><a href="#"><i class="glyphicon glyphicon-edit"></i> Markdown Basics</a></li>
+		                    <!--<li><a href="#"></a></li>
+		                    <li><a href="#"></a></li>-->
+		                </ul>
+		            </div>  
 		        </div>
 	            <div class="logo-div">
 	            	<img class="logo" src="{{ url_for('static',filename='media/images/logo.png') }}" />
@@ -50,7 +68,8 @@ Shifu-Dashboard
 		      <div class="back dark-blue">
                 <div class="back-option-website" >
                     <a href="{{ url_for('website.name') }}" class="option"><span class="glyphicon glyphicon-bookmark back-glyphi website"></span> Website Name</a><br />
-                    <a href="{{ url_for('website.theme') }}" class="option"><span class="glyphicon glyphicon-picture back-glyphi website"></span>Change Theme</a>
+                    <a href="{{ url_for('website.theme') }}" class="option"><span class="glyphicon glyphicon-picture back-glyphi website"></span>Change Theme</a><br />
+                    <a href="{{ url_for('website.refresh_enviornment') }}" class="option"><span class="glyphicon glyphicon-tree-conifer back-glyphi website"></span>  Refresh Environment</a>
                 </div>
 		      </div>
 	       </div>
@@ -66,10 +85,9 @@ Shifu-Dashboard
 		      </div>
 		      <div class="back dark-green">
                 <div class="back-option-page" >
-                    <span class="glyphicon glyphicon-plus back-glyphi page">  <a href="#" class="option">Add page</a></span><br />
-                    <span class="glyphicon glyphicon-remove back-glyphi page">  <a href="#" class="option">Delete Page</a></span><br />
-                    <span class="glyphicon glyphicon-pencil back-glyphi page">  <a href="#" class="option">Edit Page</a></span><br />
-                    <span class="glyphicon glyphicon-globe back-glyphi page">  <a href="#" class="option">Edit Url</a></span>
+                    <a href="{{ url_for('pages.add') }}" class="option"><span class="glyphicon glyphicon-plus back-glyphi page"></span>  Add page</a><br />
+                    <a href="{{ url_for('pages.delete') }}" class="option"><span class="glyphicon glyphicon-trash back-glyphi page"></span>  Delete Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-home back-glyphi page"></span>  Change Index Page</a>
                 </div>
 		      </div>
 	       </div>

@@ -1,5 +1,5 @@
 from apps import master
-from flask import render_template,url_for,redirect
+from flask import render_template,url_for,redirect,abort
 
 from apps import database
 
@@ -99,4 +99,4 @@ def page_generator(path):
 
 	else:
 
-		return "error 404 page not found %s" % path
+		abort(404)

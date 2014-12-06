@@ -46,7 +46,7 @@ def dashboard_home(username):
 	else: 
 		#return render_template('errors/401.html',message="invalid user,access denied"),401
 		alert.error('Make sure to Log In')
-		return redirect( url_for('.admin') )
+		return redirect( url_for('users.admin') )
 
 
 '''
