@@ -129,4 +129,18 @@ def signout(username):
 		return redirect(url_for('.admin'))
 
 
+@users.route('/profile/<username>',methods=['GET'])
+def profile(username):
+
+	if sessions.logged_in(username) is not None:
+		profile = user.get_user(username)
+		if profile is not None:
+			return render_template('user-profile.html',user=profile,username=sessions.logged_in())
+		else:
+			alert.error('Not able to show profile')
+			return redirect( url_for('users.admin') )
+	else:
+		alert.error('Invalid Access')
+		return redirect( url_for('users.admin') )	
+
 

@@ -48,4 +48,14 @@ class User():
 		else:
 			return None
 
+	def get_user(self,username):
+
+		try:
+			user = self.users.find_one({'_id':username})
+		except:
+			print "pymongo error : cannot find user"
+			return None
+
+		return user
+
 

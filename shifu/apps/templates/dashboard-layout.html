@@ -103,9 +103,9 @@ Shifu-Dashboard
 		      </div>
 		      <div class="back dark-code-red">
                 <div class="back-option-setting" >
-                    <span class="glyphicon glyphicon-info-sign back-glyphi setting">  <a href="#" class="option">Profile</a></span><br />
-                    <span class="glyphicon glyphicon-barcode back-glyphi setting">  <a href="#" class="option">Change Password</a></span><br />
-                    <span class="glyphicon glyphicon-user back-glyphi setting">  <a href="#" class="option">Users</a></span>
+                    <a href="{{ url_for('users.profile',username=username) }}" class="option"><span class="glyphicon glyphicon-info-sign back-glyphi setting"></span>  My Profile</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-barcode back-glyphi setting"></span> Change Password</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-user back-glyphi setting">  </span>Users</a>
                 </div>
 		      </div>
 	       </div>

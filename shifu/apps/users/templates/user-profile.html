@@ -1,0 +1,50 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }}-Profile
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('users.static', filename='css/user-profile.css' ) }}" />
+{% endblock %}
+
+{% block content %}
+<div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">User Profile</h3>
+                <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= users Profile area ==================== -->
+        
+        <div class="user-profile-wrapper">
+            <!-- ============ for profile pic ========== -->
+            <div class="user-profile-picture-area">
+                <div class="user-profile-picture">
+                    <i class="glyphicon glyphicon-user profile-picture" ></i>
+                </div>
+                <div class="user-buttons">
+                    <button type="submit" class="btn btn-edit"><i class="glyphicon glyphicon-edit" ></i> Edit Information</button>
+                    <button type="submit" class="btn btn-change-password"><i class="glyphicon glyphicon-barcode" ></i>  Change Password</button>
+                </div>
+            </div>
+            <!-- ============= for rest of the info ======== -->
+            <div class="user-information">
+                <div class="user-name">{{ user["_id"] }}</div>
+                <div class="user-type">Admin/Editor</div>
+                <hr class="user-header-line" />
+                <div class="full-name">{{ user["name"] }}</div>
+                <div class="email-address" >{{ user["email"] }}</div>
+                <div class="address">
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+   	
+{% endblock %}
