@@ -1,0 +1,107 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }}| Change Index
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('pages.static', filename='css/set-index-page.css' ) }}" />
+    <script type"text/javascript">
+        function showdescription(obj)
+        {
+            var text = obj.lastElementChild.innerHTML;
+            var textbox = document.getElementById("jumbotron");
+            var radio = obj.firstElementChild.firstElementChild;
+            radio.checked = true;
+            textbox.style.display = "block";
+            textbox.innerHTML = text;
+        }
+        
+        function uncheckothers(obj)
+        {
+            var allcheckbox = document.getElementsByName("radio-button");
+            var checkbox_except_this = allcheckbox.remove(obj);
+            checkbox_except_this.checked = false;
+        }
+        
+        function usercolor()
+        {
+            var colors = ['#5FAD41','#2D936C','#D36060'];
+            var page_icon = document.getElementsByClassName('single-page-div');
+            var x;
+            for (x=0 ; x<page_icon.length ; x++)
+            {
+                var random_color = colors[Math.floor(Math.random() * colors.length)];
+                page_icon[x].style.backgroundColor = random_color;
+            }
+        }
+        function confirmsetindex(url,pagename)
+        {
+            swal({
+                    title: "Are you sure?",
+                    text: "Do you want to change Index Page to " + pagename,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#1fda9a",
+                    confirmButtonText: "Yes",
+                    closeOnConfirm: false }, 
+                    function(){ 
+                        window.location.replace(url)
+                    });
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">{{ website_name }} | Change Index</h3>
+            </div>
+            <hr class="header-line" />
+
+
+            <div class="page-wrapper">
+            {% for page in pages %}
+                <div class="single-page-div" onclick="showdescription(this)">
+                    <div class="page-checkbox">
+                        <input type="radio" class="checkbox" name="radio-button" onchange="uncheckothers(this);" />
+                    </div>
+
+                    <div class="page-name">{{ page['page-name'] }}</div>
+                    
+                    <div class="page-description">
+                        
+                        <div class="description-page-name">{{ page['page-name'] }}</div>
+                        
+                        <div class="page-create-time"> modified : {{ page['datemodified'] }}, modified by : {{ page['modifiedby'] }} </div>
+                        
+                        <span class="btn button set-index-page" onclick="confirmsetindex('{{ url_for('pages.change_index_page',path=page['url']) }}','{{ page['page-name'] }} ')" ><i class="glyphicon glyphicon-trash delete-page-glyphicon"></i> Set Index</span>
+                        
+                        <div class="description-text">
+                            URL : {{ page['url'] }}<br/>
+                            {{ page['page-description'] }}
+                        </div>
+                    
+                    </div>
+                </div>
+            {% endfor %}
+                <script>
+                    usercolor();
+                </script>
+                
+            </div>
+            <!-- ================== extra content block for proper scrolling ========== -->
+            <div class="extra-content">
+            </div>
+            
+    
+        <div class="jumbotron navbar-default" id="jumbotron">
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,154 @@
+.page-info-area {
+    position: absolute;
+    height:90%;
+    width: 86%;
+    top: 10%;
+    left: 14%;
+}
+
+.page-holder{
+    position: absolute;
+    height:auto;
+    width:500px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+}
+
+.page-wrapper {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    padding: 10px;
+}
+
+.single-page-div {
+    display: inline-block;
+    position: relative;
+    height: 150px;
+    width: 120px;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+.page-checkbox{
+    position: relative;
+    display: inline-block;
+    left: 5px;
+}
+
+.checkbox {
+    
+}
+
+.page-name {
+    position: relative;
+    margin-top: 30%;
+    text-align: center;
+    height: auto;
+    bottom: 0px;
+    color: white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    font-family: 'roboto';
+    font-weight: 400;
+}
+
+.extra-content {
+    position: relative;
+    margin-top: 10.1%;
+}
+
+.page-description {
+    position: fixed;
+    display:none;
+    z-index: 20;
+    opacity: 0;
+    left: 14%; right: 0px;
+    width: 200px; 
+}
+
+.set-index-page {
+    float: right;
+    position: relative;
+    background-color: #1fda9a;
+    height: 30px;
+    width: 20%;
+    border: 2px solid #1fda9a;
+    color: white;
+    font-family: 'roboto';
+    font-weight: 300;
+    font-size: 16px;
+    padding: 2px;
+}
+
+.set-index-page:hover {
+    background-color: white;
+    border: 2px solid #1fda9a;
+    color: #1fda9a;
+}
+
+.jumbotron {
+    position: fixed;
+    z-index: 1;
+    height: 29%;
+    top: 71%;
+    width: inherit;
+    display: none;
+    box-shadow: 0px 0.7px 8px black;
+    padding: 20px;
+    border-radius: 0px;
+}
+
+.description-page-name {
+    position: relative;
+    display: inline-block;
+    float: left;
+    color: #666;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'roboto';
+}
+
+.delete-page-glyphicon {
+    margin-right:10px;
+}
+
+.page-create-time {
+    position: relative;
+    float: left;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 300;
+    color: #aaa;
+    top: 10px;
+    margin-left: 10px;
+    font-family: 'roboto';
+}
+
+.description-text {
+    position: relative;
+    clear: both;
+    font-weight: 100;
+    margin-top: 50px;
+    font-size: 18px;
+    font-family: 'roboto';
+}
+
+/*
+.close-description-button {
+    float: right;
+    font-size: 20px;
+    right: 10px;
+    top: 10px;
+    color: #39d1b4;
+}
+
+.close-description-button:hover {
+    color: white;
+    background-color: #1fda9a
+}
+*/
+
