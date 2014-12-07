@@ -8,12 +8,11 @@ import db
 
 from apps import database	# for the database connection
 from apps import env	# for enviornment variable operations
-from apps import Alert 	# for Alert class 
-from apps import nocache # nocache decorator defination
+from apps import alert 	# for Alert class 
+from apps import nocache,login_required # nocache decorator defination
 from apps import Sessions 	# session access functions 
 
 user = db.User(database)
-alert = Alert()
 sessions = Sessions()
 
 @users.route('/admin')
@@ -130,6 +129,8 @@ def signout(username):
 
 
 @users.route('/profile/<username>',methods=['GET'])
+@nocache
+@login_required
 def profile(username):
 
 	if sessions.logged_in(username) is not None:

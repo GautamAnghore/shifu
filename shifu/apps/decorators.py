@@ -16,3 +16,23 @@ def nocache(f):
 		return response
     return update_wrapper(new_func, f)
 #####################################################################################################################
+
+from flask import redirect,url_for
+
+from alert import *
+alert = Alert()
+
+from sessions import *
+sessions = Sessions()
+
+def login_required(f):
+	def new_func(*args, **kwargs):
+		if sessions.logged_in() is not None:
+
+			return f(*args, **kwargs)
+
+		else:
+			alert.error('Invalid Access')
+			return redirect( url_for('users.admin') )
+
+	return update_wrapper(new_func,f)

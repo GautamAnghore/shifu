@@ -4,6 +4,7 @@ from apps.pages import pages
 from apps import database
 from apps import env
 from apps import Sessions
+from apps import nocache,login_required
 
 from apps.users import alert
 
@@ -15,6 +16,8 @@ from apps.website.db import ThemeDAO,WebsiteDAO
 sessions = Sessions()
 
 @pages.route('/add',methods=['GET','POST'])
+@nocache
+@login_required
 def add():
 	obj_theme = ThemeDAO(database)
 	structure_list = obj_theme.get_applicable_structures() 
@@ -70,6 +73,8 @@ def add():
 
 
 @pages.route('/edit/<path:path>',methods=['GET','POST'])
+@nocache
+@login_required
 def edit_page(path):
 
 	obj_page = db.PagesDAO(database) 
@@ -100,6 +105,8 @@ def edit_page(path):
 		return redirect( url_for('users.admin') )
 
 @pages.route('/edit-url/<path:path>',methods=['GET','POST'])
+@nocache
+@login_required
 def edit_url(path):
 
 	obj_page = db.PagesDAO(database)
@@ -155,6 +162,8 @@ def edit_url(path):
 		return redirect( url_for('users.admin') )
 
 @pages.route('/delete',methods=['GET'])
+@nocache
+@login_required
 def delete():
 	#check if there exists a page or not
 	if env.check_indexset() is True:
@@ -192,6 +201,8 @@ def delete():
 		return redirect( url_for('users.admin') )
 
 @pages.route('/delete/<path:path>',methods=['GET'])
+@nocache
+@login_required
 def delete_page(path):
 
 	obj_pages = db.PagesDAO(database)
@@ -226,6 +237,8 @@ def delete_page(path):
 		return redirect( url_for('users.admin') )
 
 @pages.route('/change-index')
+@nocache
+@login_required
 def change_index():
 	#check if there exists a page or not
 	if env.check_indexset() is True:
@@ -263,6 +276,8 @@ def change_index():
 		return redirect( url_for('users.admin') )	
 
 @pages.route('/change_index/<path:path>',methods=['GET'])
+@nocache
+@login_required
 def change_index_page(path):
 
 	obj_pages = db.PagesDAO(database)

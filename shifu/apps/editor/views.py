@@ -4,6 +4,7 @@ from apps.editor import editor
 from apps import database
 from apps import Sessions
 from apps import env
+from apps import nocache,login_required
 
 from forms import *
 
@@ -43,6 +44,8 @@ def live():
 
 '''
 @editor.route('/add/<path:path>',methods=['GET','POST'])
+@nocache
+@login_required
 def add_content(path):
 
 	obj_pages = PagesDAO(database)
@@ -132,6 +135,8 @@ def add_content(path):
 
 
 @editor.route('/edit/<path:path>',methods=['GET','POST'])
+@nocache
+@login_required
 def edit_content(path):
 	
 	obj_pages = PagesDAO(database)

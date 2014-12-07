@@ -4,6 +4,7 @@ from apps.website import website
 from apps import database
 from apps import env
 from apps import Sessions
+from apps import nocache,login_required
 
 from apps.users import alert 
 
@@ -16,6 +17,8 @@ import json
 sessions = Sessions()
 
 @website.route('/update-enviornment')
+@nocache
+@login_required
 def update_enviornment():
 
 	#update-theme
@@ -103,6 +106,8 @@ def update_enviornment():
 	return redirect( url_for('users.admin') )
 
 @website.route('/refresh-enviornment')
+@nocache
+@login_required
 def refresh_enviornment():
 
 	#refresh-theme
@@ -198,6 +203,8 @@ def refresh_enviornment():
 		return redirect( url_for('users.admin') )
 
 @website.route('/name',methods=['GET','POST'])
+@nocache
+@login_required
 def name():
 
 	obj_website = db.WebsiteDAO(database)
@@ -252,6 +259,8 @@ def name():
 			return resp
 
 @website.route('/theme',methods=['GET','POST'])
+@nocache
+@login_required
 def theme():
 
 	obj_website = db.WebsiteDAO(database)
