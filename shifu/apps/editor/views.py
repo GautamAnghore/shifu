@@ -73,6 +73,12 @@ def add_content(path):
 				return render_template('add-content.html',inputs=inputs,page=page,path=path)
 
 			else:
+				# setting bleach settings
+				# allowing some tags and attributes
+				alw_tags = ['img','span','h1','h2','h3','h4','h5','h6','a','li','ol','ul','abbr','acroynm','b','blockquote','code','em','i','strong','table','tr','td']
+				alw_attr = { '*':['class','id'], 'img':['alt','src','style'], 'span':['style'],'a':['href']}
+
+				# content initialised
 				content = {}
 				#process data
 				for fieldname in structure_inputs:
@@ -84,7 +90,7 @@ def add_content(path):
 
 						for md in inputs[fieldname]['data']:
 							#bleaching the data
-							md = bleach.clean(md,strip=True)
+							md = bleach.clean(md,tags=alw_tags,attributes=alw_attr,strip=True)
 
 							if structure_inputs[fieldname] == "iterator-markdown":
 								html = markdown.markdown(md)
@@ -98,7 +104,7 @@ def add_content(path):
 					else:
 						inputs[fieldname]['data'] = request.form[fieldname]
 						
-						md = bleach.clean(inputs[fieldname]['data'],strip=True)
+						md = bleach.clean(inputs[fieldname]['data'],tags=alw_tags,attributes=alw_attr,strip=True)
 
 						if structure_inputs[fieldname] == "iterator-markdown":
 							html = markdown.markdown(md)
@@ -110,7 +116,7 @@ def add_content(path):
 
 				if obj_pages.add_page_content(path,content,sessions.logged_in()) is True:
 					if env.check_indexset() is False:
-						env.set_indexpage(path)
+						env.set_indexpage(page['_id'])
 					return redirect( url_for('users.admin') )
 				else:
 					return render_template('add-content.html',inputs=inputs,page=page,path=path)

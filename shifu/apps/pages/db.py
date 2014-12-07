@@ -177,6 +177,16 @@ class PagesDAO():
 
 		return pages_cur
 
+	def get_any_page_except_this(self,pageid):
+		# to be used to set the index page randomly
+		# gives any page found
+		try:
+			page = self.collection.find_one({'_id':{'$ne':pageid}})
+		except:
+			print "pymongo error : cannot find any page"
+			return None
+		return page
+
 	def delete_page(self,page_id):
 
 		try:
@@ -187,6 +197,14 @@ class PagesDAO():
 
 		return True
 
+	def get_url_from_id(self,page_id):
 
+		try:
+			page_url = self.collection.find_one({'_id':page_id},{'_id':False,'url':True})
+		except:
+			print "pymongo error : page_url not found from page id"
+			return None
+
+		return page_url
 
 		

@@ -156,45 +156,68 @@ def edit_url(path):
 
 @pages.route('/delete',methods=['GET'])
 def delete():
-	#data access objects
-	obj_pages = db.PagesDAO(database)
-	obj_website = WebsiteDAO(database)
+	#check if there exists a page or not
+	if env.check_indexset() is True:
+		#data access objects
+		obj_pages = db.PagesDAO(database)
+		obj_website = WebsiteDAO(database)
 
-	#get all the pages with all the details
-	pages_cur = obj_pages.get_all_pages()
-	
-	pages = []
+		#get all the pages with all the details
+		pages_cur = obj_pages.get_all_pages()
+		
+		pages = []
 
-	#converting date modified in displayable format
-	if pages_cur is not None:
-		for page in pages_cur:
-			#source
-			#df = datetime.now()
-			#df.strftime("%d %B %Y %I:%M%p")
-			#result = '28 November 2014 06:31PM'
-			
-			time = page['datemodified']
-			page['datemodified'] = time.strftime("%d %B %Y %I:%M%p")
-			pages.append(page)
-			
+		#converting date modified in displayable format
+		if pages_cur is not None:
+			for page in pages_cur:
+				#source
+				#df = datetime.now()
+				#df.strftime("%d %B %Y %I:%M%p")
+				#result = '28 November 2014 06:31PM'
+				
+				time = page['datemodified']
+				page['datemodified'] = time.strftime("%d %B %Y %I:%M%p")
+				pages.append(page)
+				
 
-	#get website name
-	website_name = obj_website.get_website_name() or "Website"
+		#get website name
+		website_name = obj_website.get_website_name() or "Website"
 
-	resp = make_response(render_template('delete-page.html',username=sessions.logged_in(),alert=alert.get_alert(),website_name=website_name,pages=pages))
-	alert.reset()
-	return resp
+		resp = make_response(render_template('delete-page.html',username=sessions.logged_in(),alert=alert.get_alert(),website_name=website_name,pages=pages))
+		alert.reset()
+		return resp
+
+	else:
+		alert.error('Please Create a page first')
+		return redirect( url_for('users.admin') )
 
 @pages.route('/delete/<path:path>',methods=['GET'])
 def delete_page(path):
 
 	obj_pages = db.PagesDAO(database)
 	page_id = obj_pages.get_id_from_url(path)
+	
 	if page_id is not None:
+		
+		#solves not found index error
+		if path == env.get_indexpage():
+			print path
+			# trying to delete index page
+			# have to set new index page
+			new_page = obj_pages.get_any_page_except_this(page_id)
+			if new_page is not None:
+				env.set_indexpage(new_page['_id'])
+			else:
+				print "another page not found to set index"
+				env.reset_indexpage()
+
 
 		if obj_pages.delete_page(page_id) is True:
 			alert.success('Page Deleted Successfully')
-			return redirect( url_for('.delete') )
+			if env.check_indexset() is True:
+				return redirect( url_for('.delete') )
+			else:
+				return redirect( url_for('users.admin') )
 		else:
 			alert.error('Page Cannot be Deleted')
 			return redirect( url_for('.delete') )

@@ -154,10 +154,13 @@ p {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
 }
-.content code {
-    background:#999;
-    color:#fff;
+.content pre {
+    background:#F5EEDB;
+    color:#000;
     border: dashed 1px #ffffff;
+    font-family: monospace;
+}
+.content code {
     font-family: monospace;
 }
 .content strong {

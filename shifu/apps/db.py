@@ -78,17 +78,36 @@ class Environment():
 		else:
 			return False
 
-	def set_indexpage(self,index):
-		 if self.check_indexset() is False:
-		 	if self.set_variable('step', 2) and self.set_variable('index-page',index) is True:
-		 		return True
-		 	else:
-		 		return False
-		 else:
-		 	return False
+	def set_indexpage(self,page_id):
+	 	if self.set_variable('step', 2) and self.set_variable('index-page',page_id) is True:
+	 		return True
+	 	else:
+	 		return False
+
+
+	def reset_indexpage(self):
+		
+		self.set_variable('step',1)
+		self.variables.remove({'_id':'index-page'})
 
 	def get_indexpage(self):
-		return self.get_variable('index-page')
+		
+		page_id = self.get_variable('index-page')
+
+		if page_id is not None:
+			from apps.pages.db import PagesDAO
+			obj_pages = PagesDAO(self.database)
+
+			page_url = obj_pages.get_url_from_id(page_id)
+
+			if page_url is not None:
+				return page_url['url']
+			else:
+				# reset the indexpage settings in variables as the saved index is not valid
+				self.reset_indexpage()
+				return None
+
+		return None
 
 	def check_url_restricted(self,url):
 		#check if url is in restricted catagory

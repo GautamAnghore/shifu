@@ -6,28 +6,20 @@
         <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
         <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
-        <link type="text/css" rel="stylesheet" href="style_css/dashboard-setting-users.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard-setting-profile.css" />
         <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
         <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
         <script>
-            function showdescription(obj)
+            function show_password()
             {
-                var text = obj.lastElementChild.innerHTML;
-                var textbox = document.getElementById("jumbotron");
-                textbox.style.display = "block";
-                textbox.innerHTML = text;
+                var password = document.getElementById('password');
+                password.style.opacity = 1;
             }
             
-            function usercolor()
+            function disable_password()
             {
-                var colors = ['#f65a5b', '#1fda9a','#28abe3'];
-                var user_icon = document.getElementsByClassName('user-icon')
-                var x;
-                for (x=0 ; x<user_icon.length ; x++)
-                {
-                    var random_color = colors[Math.floor(Math.random() * colors.length)];
-                    user_icon[x].style.color = random_color;
-                }
+                var password = document.getElementById('password');
+                password.style.opacity = 0;
             }
         </script>
     </head>
@@ -137,103 +129,45 @@
     <div class="page-info-area">
         <!-- ====== heading ======-->
             <div class="heading">
-                <h3 class="heading-text">User Information</h3>
-                <button class="btn code-red top-button"><i class="glyphicon glyphicon-plus-sign"></i> Add New User</button>
+                <h3 class="heading-text">User Profile</h3>
+                <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
             </div>
             <hr class="header-line" />
         
-        <!-- ========================= users information form ==================== -->
+        <!-- ========================= users Profile area ==================== -->
         
-        <div class="user-info-area">
-            
-            <!-- =============for a single user ============== -->
-            <div class="user-icon-wrapper" onclick="showdescription(this)">
-                <i class="glyphicon glyphicon-user user-icon"></i>
-                <p>User Name1</p>
-                <div class="user-description">
-                    <div class="description-user-name">User Name1</div>
-                    <div class="user-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-user"><i class="glyphicon glyphicon-trash delete-user-glyphicon"></i> Delete User</span>
-                    <span class="btn button save-priveleges"><i class="glyphicon glyphicon-floppy-saved save-priveleges-glyphicon"></i> Save Priveleges</span>
-                    <div class="available-pages">
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                    </div>
+        <div class="user-profile-wrapper">
+            <!-- ============ for profile pic ========== -->
+            <div class="user-profile-picture-area">
+                <div class="user-profile-picture">
+                    <i class="glyphicon glyphicon-user profile-picture" ></i>
+                </div>
+                <div class="user-buttons">
+                    <button type="submit" class="btn btn-edit"><i class="glyphicon glyphicon-edit" ></i> Edit Information</button>
+                    <button type="submit" class="btn btn-change-password"><i class="glyphicon glyphicon-barcode" ></i>  Change Password</button>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            
-            <div class="user-icon-wrapper" onclick="showdescription(this)">
-                <i class="glyphicon glyphicon-user user-icon"></i>
-                <p>User Name2</p>
-                <div class="user-description">
-                    <div class="description-user-name">User Name2</div>
-                    <div class="user-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-user"><i class="glyphicon glyphicon-trash delete-user-glyphicon"></i> Delete User</span>
-                    <span class="btn button save-priveleges"><i class="glyphicon glyphicon-floppy-saved save-priveleges-glyphicon"></i> Save Priveleges</span>
-                    <div class="available-pages">
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
+            <!-- ============= for rest of the info ======== -->
+            <div class="user-information">
+                <div class="user-name">User Name</div>
+                <div class="user-type">Admin/Editor</div>
+                <hr class="user-header-line" />
+                <div class="full-name">Harshit Thukral</div>
+                <div class="email-address" >H.thakral369@gmail.com</div>
+                <div class="address">
+                    315/24<br /> jagdish colony rohtak,haryana
+                </div>
+                <div class="password-hide-unhide">
+                    <div class="password-wrapper">
+                        <div class="password" id="password">Some-password</div>
+                        <span class="btn eye-button" onmousedown="show_password()" onmouseup="disable_password()">
+                            <i class="glyphicon glyphicon-eye-open preview-eye"></i>
+                        </span>
                     </div>
+                    <div class="password-instruction">#Press the visible button to make your password visible</div>
                 </div>
             </div>
-            <div class="user-icon-wrapper" onclick="showdescription(this)">
-                <i class="glyphicon glyphicon-user user-icon"></i>
-                <p>User Name3</p>
-                <div class="user-description">
-                    <div class="description-user-name">User Name3</div>
-                    <div class="user-create-time">Created: Nov 17,2014</div>
-                    <span class="btn button delete-user"><i class="glyphicon glyphicon-trash delete-user-glyphicon"></i> Delete User</span>
-                    <span class="btn button save-priveleges"><i class="glyphicon glyphicon-floppy-saved save-priveleges-glyphicon"></i> Save Priveleges</span>
-                    <div class="available-pages">
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label class="checkbox-label"><input type="checkbox" value="">Page Name1</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ================================ add user icon ========================== -->
-            
-            <!-- ========================================================================= -->
-            
         </div>
-        <div class="extra-content"></div>
-        
-        <div class="navbar-default jumbotron" id="jumbotron" >
-            
-        </div>
-        
-        
-        
     </div>
     </body>
 </html>
