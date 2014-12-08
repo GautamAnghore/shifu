@@ -1,0 +1,123 @@
+body {  
+    background-color:#8FB98B;
+}
+
+.main-wrapper {
+    height: 100%;
+    width:40%;
+    background-color:#DE564B;
+    position:absolute;
+    left:0px;
+    right:0px;
+    margin:auto;
+    border: dashed 1px #EAE1C0;
+    box-shadow: 0px 0px 0px 0px #000;
+    box-sizing: border-box;
+}
+
+.main-heading {
+    height:140px;
+    width:100%;
+    position: absolute;
+    top:30px;
+    text-align: center;
+    padding:0px;
+}
+
+.main-heading-content h1 {
+    font-weight: 900;
+    color:#fff;
+    font-size: 50px;
+    display: inline;
+    padding:2px;
+    opacity:1;
+}
+
+.main-heading-content h1:hover{  
+    cursor:crosshair;
+}
+
+.main-heading-subscript {
+    padding:0px;
+    margin:0px;
+    display:inline;
+    font-size: 15px;
+    color:#fff;
+    opacity:0.5;
+    position:relative;
+    top:-25px;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.main-heading-subscript:hover {
+    opacity:0.8;   
+}
+
+.links {
+    position:absolute;
+    top:0px;
+    
+    width:100%;
+    height: 40px;
+    
+    color:#483A3A;
+    text-align: center;
+}
+
+.links ul {
+    list-style: none;
+    padding:0px;
+    margin:0px;
+    color:inherit;
+    font-size: 20px;
+}
+.links ul li {
+    display:inline;
+    margin:0px 15px;
+    color:inherit;
+    transition: color 0.3s ease-in-out,font-size 0.3s ease-in-out;
+}
+.links ul li:hover {
+    color:#F5EEDB;
+    font-size: 24px;
+    cursor:pointer;
+}
+.links ul li a {
+    text-decoration: none;
+    color:inherit;
+}
+p {
+    color:inherit;
+}
+.contact-wrapper {
+    position:absolute;
+    top:160px;
+    width:100%;
+    height:70%;
+    overflow-y: auto;
+    overflow-x:hidden;
+    text-align: center;
+}
+.contact-content-heading {
+   font-size:25px;
+    color:#EAE1C0;
+    font-weight: 600;
+    border-top: dashed 1px #EAE1C0;
+    border-bottom: dashed 1px #EAE1C0;
+}
+.contact-content {
+    font-weight: 200;
+    font-size: 20px;
+}
+
+.footer {
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    text-align:center;
+}
+
+.footer-content {
+    color:#483A3A;
+    opacity:0.6;
+}

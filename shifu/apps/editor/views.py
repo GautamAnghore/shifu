@@ -109,7 +109,7 @@ def add_content(path):
 						
 						md = bleach.clean(inputs[fieldname]['data'],tags=alw_tags,attributes=alw_attr,strip=True)
 
-						if structure_inputs[fieldname] == "iterator-markdown":
+						if structure_inputs[fieldname] == "simple-markdown":
 							html = markdown.markdown(md)
 						else:
 							#for simple text we do not want to convert it to html
@@ -154,7 +154,7 @@ def edit_content(path):
 		for fieldname in page['structure']['content']:
 			inputs[fieldname] = {}
 			inputs[fieldname]['type']=structure_inputs[fieldname]
-			if structure_inputs[fieldname] == "iterator-markdown" or structure_inputs[fieldname] == "iterator-text":
+			if (structure_inputs[fieldname] == "iterator-markdown") or (structure_inputs[fieldname] == "iterator-text"):
 				inputs[fieldname]['data'] = []
 				for item in page['structure']['content'][fieldname]:
 					inputs[fieldname]['data'].append(item['markdown'])
@@ -196,7 +196,7 @@ def edit_content(path):
 						
 						md = bleach.clean(inputs[fieldname]['data'],strip=True)
 
-						if structure_inputs[fieldname] == "iterator-markdown":
+						if structure_inputs[fieldname] == "simple-markdown":
 							html = markdown.markdown(md)
 						else:
 							#for simple text we do not want to convert it to html

@@ -37,9 +37,9 @@ Shifu-Dashboard
 		                        <span class="caret"></span>
 		                </span>
 		                <ul class="dropdown-menu" role="menu">
-		                    <li><a href="#"><i class="glyphicon glyphicon-send"></i> Help</a></li>
-		                    <li><a href="#"><i class="glyphicon glyphicon-info-sign"></i> About</a></li>
-		                    <li><a href="#"><i class="glyphicon glyphicon-edit"></i> Markdown Basics</a></li>
+		                    <li><a href="{{ url_for('dashboard.help') }}"><i class="glyphicon glyphicon-send"></i> Help</a></li>
+		                    <li><a href="{{ url_for('dashboard.about') }}"><i class="glyphicon glyphicon-info-sign"></i> About</a></li>
+		                    <li><a href="{{ url_for('dashboard.markdown') }}"><i class="glyphicon glyphicon-edit"></i> Markdown Basics</a></li>
 		                    <!--<li><a href="#"></a></li>
 		                    <li><a href="#"></a></li>-->
 		                </ul>

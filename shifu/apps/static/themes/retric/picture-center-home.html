@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>picture-center</title>
+        <link rel="stylesheet" href="picture-center-home.css"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    
+    <body>
+        <div class="main-wrapper">
+            <div class="main-heading">
+                <div class="main-heading-content">
+                    <h1>{{ data['title'] }}</h1>
+                </div>
+                <div class="main-heading-subscript">
+                this is some lorem ipsum text subscript
+                </div>
+            </div>
+            
+            <div class="links">
+                <ul>
+                    {% for link in data['xyz'] %}
+                    <li>{{ link }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="footer">
+                <div class="footer-content">
+                    made with shifu
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>

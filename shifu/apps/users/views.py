@@ -144,4 +144,12 @@ def profile(username):
 		alert.error('Invalid Access')
 		return redirect( url_for('users.admin') )	
 
+'''
+@users.route('/profile/<username>/edit',methods=['GET','POST'])
+@nocache
+@login_required
+def edit_profile(username):
 
+	if sessions.logged_in
+
+'''

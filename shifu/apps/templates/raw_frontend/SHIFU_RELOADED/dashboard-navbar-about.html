@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Shifu | Dashboard</title>
+        <script src="javascript/jquery-2.1.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard-navbar-help.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
+        <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        
+    <!--      ==============================NAVBAR STARTS =================================    -->
+    <div class="bground">
+        <nav>    
+        <div class="navbar navbar-default navbar-fixed-top">
+            <img class="header-pallete" src="pallet/Color-Palette-Post-03-Fitz.png" />
+                    <!--navigation does here-->  
+            <ul class="nav">  
+                <li class="brand-active">  
+                <a class="brand" href="#">Shifu</a>  
+                </li>  
+                <!--<li class="navigation_opt"><a href="#">Actions</a></li>-->
+                <li class="navigation_opt btn-group pull-right">
+                    <a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a>
+                </li>
+                <li  class="navigation_opt">
+                    <a href="#"><span class="glyphicon glyphicon-globe"></span> Website</a>
+                </li>
+                <li  class="navigation_opt">
+                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Dashboard</a>
+                </li>
+            </ul>
+            <div class="down-arrow pull-right">
+                <span type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                </span>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#"><i class="glyphicon glyphicon-send"></i> Help</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-info-sign"></i> About</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-edit"></i> Markdown Basics</a></li>
+                    <!--<li><a href="#"></a></li>
+                    <li><a href="#"></a></li>-->
+                </ul>
+            </div>
+        </div>
+            <div class="logo-div">
+            <img class="logo" src="images/logo_yellowshadow.png" />
+            </div>
+        </nav>
+    </div>
+        <!--                          e======= navbar ends ===========                               -->
+        
+        <!-- ================================== Dashboard options start ================================ -->
+        <!-- =========== website =======-->
+    <div class="dashboard">
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front blue">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-globe dashboard-glyphicon"></span></a>
+                    <p>Website</p>
+                </div>
+		      </div>
+		      <div class="back dark-blue">
+                <div class="back-option-website" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-bookmark back-glyphi website"></span>  Website Name</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-picture back-glyphi website"></span>  Change Theme</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-tree-conifer back-glyphi website"></span>  Refresh Environment</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== page =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front green">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-list-alt dashboard-glyphicon"></span></a>
+                    <p>Pages</p>
+                </div>
+		      </div>
+		      <div class="back dark-green">
+                <div class="back-option-page" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-plus back-glyphi page"></span>  Add page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-trash back-glyphi page"></span>  Delete Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-home back-glyphi page"></span>  Change Index Page</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== settings =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front code-red">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-cog dashboard-glyphicon"></span></a>
+                    <p>Settings</p>
+                </div>
+		      </div>
+		      <div class="back dark-code-red">
+                <div class="back-option-setting" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-info-sign back-glyphi setting"></span>  Profile</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-barcode back-glyphi setting"></span>  Change Password</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-user back-glyphi setting"></span>  Users</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+    </div>
+        <!-- ==================================== dashboard ends ========================== -->
+        
+        <!-- =================================== page info form starts =================== -->
+    <div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">About</h3>
+                <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= users Profile area ==================== -->
+        <div class="about-content">
+            <div class="about-shifu">
+                
+            </div>
+            <div class="about-team">
+                <div class="developers-start-text">
+                <h3 class="heading-developer">Developer Team</h3>
+                <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
+                </div>
+            <hr class="header-line" />
+                <div class="developers">
+                    <div class="developer-gautam">
+                        <div class="developer-image-wrapper">
+                            <img class="developer-image" src="images/gautam.jpg" />
+                        </div>
+                        <div class="name-wrapper">
+                            Gautam Anghore
+                        </div>
+                    </div>
+                    <div class="developer-harshit">
+                        <div class="developer-image-wrapper">
+                            <img class="developer-image" src="images/harshit.png" />
+                        </div>
+                        <div class="name-wrapper">
+                            Harshit Thukral
+                        </div>
+                    </div>
+                    <div class="developer-karan">
+                        <div class="developer-image-wrapper">
+                            <img class="developer-image" src="images/karan.JPG" />
+                        </div>
+                        <div class="name-wrapper">
+                            Karan Mohan Grover
+                        </div>
+                    </div>
+                    <div class="developer-tavneet">
+                        <div class="developer-image-wrapper">
+                            <img class="developer-image" src="images/tavneet.jpg" />
+                        </div>
+                        <div class="name-wrapper">
+                            Tavneet Singh Lamba
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </body>
+</html>

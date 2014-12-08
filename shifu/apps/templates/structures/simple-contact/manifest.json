@@ -1,0 +1,13 @@
+{
+	"structure-name":"simple-contact",
+	"description":"simple-contact page",
+	"content":{
+		"heading":"simple-text",
+		"tagline":"simple-text",
+		"links":"iterator-markdown",
+		"contact-content-heading":"iterator-text",
+		"contact-content":"iterator-markdown",
+		"footer":"simple-markdown"
+	},
+	"author":"gautam"
+}

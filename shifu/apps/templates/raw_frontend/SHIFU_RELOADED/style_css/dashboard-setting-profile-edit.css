@@ -1,0 +1,141 @@
+.page-info-area {
+    position: absolute;
+    height:90%;
+    width: 86%;
+    top: 10%;
+    left: 14%;
+}
+
+
+.user-profile-wrapper {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    background-color:transparent;
+    border: 0px #aaa;
+    border-style: dashed;
+}
+
+.user-profile-picture-area {
+    position: relative;
+    float: left;
+    width: 25%;
+    height: 100%;
+}
+
+.user-profile-picture {
+    position: relative;
+    overflow: hidden;
+    height: 160px;
+    width: 160px;
+    left: 18%;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.profile-picture {
+    position: relative;
+    color: #aaa;
+    top: 15px;
+    font-size: 145px;
+}
+
+.user-information {
+    position: relative;
+    width: 75%;
+    height: 100%;
+    float: right;
+    padding: 4%;
+}
+
+.user-name {
+    font-size: 34px;
+    font-weight: 300;
+}
+
+.user-type {
+    font-size: 17px;
+}
+
+.user-header-line
+{
+    border: none;
+    height: 2px;
+    background-color:#ddd;
+    width: 100%;
+}
+
+.full-name {
+    font-size: 20px;
+    margin: 5px auto;
+}
+
+.email-address {
+    font-size: 20px;
+    margin: 5px auto;
+}
+
+.address {
+    font-size: 20px;
+    margin: 5px auto;
+}
+
+.user-buttons {
+    margin-top: 10%;
+}
+
+.btn-save {
+    position: relative;
+    background-color: #1fda9a;
+    overflow: hidden;
+    height: 30px;
+    width: 25%;
+    border: 2px solid #1fda9a;
+    color: white;
+    font-family: 'roboto';
+    font-weight: 300;
+    font-size: 16px;
+    padding: 2px;
+    margin: 5px auto;
+}
+
+.btn-save:hover {
+    background-color: white;
+    border: 2px solid #1fda9a;
+    color: #1fda9a;
+}
+
+.password {
+    font-size: 17px;
+    font-weight: 500;
+    margin: 5px auto;
+    display: inline-block;
+    opacity: 0;
+}
+
+.preview-eye {
+    font-size: 20px;
+    color: #1fda9a;
+}
+
+.preview-eye:hover {
+    font-size: 20px;
+    color: #f65a5b;
+}
+
+
+.password-instruction {
+    opacity: .4;
+}
+
+.input-label {
+    font-family: 'roboto';
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.form-control {
+    position: relative;
+    font-family: 'roboto';
+}

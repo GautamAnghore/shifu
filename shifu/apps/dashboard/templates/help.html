@@ -1,0 +1,92 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }} | Help
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('dashboard.static', filename='css/help.css' ) }}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="page-info-area">
+    <!-- ====== heading ======-->
+        <div class="heading">
+            <h3 class="heading-text">Help</h3>
+            <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
+        </div>
+        <hr class="header-line" />
+    
+    <!-- ========================= users Profile area ==================== -->
+    <div class="help-content">
+        <b class="help-heading" >Installing the software</b><br />
+        <b class="help-subheading" >Building the software</b><br />
+        <p>Before the software applications can be used, they need to be built from the source. Below it is
+            explained how to perform this process.
+            The user can either download the required software and frameworks from the internet or can go
+            the dump provided with the software and extract the required data.
+        </p>
+        
+        <b class="help-subheading">Start from Scratch</b><br />
+        <p>On a appropriate app engine, create a suitable environment with the required dependencies
+            installed
+        </p>
+        <ul>
+            <li>Python 2.7</li>
+            <li>MongoDB Server Application</li>
+            <li>Flask Framework</li>
+            <li>PyMongo</li>
+            <li>WTForms</li>
+            <li>Passlib</li>
+            <li>Bleach</li>
+        </ul>
+        <b class="help-heading" >Create Users</b><br />
+        <b class="help-subheading" >Add Administrator</b><br />
+            <p>On launching Shifu for the very first time, an option of creating an Administrator for the software
+            would be available for which the user would have to fill the appropriate credentials as per the
+            requirements and hit Sign Up button at the bottom.</p>
+            <p>There can be only one Administrator, who would be given all the privileges from creating a new
+            user to deleting the whole website.</p>
+        <b class="help-heading">Page Operations</b><br />
+        <b class="help-subheading">Add Website Name</b><br />
+            <p>Once the Administrator has logged in successfully, the administrator would have the right to
+            choose a name for the Website being made.</p>
+        <b class="help-subheading">Add Theme</b><br />
+            <p>After an appropriate name has been chosen, the Administrator would be redirected to a page
+            where a list of different themes would be available to choose from for the Website. Once the
+            theme has been chosen, the Administrator would be averted to the Dashboard, where he would
+            be able to add pages, add users, change theme of the Website
+            Website, delete pages etc.</p>
+        <b class="help-subheading">Add Page</b><br />
+            <p>The Add Page option is available when the Pages tab on the left of the Dashboard is hovered
+            upon. The administrator would have to fill the name, URL and Page Description and click on
+            Save and Continue button at the bottom.</p>
+            <p>The Page URL should be carefully chosen as it cannot be changed once the page is saved.
+            Once a page has been successfully added, it will be visible on the Dashboard of Shifu.</p>
+        <b class="help-subheading">Add Content</b><br />
+            <p>Once a page has been successfully added, the user is averted to a page where the content for
+            that page can be added.</p>
+        <b class="help-subheading">Edit Page</b><br />
+            <p>To edit the name or description of a page go to the Dashboard, select the page which is to be
+            edited and click the Edit Page option available at the bottom right of the page.</p>
+            <p>As soon as the Edit Page is clicked upon, the user would be redirected to a page where an
+            option to edit the same would be a
+            available.</p>
+        <b class="help-subheading">Edit Content</b><br />
+            <p>To edit the content of a page go to the Dashboard
+            Dashboard, select the page whose content is to be
+            edited and click the Edit Content option available at the bottom right of the page.</p>
+            <p>As soon as the Edit Content is clicked upon, the user would be redirected to a page where an
+            option to edit the content would be available.</p>
+        <b class="help-subheading">Delete Page</b><br />
+            <p>The Delete Page option is also available when the Pages tab on the left of the Dashboard is
+            hovered upon. The administrator would have to fill the Page name and Page Description and
+            click on Save and Continue button at the bottom.</p>
+    </div>
+    
+</div>
+
+{% endblock %}

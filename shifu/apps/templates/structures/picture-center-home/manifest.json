@@ -1,0 +1,11 @@
+{
+	"structure-name":"picture-center-home",
+	"description":"Home page with big heading and links with a plain picture or color background",
+	"content":{
+		"heading":"simple-text",
+		"tagline":"simple-text",
+		"links":"iterator-markdown",
+		"footer":"simple-markdown"
+	},
+	"author":"gautam"
+}

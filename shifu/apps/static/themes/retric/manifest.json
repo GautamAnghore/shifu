@@ -1,8 +1,8 @@
 {
 	"theme-name":"retric",
 	"author":"gautam",
-	"structures":["index-multi-post","some-random-structure"],
-	"include-files-css":[],
+	"structures":["index-multi-post","picture-center-home","simple-contact"],
+	"include-files-css":["style.css"],
 	"include-files-js":[]
 
 }

@@ -1,7 +1,7 @@
 from flask import url_for,redirect,render_template,request,make_response
 
 from apps.dashboard import dashboard
-from apps import nocache
+from apps import nocache,login_required
 from apps import database
 
 from apps.users import sessions
@@ -47,3 +47,21 @@ def dashboard_home(username):
 		#return render_template('errors/401.html',message="invalid user,access denied"),401
 		alert.error('Make sure to Log In')
 		return redirect( url_for('users.admin') )
+
+@dashboard.route('/help')
+@nocache
+@login_required
+def help():
+	return render_template('help.html',username=sessions.logged_in(),alert=alert.get_alert())
+
+@dashboard.route('/about')
+@nocache
+@login_required
+def about():
+	return render_template('about.html',username=sessions.logged_in(),alert=alert.get_alert())
+
+@dashboard.route('/markdown')
+@nocache
+@login_required
+def markdown():
+	return render_template('markdown.html',username=sessions.logged_in(),alert=alert.get_alert())

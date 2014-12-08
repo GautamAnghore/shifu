@@ -1,0 +1,117 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }} | Markdown Basics
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('dashboard.static', filename='css/markdown.css' ) }}" />
+{% endblock %}
+
+{% block content %}
+<div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">Markdown Basics</h3>
+                <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= users Profile area ==================== -->
+        <div class="help-content">
+            <b class="help-heading" >Markdown Basics</b><br />
+            <p>Markdown allows you to write using an easy-to-read, easy-to-write plain text format, which then converts to valid HTML for                    viewing on GitHub</p>
+
+            <b class="help-heading" >Basic writing</b><br />
+            
+
+            <b class="help-subheading" >Paragraphs</b>
+
+            <p>Paragraphs in Markdown are just one or more lines of consecutive text followed by one or more blank lines.<br />
+
+            On July 2, an alien mothership entered Earth's orbit and deployed several dozen saucer-shaped "destroyer" spacecraft, each 15                miles (24 km) wide.<br />
+
+            On July 3, the Black Knights, a squadron of Marine Corps F/A-18 Hornets, participated in an assault on a destroyer near the city                 of Los Angeles.</p>
+            
+            <b class="help-subheading" >Headings</b><br />
+
+            <p>You can create a heading by adding one or more # symbols before your heading text. The number of # you use will determine the                size of the heading.</p>
+
+            <p># The largest heading (an < h1 > tag)<br />
+            ## The second largest heading (an < h2 > tag)<br />
+            ###### The 6th largest heading (an < h6 > tag)</p>
+            
+            <b class="help-subheading" >Blockquotes</b>
+
+            <p>You can indicate blockquotes with a >.<br />
+
+            In the words of Abraham Lincoln:<br />
+
+                > Pardon my french
+                Styling text<br />
+
+                You can make text <b>bold</b> or <em>italic</em>.</p>
+
+            <p>*This text will be italic*<br />
+                **This text will be bold**<br />
+                Both bold and italic can use either a * or an _ around the text for styling. This allows you to combine both bold and italic if needed.</p>
+
+            <p>**Everyone _must_ attend the meeting at 5 o'clock today.**</p>
+            <hr class="header-line" />
+            <b class="help-heading" >Lists</b><br />
+
+            <b class="help-subheading" >Unordered lists</b><br />
+
+            <p>You can make an unordered list by preceding list items with either a * or a -.<br />
+
+            * Item<br />
+            * Item<br />
+            * Item<br /><br />
+
+            - Item<br />
+            - Item<br />
+            - Item</p>
+            
+            <b class="help-subheading" >Ordered lists</b><br />
+
+            <p>You can make an ordered list by preceding list items with a number.<br />
+
+            1. Item 1<br />
+            2. Item 2<br />
+            3. Item 3</p>
+    <hr class="header-line" />
+    
+            <b class="help-heading" >Code formatting</b>
+
+            <b class="help-subheading" >Inline formats</b>
+
+<p>Use single backticks (`) to format text in a special monospace format. Everything within the backticks appear as-is, with no other special formatting.<br />
+
+Here's an idea: why don't we take `SuperiorProject` and turn it into `**Reasonable**Project`.
+Multiple lines<br />
+
+You can use triple backticks (```) to format text as its own distinct block.<br />
+
+Check out this neat program I wrote:<br />
+
+```<br />
+x = 0<br />
+x = 2 + 2<br />
+what is x<br />
+    ```</p>
+            <hr class="header-line" />
+            
+            <b class="help-heading" >Links</b>
+
+            <p>You can create an inline link by wrapping link text in brackets ( [ ] ), and then wrapping the link in parenthesis ( ( ) ).<br />
+
+                For example, to create a hyperlink to www.github.com, with a link text that says, Visit GitHub!, you'd write this in Markdown: [Visit GitHub!](www.github.com).</p>
+            <br />
+            <hr class="header-line" />
+        </div>
+        
+    </div>
+   
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "dashboard-layout.html" %}
+
+
+{% block title %}
+{{ super() }} | About
+{% endblock %}
+
+{% block includes %}
+{{ super() }}
+<link type="text/css" rel="stylesheet" href="{{ url_for('dashboard.static', filename='css/about.css' ) }}" />
+{% endblock %}
+
+{% block content %}
+<div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">About</h3>
+                <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= users Profile area ==================== -->
+        <div class="about-content">
+            <div class="about-shifu">
+                
+            </div>
+            <div class="about-team">
+                <div class="developers-start-text">
+                <h3 class="heading-developer">Developer Team</h3>
+                <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
+                </div>
+            <hr class="header-line" />
+                <div class="developers">
+                    <div class="developer-gautam">
+                        <div class="developer-image-wrapper">
+                            <img class="developer-image" src="{{ url_for('dashboard.static',filename='images/gautam.jpg') }}" />
+                        </div>
+                        <div class="name-wrapper">
+                            Gautam Anghore
+                        </div>
+                    </div>
+                    <div class="developer-harshit">
+                        <div class="developer-image-wrapper">
+                            <img class="developer-image" src="{{ url_for('dashboard.static',filename='images/harshit.png') }}" />
+                        </div>
+                        <div class="name-wrapper">
+                            Harshit Thukral
+                        </div>
+                    </div>
+                    <div class="developer-karan">
+                        <div class="developer-image-wrapper">
+                            <img class="developer-image" src="{{ url_for('dashboard.static',filename='images/karan.JPG') }}" />
+                        </div>
+                        <div class="name-wrapper">
+                            Karan Mohan Grover
+                        </div>
+                    </div>
+                    <div class="developer-tavneet">
+                        <div class="developer-image-wrapper">
+                            <img class="developer-image" src="{{ url_for('dashboard.static',filename='images/tavneet.jpg') }}" />
+                        </div>
+                        <div class="name-wrapper">
+                            Tavneet Singh Lamba
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+   
+{% endblock %}

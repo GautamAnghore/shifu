@@ -103,14 +103,15 @@
                         {% endfor %}
 
                         <span class="btn button text-instance-button green" onclick="createtextinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
-                    {% elif inputs[field_name] == "simple-markdown" %}
+                    {% elif inputs[field_name]['type'] == "simple-markdown" %}
                         <div class="instance">
                             <textarea class="textbox" name="{{ field_name }}">{{ inputs[field_name]['data'] }}</textarea>
                             <button class="btn" onclick="removetextinstance(this)" ><a><i class="glyphicon glyphicon-remove-sign black"></i></a></button>
                         </div>
-                    {% elif inputs[field_name] == "markdown-text" %}
+                    {% elif inputs[field_name]['type'] == "iterator-text" %}
+                        <div class="form-group">
                         {% for instance in inputs[field_name]['data'] %}
-                            <div class="form-group">
+                            
                                 <div class="col-sm-12">
                                     <div class="input-group col-sm-12">
                                         <input type="text" class="form-control container-input" name="{{ field_name }}" value = "{{ instance }}">
@@ -118,10 +119,11 @@
                                     </div>
                                     <span class="help-block"></span>
 
-                                <span class="btn button input-instance-button green" onclick="createinputinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
-                               </div>
-                            </div>
+                                
+                                </div>
                         {% endfor %}
+                                    <span class="btn button input-instance-button green" onclick="createinputinstance(this)"><i class="glyphicon glyphicon-plus"></i>Add Instance</span>
+                            </div>
                     {% else %}
                             <div class="form-group">
                                 <div class="col-sm-12">

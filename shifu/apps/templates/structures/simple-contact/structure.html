@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>
+	{% block title %}
+		{{ data['title'] }}
+	{% endblock %}
+</title>
+
+{% block includes %}
+
+	{% for file in data['includes']['css'] %}
+		<link rel="stylesheet" href="{{ file|safe }}"/>
+	{% endfor %}
+	{% for file in data['includes']['js'] %}
+		<link rel="stylesheet" href="{{ file|safe }}"/>
+	{% endfor %}	
+{% endblock %}
+</head>
+
+<body>
+
+
+    <div class="main-wrapper">
+        <div class="main-heading">
+            <div class="main-heading-content">
+                <h1>{{ data['heading']|safe }}</h1>
+            </div>
+            <div class="main-heading-subscript">
+            {{ data['tagline']|safe }}
+            </div>
+        </div>
+        
+        <div class="links">
+            <ul>
+                {% for link in data['links'] %}
+                <li>{{ link|safe }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="contact-wrapper">
+
+            {% for head in data['contact-content-heading'] %}
+                <div class="contact-content-heading">{{ head|safe }}</div>
+                <div class="contact-content">{{ data['contact-content'][loop.index0]|safe }}</div>
+            {% endfor %}
+    
+        </div>
+        
+        <div class="footer">
+            <div class="footer-content">
+				{% if data['footer'] %}
+					{{ data['footer']|safe }}
+				{% endif %}<br/>
+                made with shifu
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>

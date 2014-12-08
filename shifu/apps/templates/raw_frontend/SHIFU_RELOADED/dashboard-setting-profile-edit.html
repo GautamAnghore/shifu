@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Shifu | Dashboard</title>
+        <script src="javascript/jquery-2.1.1.js"></script>
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.1.1-dist/css/bootstrap-theme.min.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/dashboard-setting-profile-edit.css" />
+        <link type="text/css" rel="stylesheet" href="style_css/navbar.css" />
+        <script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        
+    <!--      ==============================NAVBAR STARTS =================================    -->
+    <div class="bground">
+        <nav>    
+        <div class="navbar navbar-default navbar-fixed-top">
+            <img class="header-pallete" src="pallet/Color-Palette-Post-03-Fitz.png" />
+                    <!--navigation does here-->  
+            <ul class="nav">  
+                <li class="brand-active">  
+                <a class="brand" href="#">Shifu</a>  
+                </li>  
+                <!--<li class="navigation_opt"><a href="#">Actions</a></li>-->
+                <li class="navigation_opt btn-group pull-right">
+                    <a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a>
+                </li>
+                <li  class="navigation_opt">
+                    <a href="#"><span class="glyphicon glyphicon-globe"></span> Website</a>
+                </li>
+                <li  class="navigation_opt">
+                    <a href="#"><span class="glyphicon glyphicon-tasks"></span> Dashboard</a>
+                </li>
+            </ul>
+            <div class="down-arrow pull-right">
+                <span type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                </span>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#"><i class="glyphicon glyphicon-send"></i> Help</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-info-sign"></i> About</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-edit"></i> Markdown Basics</a></li>
+                    <!--<li><a href="#"></a></li>
+                    <li><a href="#"></a></li>-->
+                </ul>
+            </div>
+        </div>
+            <div class="logo-div">
+            <img class="logo" src="images/logo_yellowshadow.png" />
+            </div>
+        </nav>
+    </div>
+        <!--                          e======= navbar ends ===========                               -->
+        
+        <!-- ================================== Dashboard options start ================================ -->
+        <!-- =========== website =======-->
+    <div class="dashboard">
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front blue">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-globe dashboard-glyphicon"></span></a>
+                    <p>Website</p>
+                </div>
+		      </div>
+		      <div class="back dark-blue">
+                <div class="back-option-website" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-bookmark back-glyphi website"></span>  Website Name</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-picture back-glyphi website"></span>  Change Theme</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-tree-conifer back-glyphi website"></span>  Refresh Environment</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== page =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front green">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-list-alt dashboard-glyphicon"></span></a>
+                    <p>Pages</p>
+                </div>
+		      </div>
+		      <div class="back dark-green">
+                <div class="back-option-page" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-plus back-glyphi page"></span>  Add page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-trash back-glyphi page"></span>  Delete Page</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-home back-glyphi page"></span>  Change Index Page</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+        <!-- =========== settings =======-->
+        <div class="flip-container">
+	       <div class="flipper">
+		      <div class="front code-red">
+                <div class="front-icon">
+			     <a href="#"><span class="glyphicon glyphicon-cog dashboard-glyphicon"></span></a>
+                    <p>Settings</p>
+                </div>
+		      </div>
+		      <div class="back dark-code-red">
+                <div class="back-option-setting" >
+                    <a href="#" class="option"><span class="glyphicon glyphicon-info-sign back-glyphi setting"></span>  Profile</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-barcode back-glyphi setting"></span>  Change Password</a><br />
+                    <a href="#" class="option"><span class="glyphicon glyphicon-user back-glyphi setting"></span>  Users</a>
+                </div>
+		      </div>
+	       </div>
+        </div>
+    </div>
+        <!-- ==================================== dashboard ends ========================== -->
+        
+        <!-- =================================== page info form starts =================== -->
+    <div class="page-info-area">
+        <!-- ====== heading ======-->
+            <div class="heading">
+                <h3 class="heading-text">Change Profile</h3>
+                <!--<button class="btn code-red top-button"><i class="glyphicon glyphicon-print"></i> Add New User</button>-->
+            </div>
+            <hr class="header-line" />
+        
+        <!-- ========================= users Profile area ==================== -->
+        
+        <div class="user-profile-wrapper">
+            <!-- ============ for profile pic ========== -->
+            <div class="user-profile-picture-area">
+                <div class="user-profile-picture">
+                    <i class="glyphicon glyphicon-user profile-picture" ></i>
+                </div>
+                <!--<div class="user-buttons">
+                    <button type="submit" class="btn btn-edit"><i class="glyphicon glyphicon-edit" ></i> Edit Information</button>
+                    <button type="submit" class="btn btn-change-password"><i class="glyphicon glyphicon-barcode" ></i>  Change Password</button>
+                </div>-->
+            </div>
+            <!-- ============= for rest of the info ======== -->
+            <div class="user-information">
+                <div class="user-name">User Name</div>
+                <div class="user-type">Admin/Editor</div>
+                <hr class="user-header-line" />
+                <form>
+                    <div class="form-group">
+                        <label for="inputname" class="input-label" >Full name</label>
+                        <div class="input-group col-xs-10">
+                            <input type="text" class="form-control" id="inputname" placeholder="Enter Your Full name">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputemail" class="input-label">Email Address</label>
+                        <div class="input-group col-xs-10">
+                            <input type="text" class="form-control" id="inputemail" placeholder="Enter Email Address">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <span class="btn btn-save"><i class="glyphicon glyphicon-floppy-saved"></i> Save Changes</span>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
