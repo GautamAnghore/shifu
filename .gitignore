@@ -3,3 +3,7 @@
 
 #documentations
 docs/
+
+#virtualenv files
+flaskenv/
+venv/
